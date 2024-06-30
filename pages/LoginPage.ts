@@ -1,4 +1,3 @@
-// loginPage.ts
 import { Page } from 'playwright';
 import { LoginLocators } from '../locators/LoginLocators'; 
 import { CommonSteps } from './CommonSteps';

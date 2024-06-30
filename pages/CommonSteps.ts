@@ -86,32 +86,30 @@ export class CommonSteps {
     }
   }
 
-  async waitForChooseFileTextBox() {
+  async waitForLocator(locatorName: string) {
     try {
-      console.log(`Waiting for Choose File Text Box`);
-      await expect(this.page.getByRole('textbox')).toBeVisible({ timeout: this.timeout_large });
+      console.log(`Waiting for locator:${locatorName}`);
+      await expect(this.page.locator(locatorName)).toBeVisible({ timeout: this.timeout_small });
     } catch (error) {
-      console.error(`Error Waiting for Choose File Text Box`, error);
+      console.error(`Waiting for Choose File Text Box`, error);
     }
   }
 
-  async clickOnChooseFileTextBox() {
+  async selectingDropdownValue(locatorName: string, value: string) {
     try {
-      console.log(`Waiting for Choose File Text Box`);
-      await this.page.getByRole('textbox').click()
+      console.log(`Selecting value :${value} from dropdown:${locatorName}`);
+      await this.page.locator(locatorName).selectOption(value)
     } catch (error) {
-      console.error(`Error Waiting for Choose File Text Box`, error);
+      console.error(`Error Selecting value ${value}:`, error);
     }
   }
 
-  async selectFilefromComputer(filename:string)
-  {
+  async uploadFile(locatorName: string, fileName: string) {
     try {
-      console.log(`Selecting File From Computer`);
-      await this.page.waitForTimeout(3000);
-      await this.page.getByRole('textbox').setInputFiles(filename)
+      console.log(`Uploading file : ${fileName}`);
+      await this.page.setInputFiles(locatorName, fileName);
     } catch (error) {
-      console.error(`Error Selecting File From Computer`, error);
+      console.error(`Error Waiting for Choose File Text Box`, error);
     }
   }
 
@@ -134,4 +132,58 @@ export class CommonSteps {
     }
   }
 
+  async waitForText(textName: string) {
+    try {
+      console.log(`Waiting for Text: ${textName}`);
+      await expect(this.page.getByText(textName)).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for button ${textName}:`, error);
+    }
+  }
+
+  async clickOnText(textName: string) {
+    try {
+      console.log(`Clicking on Text: ${textName}`);
+      await this.page.getByText(textName).click();
+    } catch (error) {
+      console.error(`Error waiting for button ${textName}:`, error);
+    }
+  }
+
+  async waitingForEmailDomainPlaceholder(emailDomain: string) {
+    try {
+      console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
+      await expect(this.page.getByRole('cell', { name: emailDomain}).getByPlaceholder('Search...')).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
+    }
+  }
+
+  async fillingEmailDomainPlaceholder(emailDomain: string, expectedName: string) {
+    try {
+      console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
+      await this.page.getByRole('cell', { name: emailDomain}).getByPlaceholder('Search...').fill(expectedName);
+    } catch (error) {
+      console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
+    }
+  }
+
+  async waitingForCellHavingTextforVerification(text: string) {
+    try {
+      console.log(`Waiting for text in row: ${text}`);
+      await expect(this.page.getByRole('cell', { name: text }).first()).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for  Email Domain Placeholder ${text}:`, error);
+    }
+  }
+
+  async fillingLocator(locatorName: string, expectedValue) {
+    try {
+      console.log(`Filling loctator: ${locatorName} with value: ${expectedValue}:`);
+    //  await this.page.locator('input[type="date"]').fill('2024-06-30');
+      await this.page.locator(locatorName).fill(expectedValue);
+    } catch (error) {
+      console.error(`Error in Filling loctator: ${locatorName}: with value:${expectedValue}`, error);
+    }
+  }
 }

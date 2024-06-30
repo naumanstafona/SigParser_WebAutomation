@@ -9,7 +9,7 @@ test.describe('login test', () => {
     let browser: Browser;
     let page: Page;
     let loginpage: LoginPage;
-    let companiespage:CompaniesPage;
+    let companiespage: CompaniesPage;
 
     test.beforeAll(async () => {
         browser = await chromium.launch({ headless: false });
@@ -19,9 +19,31 @@ test.describe('login test', () => {
         await loginpage.login(config.email, config.password, config.url)
     });
 
-    test('User should be able to import Companies file and verify it ', async () => {
-        await companiespage.companiesParserVerification();
+    test('User should be able to verify Company Domain and tag ', async () => {
+        await companiespage.companyDomainTagVerification();
     });
+
+    test('User should be able to verify Company Domain and status ', async () => {
+        await companiespage.companyDomainStatusVerification();
+    });
+
+    test('User should be able to verify Company Domain and Name ', async () => {
+        await companiespage.companyNameVerification();
+    });
+
+    test('User should be able to verify Company With Score At Row Level', async () => {
+        await companiespage.companyWithScoreAtRowLevelVerification();
+    });
+
+    test('User should be able to verify Company with Scores At Field Level (Lower Score)', async () => {
+        await companiespage.companyWithScoreAtFieldLevelLowerVerification();
+    });
+
+    test('User should be able to verify Company with Scores At All Rows Level', async () => {
+        await companiespage.companyWithScoreAtAllRowLevelsVerification();
+    });
+    
+    
 
     test.afterAll(async () => {
         await browser.close();
