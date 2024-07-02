@@ -17,6 +17,10 @@ export const CommonLocators = {
     statusFinishedNameLocator: 'StatusFinished',
     importFileLocator: 'Import File',
     searchButtonLocator: 'Search',
+    mappingthirddropdownLocator: '#dropdown2',
+    mappingfourthdropdownLocator: '#dropdown3',
+
+    domainTagFileLocator: 'CSVtest_Name',
 
 
 };

@@ -153,7 +153,7 @@ export class CommonSteps {
   async waitingForEmailDomainPlaceholder(emailDomain: string) {
     try {
       console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
-      await expect(this.page.getByRole('cell', { name: emailDomain}).getByPlaceholder('Search...')).toBeVisible({ timeout: this.timeout_large });
+      await expect(this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...')).toBeVisible({ timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
     }
@@ -162,7 +162,7 @@ export class CommonSteps {
   async fillingEmailDomainPlaceholder(emailDomain: string, expectedName: string) {
     try {
       console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
-      await this.page.getByRole('cell', { name: emailDomain}).getByPlaceholder('Search...').fill(expectedName);
+      await this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...').fill(expectedName);
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
     }
@@ -180,10 +180,18 @@ export class CommonSteps {
   async fillingLocator(locatorName: string, expectedValue) {
     try {
       console.log(`Filling loctator: ${locatorName} with value: ${expectedValue}:`);
-    //  await this.page.locator('input[type="date"]').fill('2024-06-30');
       await this.page.locator(locatorName).fill(expectedValue);
     } catch (error) {
       console.error(`Error in Filling loctator: ${locatorName}: with value:${expectedValue}`, error);
     }
+  }
+
+  async getNextDayDate(): Promise<string> {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 1);
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }

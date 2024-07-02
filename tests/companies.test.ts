@@ -4,7 +4,6 @@ import { CompaniesPage } from '../pages/CompaniesPage';
 import { chromium, Browser, Page } from 'playwright';
 import config from '../config';
 
-
 test.describe('login test', () => {
     let browser: Browser;
     let page: Page;
@@ -24,7 +23,7 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify Company Domain and status ', async () => {
-        await companiespage.companyDomainStatusVerification();
+        await companiespage.companyDomainStatusVerification();//active bug
     });
 
     test('User should be able to verify Company Domain and Name ', async () => {
@@ -32,18 +31,16 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify Company With Score At Row Level', async () => {
-        await companiespage.companyWithScoreAtRowLevelVerification();
+        await companiespage.companyWithScoreAtRowLevelVerification();//Active Bug
     });
 
     test('User should be able to verify Company with Scores At Field Level (Lower Score)', async () => {
-        await companiespage.companyWithScoreAtFieldLevelLowerVerification();
+        await companiespage.companyWithScoreAtFieldLevelLowerVerification();//Active Bug
     });
 
     test('User should be able to verify Company with Scores At All Rows Level', async () => {
         await companiespage.companyWithScoreAtAllRowLevelsVerification();
     });
-    
-    
 
     test.afterAll(async () => {
         await browser.close();

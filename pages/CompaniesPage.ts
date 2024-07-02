@@ -8,14 +8,7 @@ export class CompaniesPage extends CommonSteps {
         super(page);
     }
 
-    async getNextDayDate(): Promise<string> {
-        const currentDate = new Date();
-        currentDate.setDate(currentDate.getDate() + 1);
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
+
 
 
     async companyDomainTagVerification() {
@@ -42,7 +35,10 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
-        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'cvtest.com');
+        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
+        await this.waitForText(CommonLocators.domainTagFileLocator);
+        await this.clickOnText(CommonLocators.domainTagFileLocator);
+        await this.waitForText(CompaniesLocators.tagVerificationLocator);
     }
 
     async companyDomainStatusVerification() {
@@ -69,7 +65,8 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
-        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'cvtest.com');
+        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
+        await this.waitForText(CommonLocators.domainTagFileLocator);
     }
 
     async companyNameVerification() {
@@ -96,7 +93,10 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
-        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'cvtest.com');
+        await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
+        await this.waitForText(CommonLocators.domainTagFileLocator);
+        await this.clickOnText(CommonLocators.domainTagFileLocator);
+        await this.waitForText(CompaniesLocators.companyNameVerificationLocator);
     }
 
     async companyWithScoreAtRowLevelVerification() {
@@ -112,10 +112,10 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
-        await this.waitForLocator(CompaniesLocators.mappingthirddropdownLocator);
-        await this.selectingDropdownValue(CompaniesLocators.mappingthirddropdownLocator, 'Source Date');
-        await this.waitForLocator(CompaniesLocators.mappingfourthdropdownLocator);
-        await this.selectingDropdownValue(CompaniesLocators.mappingfourthdropdownLocator, 'Source Score');
+        await this.waitForLocator(CommonLocators.mappingthirddropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingthirddropdownLocator, 'Source Date');
+        await this.waitForLocator(CommonLocators.mappingfourthdropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingfourthdropdownLocator, 'Source Score');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);
@@ -148,10 +148,10 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
-        await this.waitForLocator(CompaniesLocators.mappingthirddropdownLocator);
-        await this.selectingDropdownValue(CompaniesLocators.mappingthirddropdownLocator, 'Source Date');
-        await this.waitForLocator(CompaniesLocators.mappingfourthdropdownLocator);
-        await this.selectingDropdownValue(CompaniesLocators.mappingfourthdropdownLocator, 'Source Score');
+        await this.waitForLocator(CommonLocators.mappingthirddropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingthirddropdownLocator, 'Source Date');
+        await this.waitForLocator(CommonLocators.mappingfourthdropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingfourthdropdownLocator, 'Source Score');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);

@@ -24,6 +24,15 @@ test.describe('login test', () => {
         await contactpage.contactEmailTagVerification();
     });
 
+    test('User should be able to verify contact with Email Status ', async () => {
+        await contactpage.contactEmailStatusVerification();//Haseeb to verify
+    });
+
+    
+    test('User should be able to verify contact with Email Name ', async () => {
+        await contactpage.contactEmailNameVerification();
+    });
+
     test.afterAll(async () => {
         await browser.close();
     });
