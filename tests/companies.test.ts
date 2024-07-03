@@ -19,7 +19,7 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify Company Domain and tag ', async () => {
-        await companiespage.companyDomainTagVerification();
+        await companiespage.companyDomainTagVerification(); //Passing
     });
 
     test('User should be able to verify Company Domain and status ', async () => {
@@ -27,7 +27,7 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify Company Domain and Name ', async () => {
-        await companiespage.companyNameVerification();
+        await companiespage.companyNameVerification();//Passing
     });
 
     test('User should be able to verify Company With Score At Row Level', async () => {

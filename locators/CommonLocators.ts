@@ -19,8 +19,13 @@ export const CommonLocators = {
     searchButtonLocator: 'Search',
     mappingthirddropdownLocator: '#dropdown2',
     mappingfourthdropdownLocator: '#dropdown3',
-
+    updatesButtonLocator: 'Updates',
     domainTagFileLocator: 'CSVtest_Name',
+    showAdvancedSettingsTextLocator: 'Show Advanced Settings',
+    dateLocator: 'input[type="date"]',
+    defaultSourceScoreDropDownLocator: '//div[@class="c-dropdown"]//select[1]',
+    
+
 
 
 };

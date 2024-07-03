@@ -2,6 +2,7 @@ import { Page } from 'playwright';
 import { CompaniesLocators } from '../locators/CompaniesLocators';
 import { CommonLocators } from '../locators/CommonLocators';
 import { CommonSteps } from './CommonSteps';
+import { CoworkerLocator } from '../locators/CoworkersLocators';
 
 export class CompaniesPage extends CommonSteps {
     constructor(page: Page) {
@@ -122,8 +123,8 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
-        await this.waitForText(CompaniesLocators.updatesButtonLocator);
-        await this.clickOnText(CompaniesLocators.updatesButtonLocator);
+        await this.waitForText(CommonLocators.updatesButtonLocator);
+        await this.clickOnText(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.clickOnLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -158,8 +159,8 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
-        await this.waitForText(CompaniesLocators.updatesButtonLocator);
-        await this.clickOnText(CompaniesLocators.updatesButtonLocator);
+        await this.waitForText(CommonLocators.updatesButtonLocator);
+        await this.clickOnText(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.clickOnLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -186,25 +187,25 @@ export class CompaniesPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Company Name');
-        await this.waitForText(CompaniesLocators.showAdvancedSettingsTextLocator);
-        await this.clickOnText(CompaniesLocators.showAdvancedSettingsTextLocator);
-        await this.waitForLocator(CompaniesLocators.dateLocator);
+        await this.waitForText(CommonLocators.showAdvancedSettingsTextLocator);
+        await this.clickOnText(CommonLocators.showAdvancedSettingsTextLocator);
+        await this.waitForLocator(CommonLocators.dateLocator);
         const nextDayDate = await this.getNextDayDate();
-        await this.fillingLocator(CompaniesLocators.dateLocator, nextDayDate);
-        await this.selectingDropdownValue(CompaniesLocators.deafultSourceScoreDropDownLocator, 'High (score = 90)');
+        await this.fillingLocator(CommonLocators.dateLocator, nextDayDate);
+        await this.selectingDropdownValue(CommonLocators.defaultSourceScoreDropDownLocator, 'High (score = 90)');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
-        await this.waitForText(CompaniesLocators.updatesButtonLocator);
-        await this.clickOnText(CompaniesLocators.updatesButtonLocator);
+        await this.waitForText(CommonLocators.updatesButtonLocator);
+        await this.clickOnText(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.clickOnLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
-        await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator);
+     //   await this.waitingForEmailDomainPlaceholder(CoworkerLoactor.companyEmailDomainPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator, 'unicorn.co');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');

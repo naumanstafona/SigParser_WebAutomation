@@ -12,14 +12,26 @@ test('test', async ({ page }) => {
   await page.goto('https://beta-app.sigparser.com/Account/App/#/Dashboard');
   await page.getByRole('link', { name: 'Contacts', exact: true }).click();
   await page.getByRole('button', { name: 'Search' }).click();
-  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click({
-    modifiers: ['ControlOrMeta']
-  });
   await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
-  await page.getByRole('cell', { name: 'Email Address joe.doe@csvtest' }).getByPlaceholder('Search...').click();
-  await page.getByRole('cell', { name: 'Email Address joe.doe@csvtest' }).getByPlaceholder('Search...').fill('jot.com ');
-  await page.getByRole('cell', { name: 'Email Address joe.doe@csvtest' }).getByPlaceholder('Search...').press('ControlOrMeta+ArrowRight');
-  await page.getByRole('cell', { name: 'Email Address joe.doe@csvtest' }).getByPlaceholder('Search...').press('Enter');
-  await page.getByText('Jonathan Doehopper').click();
-  await page.getByRole('cell', { name: 'Ignore' }).click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').fill('mark.e@qweui.com');
+  await page.locator('#body div').filter({ hasText: 'ValidApprovedIgnorePrivateOtherCoworkerFull NameCompany NameEmail AddressJob' }).nth(2).click();
+  await expect(page.locator('#body div').filter({ hasText: 'ValidApprovedIgnorePrivateOtherCoworkerFull NameCompany NameEmail AddressJob' }).nth(2)).toBeVisible();
+  await page.getByRole('button', { name: 'Settings ' }).click();
+  await page.getByText('Updates').click();
+  await page.getByRole('link', { name: 'Contact Update Tracking' }).click();
+  await page.getByRole('button', { name: 'Search' }).click();
+  await page.getByRole('cell', { name: 'Contact Email Address' }).getByPlaceholder('Search...').fill('mark.e@qweui.com)');
+  await page.getByRole('cell', { name: 'Contact Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: 'Contact Email Address mark.e@' }).getByPlaceholder('Search...').fill('mark.e@qweui.com');
+  await expect(page.getByText('Mark Ronnin').first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Mark Ronnin' }).first()).toBeVisible();
+  await page.locator('#body div').filter({ hasText: 'Date ImportedPrevious Last' }).nth(2).click();
+  await page.getByRole('cell', { name: 'Updated' }).first().click();
+  await page.getByRole('button', { name: '' }).click();
+  await expect(page.getByRole('cell', { name: 'Updated' }).first()).toBeVisible();
+  await page.getByText('Updated').first().click();
+  await page.getByRole('button', { name: '' }).click();
+  await expect(page.getByRole('cell', { name: '90' })).toBeVisible();
+  await page.getByRole('cell', { name: '90' }).click();
+  await page.getByRole('link', { name: 'Contact Update Tracking' }).click();
 });
