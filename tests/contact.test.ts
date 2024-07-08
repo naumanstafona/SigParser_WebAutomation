@@ -13,7 +13,7 @@ test.describe('login test', () => {
     let contactpage: ContactPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactpage = new ContactPage(page);
