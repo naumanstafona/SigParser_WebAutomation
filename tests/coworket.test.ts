@@ -19,17 +19,17 @@ test.describe('login test', () => {
         await loginpage.login(config.email, config.password, config.url)
     });
 
-    /*test('User should be able to verify coworker with score at Row Level ', async () => {
+    test('User should be able to verify coworker with score at Row Level ', async () => {
         await coworkerpage.coworkerWithScoresAtRowLevelVerification();//Failinig due to not updated 56 score
-    });*/
+    });
 
     test('User should be able to verify coworker with score at Field Level and Lower Score ', async () => {
         await coworkerpage.coworkerWithScoreAtFieldLevelLowerVerification();//Passing
     });
 
-    /*test('User should be able to verify coworker with score at All Row Level Verification ', async () => {
+    test('User should be able to verify coworker with score at All Row Level Verification ', async () => {
         await coworkerpage.coworkerwithScoresAtAllRowsLevelVerification();//Passing
-    });*/
+    });
 
     test.afterAll(async () => {
         await browser.close();
