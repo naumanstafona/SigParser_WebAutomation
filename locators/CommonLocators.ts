@@ -24,6 +24,7 @@ export const CommonLocators = {
     showAdvancedSettingsTextLocator: 'Show Advanced Settings',
     dateLocator: 'input[type="date"]',
     defaultSourceScoreDropDownLocator: '//div[@class="c-dropdown"]//select[1]',
+    modalFileDetailsButtonLocator:'Details',
     
 
 

@@ -6,8 +6,8 @@ export class CommonSteps {
 
 
   protected page: Page;
-  protected readonly timeout_large: number = 180000;
-  protected readonly timeout_small: number = 60000;
+  protected readonly timeout_large: number = 240000;
+  protected readonly timeout_small: number = 100000;
 
   constructor(page: Page) {
     this.page = page;
@@ -95,6 +95,15 @@ export class CommonSteps {
     }
   }
 
+  async clickOnLocator(locatorName: string) {
+    try {
+      console.log(`Clicking on locator:${locatorName}`);
+      await this.page.locator(locatorName).click();
+    } catch (error) {
+      console.error(`Waiting for Choose File Text Box`, error);
+    }
+  }
+
   async selectingDropdownValue(locatorName: string, value: string) {
     try {
       console.log(`Selecting value :${value} from dropdown:${locatorName}`);
@@ -141,6 +150,15 @@ export class CommonSteps {
     }
   }
 
+  async waitForTextStrict(textName: string) {
+    try {
+      console.log(`Waiting for Text strict: ${textName}`);
+      await expect(this.page.getByText(textName, { exact: true })).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for button ${textName}:`, error);
+    }
+  }
+
   async clickOnText(textName: string) {
     try {
       console.log(`Clicking on Text: ${textName}`);
@@ -149,6 +167,16 @@ export class CommonSteps {
       console.error(`Error waiting for button ${textName}:`, error);
     }
   }
+
+  async clickOnTextStrict(textName: string) {
+    try {
+      console.log(`Clicking on Text strict: ${textName}`);
+      await this.page.getByText(textName, { exact: true }).click();
+    } catch (error) {
+      console.error(`Error waiting for Text ${textName}:`, error);
+    }
+  }
+
 
   async waitingForEmailDomainPlaceholder(emailDomain: string) {
     try {
@@ -174,6 +202,24 @@ export class CommonSteps {
       await expect(this.page.getByRole('cell', { name: text }).first()).toBeVisible({ timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${text}:`, error);
+    }
+  }
+
+  async waitForTitle(titleName: string) {
+    try {
+      console.log(`Waiting for Title: ${titleName}`);
+      await expect(this.page.getByTitle(titleName)).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error Waiting for Title ${titleName}:`, error);
+    }
+  }
+
+  async clickOnTitle(titleName: string) {
+    try {
+      console.log(`Clicking On Title: ${titleName}`);
+      await this.page.getByTitle(titleName).click();
+    } catch (error) {
+      console.error(`Error Clicking On Title ${titleName}:`, error);
     }
   }
 

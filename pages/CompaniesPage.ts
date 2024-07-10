@@ -9,9 +9,6 @@ export class CompaniesPage extends CommonSteps {
         super(page);
     }
 
-
-
-
     async companyDomainTagVerification() {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
@@ -68,6 +65,11 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForText(CommonLocators.domainTagFileLocator);
+        await this.clickOnText(CommonLocators.domainTagFileLocator);
+        await this.waitForText(CommonLocators.modalFileDetailsButtonLocator);
+        await this.clickOnText(CommonLocators.modalFileDetailsButtonLocator);
+        await this.waitForText('StatusIgnoreCompany Name');
+
     }
 
     async companyNameVerification() {
@@ -205,7 +207,6 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnLinkButton(CompaniesLocators.companyUpdatesTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
-     //   await this.waitingForEmailDomainPlaceholder(CoworkerLoactor.companyEmailDomainPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator, 'unicorn.co');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
