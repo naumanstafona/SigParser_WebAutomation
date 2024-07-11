@@ -20,8 +20,8 @@ export const ContactLocators = {
     lastNameInputLocator: 'input[name="lastname"]',
     titleInputLocator: 'input[name="title"]',
     viewContactButtonLocator: 'View Contact',
-    exitButtonLocator: '//i[contains(@class,"c-modal__exit-icon fa")]',
-    pencilLocator:'(//i[contains(@class,"fa fa-pencil")])[3]',
-    deleteLocator:'//button[contains(@class,"c-btn --delete")]',
+    exitButtonLocator: '//div[@id="modal-contact"]/main[1]/button[1]/i[1]',
+    pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
+    deleteLocator: 'Delete',
 
 };

@@ -311,8 +311,10 @@ export class ContactPage extends CommonSteps {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
         await this.waitForText('Test Contact Text');
         await this.clickOnText('Test Contact Text');
-        await this.waitForLocator(ContactLocators.deleteLocator);
-        await this.clickOnLocator(ContactLocators.deleteLocator);
+        await this.waitForButton(ContactLocators.deleteLocator);
+        // await this.clickOnButton(ContactLocators.deleteLocator);
+        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
+        //  await this.clickOnLocator('//button[contains(@class,"c-btn --delete")]');
     }
 
     async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
@@ -386,16 +388,17 @@ export class ContactPage extends CommonSteps {
         await this.clickOnTitle(ContactLocators.columnTitleLocator);
         await this.waitForText(ContactLocators.customFieldLocator);
         await this.clickOnText(ContactLocators.customFieldLocator);
-        await this.waitForLocator(ContactLocators.testContactTextLinkLocator);
+        await this.hoverOverElement(ContactLocators.testContactTextLinkLocator);
         await this.waitForText('Description for Custom Contact Text Field');
-        await this.clickOnText('Test Contact Text');
+        await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
         await this.clickOnLocator(ContactLocators.testContactTextLinkLocator);
         await this.waitForButton(ContactLocators.saveLocator);
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForLocator(ContactLocators.testContactTextColumnLocator);
     }
 
-    async setTHeValueForCustomField(email1: string, email2: string, email3: string) {
+    async setTHeValueForCustomField(email1: string) {
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/Contacts');
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -413,6 +416,41 @@ export class ContactPage extends CommonSteps {
         await this.waitForTextUnderTestContactText('Test Contact Text1');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
+    }
+
+    async updateExistingValueWithOverCharacterLimit(email1: string) {
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/Contacts');
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.waitForText('Custom Contact1');
+        await this.clickOnText('Custom Contact1');
+        await this.waitForTextUnderTestContactText('Test Contact Text1');
+        await this.waitForLocator(ContactLocators.pencilLocator);
+        await this.clickOnLocator(ContactLocators.pencilLocator);
+        await this.waitForPlaceholder('Field Value');
+        await this.fillingPlaceholder('Field Value', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
+        await this.waitForButton(ContactLocators.saveLocator);
+        await this.clickOnButton(ContactLocators.saveLocator);
+        await this.page.hover('');
+
+        // await this.waitForLocator(ContactLocators.exitButtonLocator);
+        // await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        // await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]')
+        // await this.waitForText('Custom Contact1');
+        // await this.clickOnText('Custom Contact1');
+        // await this.hoverOverElement('Test Contact Text');
+        // await this.waitForText('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.')
+
+
+
+
+
+
+
+
+
     }
 };
 

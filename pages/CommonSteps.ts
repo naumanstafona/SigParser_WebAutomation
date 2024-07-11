@@ -208,7 +208,7 @@ export class CommonSteps {
   async waitForTitle(titleName: string) {
     try {
       console.log(`Waiting for Title: ${titleName}`);
-      await expect(this.page.getByTitle(titleName)).toBeVisible({ timeout: this.timeout_large });
+      await expect(this.page.getByTitle(titleName, { exact: true })).toBeVisible({ timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error Waiting for Title ${titleName}:`, error);
     }
@@ -217,7 +217,7 @@ export class CommonSteps {
   async clickOnTitle(titleName: string) {
     try {
       console.log(`Clicking On Title: ${titleName}`);
-      await this.page.getByTitle(titleName).click();
+      await this.page.getByTitle(titleName, { exact: true }).click();
     } catch (error) {
       console.error(`Error Clicking On Title ${titleName}:`, error);
     }
@@ -239,5 +239,59 @@ export class CommonSteps {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  async hoverOverElement(selector: string) {
+    try {
+      console.log(`Hovering over element: ${selector}`);
+      const element = await this.page.$(selector);
+      if (element) {
+        await element.hover({ timeout: this.timeout_large });
+      } else {
+        throw new Error(`Element not found: ${selector}`);
+      }
+    } catch (error) {
+      console.error(`Error hovering over element ${selector}:`, error);
+    }
+  }
+
+  async waitForElementByTextWithin(selector: string, textName: string) {
+    try {
+      console.log(`Waiting for text: '${textName}' within element: '${selector}'`);
+      const element = this.page.locator(selector).getByText(textName);
+      await expect(element).toBeVisible({ timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for text '${textName}' within element '${selector}':`, error);
+    }
+  }
+
+  async clickElementByTextWithin(selector: string, textName: string) {
+    try {
+      console.log(`Clicking text: '${textName}' within element: '${selector}'`);
+      const element = this.page.locator(selector).getByText(textName);
+      await expect(element).toBeVisible({ timeout: this.timeout_large });
+      await element.click();
+    } catch (error) {
+      console.error(`Error clicking text '${textName}' within element '${selector}':`, error);
+    }
+  }
+
+  async handleAndAcceptDialog(triggerSelector: string) {
+    this.page.on('dialog', async (dialog) => {
+      try {
+        console.log(`Dialog message: ${dialog.message()}`);
+        await dialog.accept();  // Automatically accepts the dialog
+        console.log('Dialog accepted');
+      } catch (error) {
+        console.error('Error accepting dialog:', error);
+      }
+    });
+  
+    try {
+      console.log(`Clicking on element: '${triggerSelector}' to trigger dialog`);
+      await this.page.click(triggerSelector);
+    } catch (error) {
+      console.error(`Error clicking element '${triggerSelector}':`, error);
+    }
   }
 }

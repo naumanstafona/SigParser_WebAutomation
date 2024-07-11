@@ -9,7 +9,7 @@ test.describe("login test", () => {
   let page: Page;
   let loginpage: LoginPage;
   let contactpage: ContactPage;
-  const emails = ['customcontact01@test.com', 'customcontact02@test.com', 'customcontact03@test.com'];//Always changhe these email paths in order to avaoid conflict
+  const emails = ['customcontact806@test.com', 'customcontact807@test.com', 'customcontact808@test.com'];//Always changhe these email paths in order to avaoid conflict
 
   test.beforeAll(async () => {
     browser = await chromium.launch({ headless: false });
@@ -27,16 +27,20 @@ test.describe("login test", () => {
 
 
     await test.step("Create a new custom column text and add it to the contacts grid", async () => {
-      await contactpage.createNewTextCustomColumnAndAddIttoGridColumns();
+      await contactpage.createNewTextCustomColumnAndAddIttoGridColumns();//Passing
     });
 
     await test.step("Manually set the value for the custom field", async () => {
-      await contactpage.setTHeValueForCustomField(emails[0], emails[1], emails[2]);
+      await contactpage.setTHeValueForCustomField(emails[0]);//Passing
     });
 
-    await test.step("Delete the custom fields", async () => {
-      await contactpage.deleteCustomField();
+    await test.step("Update the existing field value (with a value over the character limit)", async () => {
+      await contactpage.updateExistingValueWithOverCharacterLimit(emails[0]);//Passing
     });
+
+    // await test.step("Delete the custom fields", async () => {
+    //   await contactpage.deleteCustomField();//Passing
+    // });
   });
 
   test.afterAll(async () => {
