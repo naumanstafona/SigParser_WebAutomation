@@ -1,0 +1,55 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://beta-app.sigparser.com/');
+  await page.getByRole('button', { name: 'Envelope Login with Email' }).click();
+  await page.getByPlaceholder('Enter your email address').click();
+  await page.getByPlaceholder('Enter your email address').fill('test+stafona+haseeb@dragnettech.com');
+  await page.locator('form[name="form"]').click();
+  await page.getByPlaceholder('Enter your password').fill('Panda@2024');
+  await page.getByRole('button', { name: 'LOG IN' }).click();
+  await page.goto('https://beta-app.sigparser.com/Account/App/#/Default');
+  await page.goto('https://beta-app.sigparser.com/Account/App/#/Dashboard');
+  await page.getByRole('link', { name: 'Contacts', exact: true }).click();
+  await page.getByRole('button', { name: 'Search' }).click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').fill('customcontact806@test.com');
+  await page.getByRole('button', { name: 'Search' }).click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: ' Email Address' }).getByPlaceholder('Search...').press('ArrowRight');
+  await page.getByText('Lorem ipsum dolor sit amet,').click();
+  await page.locator('#body div').filter({ hasText: 'ValidApprovedIgnorePrivateOtherCoworkerFull NameCompany NameEmail AddressJob' }).nth(2).click();
+  await page.getByText('Lorem ipsum dolor sit amet,').click();
+  await page.locator('#dropdown').getByRole('textbox').click({
+    clickCount: 3
+  });
+  await page.locator('#dropdown').getByRole('textbox').fill('1');
+  await page.locator('#dropdown').getByRole('textbox').press('Enter');
+  await expect(page.locator('#table').getByText('1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('cell', { name: '' }).locator('div').nth(1)).toBeVisible();
+  await page.goto('https://beta-app.sigparser.com/Account/App/#/Contacts');
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').fill('customcontact806@test.com');
+  await page.getByRole('button', { name: 'Search' }).click();
+  await expect(page.locator('#table').getByText('1', { exact: true })).toBeVisible();
+  await page.getByRole('cell', { name: '' }).locator('div').nth(1).click();
+  await page.locator('#body div').filter({ hasText: 'ValidApprovedIgnorePrivateOtherCoworkerFull NameCompany NameEmail AddressJob' }).nth(2).click();
+  await expect(page.getByRole('cell', { name: '' }).locator('div').nth(1)).toBeVisible();
+  await page.getByText('Custom Contact1').click();
+  await page.getByRole('button', { name: '' }).click();
+  await page.locator('#table').getByText('1', { exact: true }).click();
+  await page.locator('#dropdown').getByRole('textbox').fill('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
+  await page.locator('#body div').filter({ hasText: 'ValidApprovedIgnorePrivateOtherCoworkerFull NameCompany NameEmail AddressJob' }).nth(2).click();
+  await page.goto('https://beta-app.sigparser.com/Account/App/#/Contacts');
+  await page.getByRole('button', { name: 'Search' }).click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').click();
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').press('ArrowRight');
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').press('ArrowRight');
+  await page.getByRole('cell', { name: 'Email Address' }).getByPlaceholder('Search...').press('Enter');
+  await expect(page.getByText('Lorem ipsum dolor sit amet,')).toBeVisible();
+  await page.getByText('Lorem ipsum dolor sit amet,').click();
+  await page.getByText('Custom Contact1').click();
+  await expect(page.locator('p').filter({ hasText: 'Lorem ipsum dolor sit amet,' })).toBeVisible();
+  await page.locator('#modal-contact').click();
+});

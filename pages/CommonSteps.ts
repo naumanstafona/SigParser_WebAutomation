@@ -3,8 +3,6 @@ import { expect } from '@playwright/test';
 import { CompaniesLocators } from '../locators/CompaniesLocators';
 
 export class CommonSteps {
-
-
   protected page: Page;
   protected readonly timeout_large: number = 240000;
   protected readonly timeout_small: number = 100000;
@@ -34,7 +32,7 @@ export class CommonSteps {
   async waitForButton(buttonName: string) {
     try {
       console.log(`Waiting for button: ${buttonName}`);
-      await expect(this.page.getByRole('button', { name: buttonName })).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByRole('button', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
     }
@@ -52,12 +50,11 @@ export class CommonSteps {
   async waitForPlaceholder(placeHolderName: string) {
     try {
       console.log(`Waiting for placeholder: ${placeHolderName}`);
-      await expect(this.page.getByPlaceholder(placeHolderName)).toBeVisible({ timeout: this.timeout_small });
+      await this.page.getByPlaceholder(placeHolderName).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
       console.error(`Error waiting for placeholder ${placeHolderName}:`, error);
     }
   }
-
 
   async fillingPlaceholder(placeHolderName: string, expectedName: string) {
     try {
@@ -71,7 +68,7 @@ export class CommonSteps {
   async waitForLinkButton(buttonName: string) {
     try {
       console.log(`Waiting for link button: ${buttonName}`);
-      await expect(this.page.getByRole('link', { name: buttonName })).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByRole('link', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
     }
@@ -89,7 +86,7 @@ export class CommonSteps {
   async waitForLocator(locatorName: string) {
     try {
       console.log(`Waiting for locator:${locatorName}`);
-      await expect(this.page.locator(locatorName)).toBeVisible({ timeout: this.timeout_small });
+      await this.page.locator(locatorName).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
       console.error(`Waiting for Choose File Text Box`, error);
     }
@@ -107,7 +104,7 @@ export class CommonSteps {
   async selectingDropdownValue(locatorName: string, value: string) {
     try {
       console.log(`Selecting value :${value} from dropdown:${locatorName}`);
-      await this.page.locator(locatorName).selectOption(value)
+      await this.page.locator(locatorName).selectOption(value);
     } catch (error) {
       console.error(`Error Selecting value ${value}:`, error);
     }
@@ -122,11 +119,10 @@ export class CommonSteps {
     }
   }
 
-
   async waitForHeading(headingName: string) {
     try {
       console.log(`Waiting for Heading: ${headingName}`);
-      await expect(this.page.getByRole('heading', { name: headingName })).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByRole('heading', { name: headingName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${headingName}:`, error);
     }
@@ -144,7 +140,7 @@ export class CommonSteps {
   async waitForText(textName: string) {
     try {
       console.log(`Waiting for Text: ${textName}`);
-      await expect(this.page.getByText(textName)).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByText(textName).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${textName}:`, error);
     }
@@ -153,7 +149,7 @@ export class CommonSteps {
   async waitForTextStrict(textName: string) {
     try {
       console.log(`Waiting for Text strict: ${textName}`);
-      await expect(this.page.getByText(textName, { exact: true })).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByText(textName, { exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${textName}:`, error);
     }
@@ -177,11 +173,10 @@ export class CommonSteps {
     }
   }
 
-
   async waitingForEmailDomainPlaceholder(emailDomain: string) {
     try {
       console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
-      await expect(this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...')).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...').waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
     }
@@ -199,7 +194,7 @@ export class CommonSteps {
   async waitingForCellHavingTextforVerification(text: string) {
     try {
       console.log(`Waiting for text in row: ${text}`);
-      await expect(this.page.getByRole('cell', { name: text }).first()).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByRole('cell', { name: text }).first().waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${text}:`, error);
     }
@@ -208,7 +203,7 @@ export class CommonSteps {
   async waitForTitle(titleName: string) {
     try {
       console.log(`Waiting for Title: ${titleName}`);
-      await expect(this.page.getByTitle(titleName, { exact: true })).toBeVisible({ timeout: this.timeout_large });
+      await this.page.getByTitle(titleName, { exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error Waiting for Title ${titleName}:`, error);
     }
@@ -223,12 +218,12 @@ export class CommonSteps {
     }
   }
 
-  async fillingLocator(locatorName: string, expectedValue) {
+  async fillingLocator(locatorName: string, expectedValue: string) {
     try {
-      console.log(`Filling loctator: ${locatorName} with value: ${expectedValue}:`);
+      console.log(`Filling locator: ${locatorName} with value: ${expectedValue}:`);
       await this.page.locator(locatorName).fill(expectedValue);
     } catch (error) {
-      console.error(`Error in Filling loctator: ${locatorName}: with value:${expectedValue}`, error);
+      console.error(`Error in Filling locator: ${locatorName}: with value:${expectedValue}`, error);
     }
   }
 
@@ -259,7 +254,7 @@ export class CommonSteps {
     try {
       console.log(`Waiting for text: '${textName}' within element: '${selector}'`);
       const element = this.page.locator(selector).getByText(textName);
-      await expect(element).toBeVisible({ timeout: this.timeout_large });
+      await element.waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for text '${textName}' within element '${selector}':`, error);
     }
@@ -269,7 +264,7 @@ export class CommonSteps {
     try {
       console.log(`Clicking text: '${textName}' within element: '${selector}'`);
       const element = this.page.locator(selector).getByText(textName);
-      await expect(element).toBeVisible({ timeout: this.timeout_large });
+      await element.waitFor({ state: 'visible', timeout: this.timeout_large });
       await element.click();
     } catch (error) {
       console.error(`Error clicking text '${textName}' within element '${selector}':`, error);
@@ -280,18 +275,38 @@ export class CommonSteps {
     this.page.on('dialog', async (dialog) => {
       try {
         console.log(`Dialog message: ${dialog.message()}`);
-        await dialog.accept();  // Automatically accepts the dialog
+        await dialog.accept(); // Automatically accepts the dialog
         console.log('Dialog accepted');
       } catch (error) {
         console.error('Error accepting dialog:', error);
       }
     });
-  
+
     try {
       console.log(`Clicking on element: '${triggerSelector}' to trigger dialog`);
       await this.page.click(triggerSelector);
     } catch (error) {
       console.error(`Error clicking element '${triggerSelector}':`, error);
+    }
+  }
+
+  async fillingLocatorbyGettingRoleTextboxandPressingEnter(locatorName: string, expectedValue: string) {
+    try {
+      console.log(`Filling locator by Getting Role Textbox: ${locatorName} with value: ${expectedValue}`);
+      await this.page.locator(locatorName).getByRole('textbox').fill(expectedValue);
+      await this.page.locator(locatorName).getByRole('textbox').press('Enter');
+    } catch (error) {
+      console.error(`Error in filling locator: ${locatorName} with value: ${expectedValue}`, error);
+    }
+  }
+
+  async waitForElementToBeVisibleinCell(name: string, exact: boolean = true) {
+    try {
+      console.log(`Waiting for element with role: cell, name: ${name}, exact: ${exact} to be visible.`);
+      await this.page.getByRole('cell', { name: name, exact: exact }).waitFor({ state: 'visible', timeout: this.timeout_large });
+      console.log(`Element with role: cell, name: ${name}, exact: ${exact} is visible.`);
+    } catch (error) {
+      console.error(`Error waiting for element with role: cell, name: ${name}, exact: ${exact} to be visible.`, error);
     }
   }
 }
