@@ -11,7 +11,7 @@ test.describe('login test', () => {
     let coworkerpage: CoworkerPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         coworkerpage = new CoworkerPage(page);

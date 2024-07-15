@@ -3,21 +3,18 @@ import { ContactPage } from "../../pages/ContactPage";
 import { chromium, Browser, Page } from "playwright";
 import config from "../../config";
 import { LoginPage } from "../../pages/LoginPage";
-import { modifyCsv } from "../../pages/ModifyFIle";
 
 let browser: Browser;
 let page: Page;
 let loginpage: LoginPage;
 let contactpage: ContactPage;
-let emails: string[];
 
 test.beforeAll(async () => {
-  browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch();
   page = await browser.newPage();
   loginpage = new LoginPage(page);
   contactpage = new ContactPage(page);
   await loginpage.login(config.email, config.password, config.url);
-  emails = await modifyCsv();
 });
 
 test("User should be able to create a new custom field column", async () => {

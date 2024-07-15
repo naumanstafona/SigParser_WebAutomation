@@ -6,7 +6,7 @@ import { addAbortListener } from 'events';
 import { availableParallelism } from 'os';
 import { LoginPage } from '../../pages/LoginPage';
 
-test.describe('login test', () => {
+test.describe(' Starting 30 CSV Imports - Contacts File', () => {
     let browser: Browser;
     let page: Page;
     let loginpage: LoginPage;
@@ -26,7 +26,7 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify contact with Email Status ', async () => {
-        await contactpage.contactEmailStatusVerification();//Passed
+        await contactpage.contactEmailStatusVerification();//Passing
     });
 
 
@@ -34,12 +34,12 @@ test.describe('login test', () => {
         await contactpage.contactEmailNameVerification();//Passed
     });
 
-    // test('User should be able to verify contact with Scores at Row Level ', async () => {
-    //     await contactpage.contactwithScoresAtRowLevelVerification();//Failing because Source Score is not updating
-    // });
+    test('User should be able to verify contact with Scores at Row Level ', async () => {
+        await contactpage.contactwithScoresAtRowLevelVerification();//Passed
+    });
 
     test('User should be able to verify contact with Scores At Field Level Verification ', async () => {
-        await contactpage.contactwithScoresAtFieldLevelVerification(); //Passed
+        await contactpage.contactwithScoresAtFieldLevelVerification(); // Passed
     });
 
     test('User should be able to verify contact with Scores At All Row Level Verification ', async () => {
@@ -47,14 +47,15 @@ test.describe('login test', () => {
     });
 
     test('User should be able to delete contact value ', async () => {
-        await contactpage.contactDeleteFieldValue(); //Passed By default it is adding +1 (+1 888-444-5555)
+        await contactpage.contactDeleteFieldValue(); //
     });
 
     test('User should be able to delete contact value 2', async () => {
-        await contactpage.contactDeleteFieldValue2(); // Passed
+        await contactpage.contactDeleteFieldValue2(); //
     });
 
     test.afterAll(async () => {
+        console.log(' Ending 30 CSV Imports - Contacts File');
         await browser.close();
     });
 

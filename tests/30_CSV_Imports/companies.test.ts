@@ -10,7 +10,7 @@ let loginpage: LoginPage;
 let companiespage: CompaniesPage;
 
 test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch();
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     companiespage = new CompaniesPage(page);

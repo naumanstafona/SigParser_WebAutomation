@@ -4,8 +4,8 @@ import { CompaniesLocators } from '../locators/CompaniesLocators';
 
 export class CommonSteps {
   protected page: Page;
-  protected readonly timeout_large: number = 240000;
-  protected readonly timeout_small: number = 100000;
+  protected readonly timeout_large: number = 120000;
+  protected readonly timeout_small: number = 60000;
 
   constructor(page: Page) {
     this.page = page;
@@ -68,7 +68,7 @@ export class CommonSteps {
   async waitForLinkButton(buttonName: string) {
     try {
       console.log(`Waiting for link button: ${buttonName}`);
-      await this.page.getByRole('link', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
+      await this.page.getByRole('link', { name: buttonName, exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
     }
@@ -77,7 +77,7 @@ export class CommonSteps {
   async clickOnLinkButton(buttonName: string) {
     try {
       console.log(`Clicking on link button: ${buttonName}`);
-      await this.page.getByRole('link', { name: buttonName }).click();
+      await this.page.getByRole('link', { name: buttonName, exact: true }).click();
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
     }
