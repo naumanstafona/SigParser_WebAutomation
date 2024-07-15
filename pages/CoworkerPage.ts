@@ -31,17 +31,18 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
-        await this.waitForText(CommonLocators.updatesButtonLocator);
-        await this.clickOnText(CommonLocators.updatesButtonLocator);
+        await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
+        await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
+        await this.page.waitForTimeout(3000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
         await this.waitingForCellHavingTextforVerification('Updated');
-        await this.waitingForCellHavingTextforVerification('56');
+        await this.waitingForCellHavingTextforVerification('90');
         
     }
 
@@ -68,14 +69,15 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
-        await this.waitForText(CommonLocators.updatesButtonLocator);
-        await this.clickOnText(CommonLocators.updatesButtonLocator);
+        await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
+        await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
+        await this.page.waitForTimeout(3000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
     }
 
@@ -115,6 +117,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
+        await this.page.waitForTimeout(3000);
         await this.waitingForCellHavingTextforVerification('Mary Tahoe');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');

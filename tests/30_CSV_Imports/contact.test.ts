@@ -13,7 +13,7 @@ test.describe(' Starting 30 CSV Imports - Contacts File', () => {
     let contactpage: ContactPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactpage = new ContactPage(page);
@@ -47,11 +47,11 @@ test.describe(' Starting 30 CSV Imports - Contacts File', () => {
     });
 
     test('User should be able to delete contact value ', async () => {
-        await contactpage.contactDeleteFieldValue(); //
+        await contactpage.contactDeleteFieldValue(); //Passed
     });
 
     test('User should be able to delete contact value 2', async () => {
-        await contactpage.contactDeleteFieldValue2(); //
+        await contactpage.contactDeleteFieldValue2(); // Passed
     });
 
     test.afterAll(async () => {
