@@ -333,6 +333,15 @@ export class ContactPage extends CommonSteps {
         //  await this.clickOnLocator('//button[contains(@class,"c-btn --delete")]');
     }
 
+    async deleteEmailAddresses() {
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/TestingTools');
+        //await this.waitfor
+        await this.waitForButton(ContactLocators.deleteLocator);
+        // await this.clickOnButton(ContactLocators.deleteLocator);
+        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
+        //  await this.clickOnLocator('//button[contains(@class,"c-btn --delete")]');
+    }
+
     async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
@@ -515,7 +524,6 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
     }
-
-
+    
 };
 

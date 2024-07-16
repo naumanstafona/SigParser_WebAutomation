@@ -39,9 +39,9 @@ test("User should be able to create a new custom field column", async () => {
   //   await contactpage.updateExistingFileDirectlyInGrid(emails[0]);//Passing
   // });
 
-  // await test.step("Delete the custom fields", async () => {
-  //   await contactpage.deleteCustomField();//Passing
-  // });
+  await test.step("Delete the custom fields", async () => {
+    await contactpage.deleteCustomField();//Passing
+  });
 });
 
 test.afterAll(async () => {
