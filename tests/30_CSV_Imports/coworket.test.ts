@@ -4,7 +4,7 @@ import { CoworkerPage } from '../../pages/CoworkerPage';
 import { chromium, Browser, Page } from 'playwright';
 import config from '../../config';
 import { LoginPage } from '../../pages/LoginPage';
-test.describe('login test', () => {
+test.describe('Starting 30 CSV Imports - Coworkers  File', () => {
     let browser: Browser;
     let page: Page;
     let loginpage: LoginPage;
@@ -19,7 +19,7 @@ test.describe('login test', () => {
     });
 
     test('User should be able to verify coworker with score at Row Level ', async () => {
-        await coworkerpage.coworkerWithScoresAtRowLevelVerification();//Failinig due to not updated 56 score
+        await coworkerpage.coworkerWithScoresAtRowLevelVerification();//Passing
     });
 
     test('User should be able to verify coworker with score at Field Level and Lower Score ', async () => {
@@ -31,6 +31,7 @@ test.describe('login test', () => {
     });
 
     test.afterAll(async () => {
+        console.log('Ending 30 CSV Imports - Coworkers  File');
         await browser.close();
     });
 });
