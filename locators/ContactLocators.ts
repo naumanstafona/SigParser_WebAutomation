@@ -4,7 +4,7 @@ export const ContactLocators = {
     emailAddressLocator: 'Email Address',
     contactEmailAddressPlaceholderLocator: 'Contact Email Address',
     //Contact Custom Fields
-    addFieldLocator: 'Add',
+    addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
     fieldFormHeadingLocator: 'Create a Custom Field',
     fieldNamePlaceholder: 'Field Name',
     descriptionPlaceholder: 'Description',

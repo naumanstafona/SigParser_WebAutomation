@@ -35,8 +35,8 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.page.waitForTimeout(3000);
-        await this.waitForText(CommonLocators.domainTagFileLocator);
-        await this.clickOnText(CommonLocators.domainTagFileLocator);
+        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
+        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
         await this.waitForText(CompaniesLocators.tagVerificationLocator);
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -68,8 +68,8 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.page.waitForTimeout(3000);
-        await this.waitForText(CommonLocators.domainTagFileLocator);
-        await this.clickOnText(CommonLocators.domainTagFileLocator);
+        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
+        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
         await this.waitForText(CommonLocators.modalFileDetailsButtonLocator);
         await this.clickOnText(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForText('StatusIgnoreCompany Name');
@@ -104,9 +104,9 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.page.waitForTimeout(3000);
-        await this.waitForText(CommonLocators.domainTagFileLocator);
-        await this.clickOnText(CommonLocators.domainTagFileLocator);
-        await this.waitForText(CompaniesLocators.companyNameVerificationLocator);
+        await this.waitForTextStrict('');
+        await this.clickOnTextStrict('CSVtest_Name');
+        await this.waitForText('CSVtest_Name');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }

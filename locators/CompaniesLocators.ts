@@ -1,6 +1,6 @@
 export const CompaniesLocators = {
     emailDomainPLaceholderLocatore: 'Email Domain',
-    tagVerificationLocator: 'TagCSV_TEST_TAG:DOMAIN-TAG',
+    tagVerificationLocator: 'CSV_TEST_TAG:DOMAIN-TAG',
     companyNameVerificationLocator: 'Company Name CSVtest_NameEmail',
     companyUpdatesTrackingLocator: 'Company Update Tracking',
 

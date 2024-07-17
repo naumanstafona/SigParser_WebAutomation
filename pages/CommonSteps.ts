@@ -263,7 +263,7 @@ export class CommonSteps {
   async clickElementByTextWithin(selector: string, textName: string) {
     try {
       console.log(`Clicking text: '${textName}' within element: '${selector}'`);
-      const element = this.page.locator(selector).getByText(textName);
+      const element = this.page.locator(selector).getByText(textName, {exact: true});
       await element.waitFor({ state: 'visible', timeout: this.timeout_large });
       await element.click();
     } catch (error) {

@@ -328,18 +328,15 @@ export class ContactPage extends CommonSteps {
         await this.waitForText('Test Contact Text');
         await this.clickOnText('Test Contact Text');
         await this.waitForButton(ContactLocators.deleteLocator);
-        // await this.clickOnButton(ContactLocators.deleteLocator);
         await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        //  await this.clickOnLocator('//button[contains(@class,"c-btn --delete")]');
     }
 
     async deleteEmailAddresses() {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/TestingTools');
-        //await this.waitfor
-        await this.waitForButton(ContactLocators.deleteLocator);
-        // await this.clickOnButton(ContactLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        //  await this.clickOnLocator('//button[contains(@class,"c-btn --delete")]');
+        await this.waitForPlaceholder('john@doe.com')
+        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
+        await this.waitForButton('Delete All Contacts and Emails ');
+        await this.clickOnButton('Delete All Contacts and Emails ');
     }
 
     async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
@@ -391,14 +388,17 @@ export class ContactPage extends CommonSteps {
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
         await this.waitForText(email3);
+        await this.waitForLocator(ContactLocators.exitButtonLocator);
+        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+
 
     }
 
     async createNewTextCustomColumnAndAddIttoGridColumns() {
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
-        await this.waitForButton(ContactLocators.addFieldLocator);
-        await this.clickOnButton(ContactLocators.addFieldLocator);
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
+        await this.page.waitForTimeout(3000);
+        await this.waitForLocator(ContactLocators.addFieldLocator);
+        await this.clickOnLocator(ContactLocators.addFieldLocator);
         await this.waitForHeading(ContactLocators.fieldFormHeadingLocator);
         await this.waitForPlaceholder(ContactLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(ContactLocators.fieldNamePlaceholder, 'Test Contact Text');
@@ -421,13 +421,13 @@ export class ContactPage extends CommonSteps {
         await this.waitForLocator(ContactLocators.testContactTextColumnLocator);
     }
 
-    async setTHeValueForCustomField(email1: string) {
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+    async setTheValueForCustomField(email1: string) {
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/Contacts');
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
         await this.waitForText('Custom Contact1');
         await this.clickOnText('Custom Contact1');
         await this.waitForText('Test Contact Text');
@@ -444,12 +444,15 @@ export class ContactPage extends CommonSteps {
     }
 
     async updateExistingValueWithOverCharacterLimit(email1: string) {
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
         await this.waitForText('Custom Contact1');
         await this.clickOnText('Custom Contact1');
         await this.waitForTextUnderTestContactText('Test Contact Text1');
@@ -467,35 +470,49 @@ export class ContactPage extends CommonSteps {
         await this.clickOnText('Custom Contact1');
         await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
         await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+        await this.waitForLocator(ContactLocators.exitButtonLocator);
+        await this.clickOnLocator(ContactLocators.exitButtonLocator);
     }
 
     async updateExistingFileDirectlyInGrid(email1: string) {
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
         await this.waitForText('Lorem ipsum dolor sit ame');
         await this.clickOnText('Lorem ipsum dolor sit ame');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', '1');
         await this.waitForElementToBeVisibleinCell('1');
+        await this.page.waitForTimeout(2000);
+        await this.clickElementByTextWithin('#table','1');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
         await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
         await this.waitForText('Custom Contact1');
         await this.clickOnText('Custom Contact1');
         await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
         await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+        await this.waitForLocator(ContactLocators.exitButtonLocator);
+        await this.clickOnLocator(ContactLocators.exitButtonLocator);
     }
 
 
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
@@ -514,16 +531,28 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
         await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
+        await this.page.waitForTimeout(3000);
+        await this.waitForText('Text Value 2');
+        // await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        // await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        // await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        // await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        // await this.waitForButton(CommonLocators.searchButtonLocator);
+
+
     }
-    
+
 };
 
