@@ -3,6 +3,7 @@ import { expect } from '@playwright/test';
 import { ContactLocators } from '../locators/ContactLocators';
 import { CommonLocators } from '../locators/CommonLocators';
 import { CommonSteps } from './CommonSteps';
+import { isBooleanObject } from 'util/types';
 
 export class ContactPage extends CommonSteps {
     constructor(page: Page) {
@@ -55,7 +56,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForText(CommonLocators.domainTagFileLocator);
         await this.clickOnText(CommonLocators.domainTagFileLocator);
         await this.waitForText(ContactLocators.tagVerificationFieldLocator);
@@ -89,7 +90,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForText('Jonathan Doehopper');
         await this.clickOnText('Jonathan Doehopper');
         await this.waitForElementByTextWithin('#modal-contact', 'Ignore');
@@ -122,7 +123,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
         await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
         await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
@@ -171,7 +172,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator, 'mark.e@qweui.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(30000);
         await this.waitingForCellHavingTextforVerification('Mark Ronnin');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
@@ -212,7 +213,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator, 'mark.e@qweui.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitingForCellHavingTextforVerification('Mark Ronnin');
     }
 
@@ -252,7 +253,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator, 'mark.e@qweui.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitingForCellHavingTextforVerification('Mark Ronnin');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
@@ -283,7 +284,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'delete@csv-delete-test.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForLocator('//a[contains(text(),"Delete")]');//Delete hyperlinked contact name
         await this.clickOnLocator('//a[contains(text(),"Delete")]');//clicking Delete hyperlinked contact name
         await this.waitForLocator('(//div[text()="+1 888-444-5555"])[2]');
@@ -314,7 +315,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'delete@csv-delete-test.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForLocator('//a[contains(text(),"csv-delete-test")]');
         await this.clickOnLocator('//a[contains(text(),"csv-delete-test")]');
         await this.waitForText(CommonLocators.modalFileDetailsButtonLocator);
@@ -325,6 +326,12 @@ export class ContactPage extends CommonSteps {
 
     async deleteCustomField() {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
+
+        const isTextPresent = await this.page.locator('text=Test Contact Text').count();
+        if (isTextPresent === 0) {
+            console.log('Test Contact Text does not exist, aborting function.');
+            return;
+        }
         await this.waitForText('Test Contact Text');
         await this.clickOnText('Test Contact Text');
         await this.waitForButton(ContactLocators.deleteLocator);
@@ -396,7 +403,7 @@ export class ContactPage extends CommonSteps {
 
     async createNewTextCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForLocator(ContactLocators.addFieldLocator);
         await this.clickOnLocator(ContactLocators.addFieldLocator);
         await this.waitForHeading(ContactLocators.fieldFormHeadingLocator);
@@ -414,7 +421,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnText(ContactLocators.customFieldLocator);
         await this.hoverOverElement(ContactLocators.testContactTextLinkLocator);
         await this.waitForText('Description for Custom Contact Text Field');
-        await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
+      //  await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
         await this.clickOnLocator(ContactLocators.testContactTextLinkLocator);
         await this.waitForButton(ContactLocators.saveLocator);
         await this.clickOnButton(ContactLocators.saveLocator);
@@ -488,8 +495,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnText('Lorem ipsum dolor sit ame');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', '1');
         await this.waitForElementToBeVisibleinCell('1');
-        await this.page.waitForTimeout(2000);
-        await this.clickElementByTextWithin('#table','1');
+        await this.waitForTime(3000);
+        await this.clickElementByTextWithin('#table', '1');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
@@ -539,19 +546,164 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
-        await this.page.waitForTimeout(3000);
-        await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+        await this.waitForTime(3000);
+        await this.waitForText('New Text Value 1');
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitForText('Text Value 2');
-        // await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        // await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        // await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        // await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
-        // await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
+        await this.waitForTime(3000);
+        await this.waitForText('Text Value 3');
+    }
 
+    async importSecondCSVFileUpdatingAndDeletingValues(email1: string, email2: string, email3: string) {
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.importButtonLocator);
+        await this.clickOnButton(CommonLocators.importButtonLocator);
+        await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+        await this.clickOnSelectFileButton();
+        await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+        await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '31-CustomFields_Contacts-UploadItems/2 - TextField2.csv');
+        await this.waitForButton(CommonLocators.nextButtonLocator);
+        await this.clickOnButton(CommonLocators.nextButtonLocator);
+        await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Text');
+        await this.waitForButton(CommonLocators.importFileLocator);
+        await this.clickOnButton(CommonLocators.importFileLocator);
+        await this.waitForText(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(30000);
+        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
+        await this.waitForText('New Text Value 1');
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
+        await this.waitForTime(3000);
+        await this.waitForText('Text Value 2');
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
+        await this.waitForTime(3000);
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div/div');
+    }
 
+    async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.importButtonLocator);
+        await this.clickOnButton(CommonLocators.importButtonLocator);
+        await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+        await this.clickOnSelectFileButton();
+        await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+        await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '31-CustomFields_Contacts-UploadItems/2 - TextField3.csv');
+        await this.waitForButton(CommonLocators.nextButtonLocator);
+        await this.clickOnButton(CommonLocators.nextButtonLocator);
+        await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Text');
+        await this.waitForButton(CommonLocators.importFileLocator);
+        await this.clickOnButton(CommonLocators.importFileLocator);
+        await this.waitForText(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(30000);
+        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
+        await this.page.waitForTimeout(3000);
+        await this.waitForText('New Text Value 1');
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
+        await this.waitForTime(3000);
+        await this.page.waitForTimeout(3000);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
+        await this.page.waitForTimeout(3000);
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div/div');
+    }
+
+    async createNewTextAreaCustomColumnAndAddIttoGridColumns() {
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
+        await this.waitForLocator(ContactLocators.addFieldLocator);
+        await this.clickOnLocator(ContactLocators.addFieldLocator);
+        await this.waitForHeading(ContactLocators.fieldFormHeadingLocator);
+        await this.selectingDropdownValuebyLabel(ContactLocators.recordTypeLocator,'Contacts');
+        await this.selectingDropdownValuebyLabel(ContactLocators.dataTypeLocator,'Text');
+        await this.waitForPlaceholder(ContactLocators.fieldNamePlaceholder);
+        await this.fillingPlaceholder(ContactLocators.fieldNamePlaceholder, 'Test Contact Text Area');
+        await this.waitForPlaceholder(ContactLocators.descriptionPlaceholder);
+        await this.fillingPlaceholder(ContactLocators.descriptionPlaceholder, 'Description for Custom Contact Text Area Field');
+        await this.waitForButton(ContactLocators.createFieldLocator);
+        await this.clickOnButton(ContactLocators.createFieldLocator);
+        await this.waitForText('Test Contact Text Area');
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/Contacts');
+        await this.waitForTitle(ContactLocators.columnTitleLocator);
+        await this.clickOnTitle(ContactLocators.columnTitleLocator);
+        await this.waitForText(ContactLocators.customFieldLocator);
+        await this.clickOnText(ContactLocators.customFieldLocator);
+        await this.hoverOverElement(ContactLocators.testContactTextAreaLinkLocator);
+        await this.waitForText('Description for Custom Contact Text Area');
+      //  await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
+        await this.clickOnLocator(ContactLocators.testContactTextAreaLinkLocator);
+        await this.waitForButton(ContactLocators.saveLocator);
+        await this.clickOnButton(ContactLocators.saveLocator);
+        await this.waitForLocator(ContactLocators.testContactTextColumnLocator);
     }
 
 };

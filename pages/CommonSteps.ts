@@ -104,6 +104,15 @@ export class CommonSteps {
   async selectingDropdownValue(locatorName: string, value: string) {
     try {
       console.log(`Selecting value :${value} from dropdown:${locatorName}`);
+      await this.page.getByLabel(locatorName).selectOption(value);
+    } catch (error) {
+      console.error(`Error Selecting value ${value}:`, error);
+    }
+  }
+
+  async selectingDropdownValuebyLabel(locatorName: string, value: string) {
+    try {
+      console.log(`Selecting value :${value} from dropdown:${locatorName}`);
       await this.page.locator(locatorName).selectOption(value);
     } catch (error) {
       console.error(`Error Selecting value ${value}:`, error);
@@ -263,7 +272,7 @@ export class CommonSteps {
   async clickElementByTextWithin(selector: string, textName: string) {
     try {
       console.log(`Clicking text: '${textName}' within element: '${selector}'`);
-      const element = this.page.locator(selector).getByText(textName, {exact: true});
+      const element = this.page.locator(selector).getByText(textName, { exact: true });
       await element.waitFor({ state: 'visible', timeout: this.timeout_large });
       await element.click();
     } catch (error) {
@@ -307,6 +316,23 @@ export class CommonSteps {
       console.log(`Element with role: cell, name: ${name}, exact: ${exact} is visible.`);
     } catch (error) {
       console.error(`Error waiting for element with role: cell, name: ${name}, exact: ${exact} to be visible.`, error);
+    }
+  }
+
+  async waitForTime(number: number) {
+    console.log(`Waiting for ${number} Second`);
+    await this.page.waitForTimeout(number);
+  }
+
+  async waitForTextByN(textName: string, occurrence: number = 0) {
+    try {
+      console.log(`Waiting for Text: ${textName} (Occurrence: ${occurrence})`);
+      const element = occurrence === 0 
+        ? this.page.getByText(textName) 
+        : this.page.getByText(textName).nth(occurrence);
+      await element.waitFor({ state: 'visible', timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for text ${textName} (Occurrence: ${occurrence}):`, error);
     }
   }
 }

@@ -23,5 +23,9 @@ export const ContactLocators = {
     exitButtonLocator: '//div[@id="modal-contact"]/main[1]/button[1]/i[1]',
     pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
     deleteLocator: 'Delete',
+    //Custom Text Area
+    recordTypeLocator:'Add Field',
+    dataTypeLocator:'Data TypeTextText',
+    testContactTextAreaLinkLocator: '//b[text()="Test Contact Text Area"]',
 
 };

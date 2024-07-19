@@ -39,7 +39,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
@@ -77,7 +77,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
     }
 
@@ -117,7 +117,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.page.waitForTimeout(3000);
+        await this.waitForTime(3000);
         await this.waitingForCellHavingTextforVerification('Mary Tahoe');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
