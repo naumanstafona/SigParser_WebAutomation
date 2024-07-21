@@ -1,6 +1,6 @@
 import { Page } from 'playwright';
 import { expect } from '@playwright/test';
-import { CompaniesLocators } from '../locators/CompaniesLocators';
+import { CompaniesLocators } from '../locators/30-CSV-Imports/CompaniesLocators';
 
 export class CommonSteps {
   protected page: Page;
@@ -104,7 +104,7 @@ export class CommonSteps {
   async selectingDropdownValue(locatorName: string, value: string) {
     try {
       console.log(`Selecting value :${value} from dropdown:${locatorName}`);
-      await this.page.getByLabel(locatorName).selectOption(value);
+      await this.page.locator(locatorName).selectOption(value);
     } catch (error) {
       console.error(`Error Selecting value ${value}:`, error);
     }
@@ -113,7 +113,7 @@ export class CommonSteps {
   async selectingDropdownValuebyLabel(locatorName: string, value: string) {
     try {
       console.log(`Selecting value :${value} from dropdown:${locatorName}`);
-      await this.page.locator(locatorName).selectOption(value);
+      await this.page.getByLabel(locatorName).selectOption(value);
     } catch (error) {
       console.error(`Error Selecting value ${value}:`, error);
     }

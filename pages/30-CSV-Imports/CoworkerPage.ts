@@ -1,7 +1,7 @@
 import { Page } from 'playwright';
-import { CoworkerLocator } from '../locators/CoworkersLocators';
-import { CommonLocators } from '../locators/CommonLocators';
-import { CommonSteps } from './CommonSteps';
+import { CoworkerLocator } from '../../locators/30-CSV-Imports/CoworkersLocators';
+import { CommonLocators } from '../../locators/CommonLocators';
+import { CommonSteps } from '../CommonSteps';
 
 export class CoworkerPage extends CommonSteps {
     constructor(page: Page) {
@@ -17,7 +17,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Coworkers_WithRowScores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Coworkers_WithRowScores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -39,10 +39,10 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
         await this.waitingForCellHavingTextforVerification('Updated');
-        await this.waitingForCellHavingTextforVerification('90');
+        await this.waitingForCellHavingTextforVerification('56');
         
     }
 
@@ -55,7 +55,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Coworkers_WithRowScores_Lower.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Coworkers_WithRowScores_Lower.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -77,7 +77,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
     }
 
@@ -90,7 +90,7 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Coworkers_ALL_ROWS_Scores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Coworkers_ALL_ROWS_Scores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -117,9 +117,9 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Mary Tahoe');
         await this.waitingForCellHavingTextforVerification('Updated');
-        await this.waitingForCellHavingTextforVerification('90');
+        await this.waitingForCellHavingTextforVerification('10');
     }
 }

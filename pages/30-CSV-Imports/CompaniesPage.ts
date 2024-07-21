@@ -1,8 +1,8 @@
 import { Page } from 'playwright';
-import { CompaniesLocators } from '../locators/CompaniesLocators';
-import { CommonLocators } from '../locators/CommonLocators';
-import { CommonSteps } from './CommonSteps';
-import { CoworkerLocator } from '../locators/CoworkersLocators';
+import { CompaniesLocators } from '../../locators/30-CSV-Imports/CompaniesLocators';
+import { CommonLocators } from '../../locators/CommonLocators';
+import { CommonSteps } from '../CommonSteps';
+import { CoworkerLocator } from '../../locators/30-CSV-Imports/CoworkersLocators';
 
 export class CompaniesPage extends CommonSteps {
     constructor(page: Page) {
@@ -18,7 +18,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company - DomainTag.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainTag.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -34,7 +34,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
         await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
         await this.waitForText(CompaniesLocators.tagVerificationLocator);
@@ -51,7 +51,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company - DomainStatus.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainStatus.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -67,7 +67,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
         await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
         await this.waitForText(CommonLocators.modalFileDetailsButtonLocator);
@@ -87,7 +87,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company - DomainName.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainName.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -103,8 +103,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
-        await this.waitForTime(3000);
-        await this.waitForTextStrict('');
+        await this.waitForTime(1000);
         await this.clickOnTextStrict('CSVtest_Name');
         await this.waitForText('CSVtest_Name');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -120,7 +119,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company_WithRowScores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_WithRowScores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -142,7 +141,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator, 'unicorn.co');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Unicorn Co');
         await this.waitingForCellHavingTextforVerification('56');
         await this.waitingForCellHavingTextforVerification('Updated');
@@ -157,7 +156,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company_WithRowScores_Lower.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_WithRowScores_Lower.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -179,7 +178,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator, 'unicorn.co');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Unicorn Co');
     }
 
@@ -192,7 +191,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'UploadItems/Company_ALL_ROWS_Scores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_ALL_ROWS_Scores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -219,7 +218,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailDomainPlaceholderLocator, 'unicorn.co');
-        await this.waitForTime(3000);
+        await this.waitForTime(1000);
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('90');
         await this.waitForLocator(CompaniesLocators.awesomeCompanyLocator);

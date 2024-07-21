@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ContactPage } from "../../pages/ContactPage";
+import { ContactPage } from "../../pages/30-CSV-Imports/ContactPage";
 import { chromium, Browser, Page } from "playwright";
 import config from "../../config";
 import { LoginPage } from "../../pages/LoginPage";
