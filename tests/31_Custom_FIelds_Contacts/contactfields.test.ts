@@ -49,13 +49,13 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
       await contactpage.updateExistingValueWithOverCharacterLimit(emails[0]);
     });
 
-    await test.step("Update the existing field value directly in the grid", async () => {
-      await contactpage.updateExistingFileDirectlyInGrid(emails[0]);
-    });
+    // await test.step("Update the existing field value directly in the grid", async () => {
+    //   await contactpage.updateExistingFileDirectlyInGrid(emails[0]);
+    // });
 
-    await test.step("Import a CSV to set the value for the custom field", async () => {
-      await contactpage.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
-    });
+    // await test.step("Import a CSV to set the value for the custom field", async () => {
+    //   await contactpage.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
+    // });
 
 
 

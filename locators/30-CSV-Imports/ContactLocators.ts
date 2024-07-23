@@ -4,8 +4,8 @@ export const ContactLocators = {
     emailAddressLocator: 'Email Address',
     contactEmailAddressPlaceholderLocator: 'Contact Email Address',
     //Contact Custom Fields
-    addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
-    fieldFormHeadingLocator: 'Create a Custom Field',
+    
+
     fieldNamePlaceholder: 'Field Name',
     descriptionPlaceholder: 'Description',
     createFieldLocator: 'Create Field',
@@ -24,8 +24,9 @@ export const ContactLocators = {
     pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
     deleteLocator: 'Delete',
     //Custom Text Area
-    recordTypeLocator:'Add Field',
-    dataTypeLocator:'Data TypeTextText',
-    testContactTextAreaLinkLocator: '//b[text()="Test Contact Text Area"]',
+    recordTypeLocator: 'Add Field',
+    dataTypeLocator: 'Data TypeTextText',
+    addToColumnListLocator:'//b[contains(@class, "u-center-vertically") and text()="Test Contact Text"]',
+
 
 };

@@ -193,7 +193,7 @@ export class CommonSteps {
 
   async fillingEmailDomainPlaceholder(emailDomain: string, expectedName: string) {
     try {
-      console.log(`Waiting for Email Domain Placeholder: ${emailDomain}`);
+      console.log(`Filling Email Domain Placeholder: ${emailDomain} with ${expectedName}`);
       await this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...').fill(expectedName);
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);

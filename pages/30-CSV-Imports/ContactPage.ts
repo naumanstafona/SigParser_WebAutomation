@@ -326,8 +326,9 @@ export class ContactPage extends CommonSteps {
 
     async deleteCustomField() {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
+        await this.page.waitForTimeout(3000);
 
-        const isTextPresent = await this.page.locator('text=Test Contact Text').count();
+        const isTextPresent = await this.page.locator(ContactLocators.testContactTextLinkLocator).count();
         if (isTextPresent === 0) {
             console.log('Test Contact Text does not exist, aborting function.');
             return;
@@ -397,16 +398,14 @@ export class ContactPage extends CommonSteps {
         await this.waitForText(email3);
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
-
-
     }
 
     async createNewTextCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
         await this.waitForTime(1000);
-        await this.waitForLocator(ContactLocators.addFieldLocator);
-        await this.clickOnLocator(ContactLocators.addFieldLocator);
-        await this.waitForHeading(ContactLocators.fieldFormHeadingLocator);
+        await this.waitForLocator(CommonLocators.addFieldLocator);
+        await this.clickOnLocator(CommonLocators.addFieldLocator);
+        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.waitForPlaceholder(ContactLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(ContactLocators.fieldNamePlaceholder, 'Test Contact Text');
         await this.waitForPlaceholder(ContactLocators.descriptionPlaceholder);
@@ -421,8 +420,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnText(ContactLocators.customFieldLocator);
         await this.hoverOverElement(ContactLocators.testContactTextLinkLocator);
         await this.waitForText('Description for Custom Contact Text Field');
-      //  await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
-        await this.clickOnLocator(ContactLocators.testContactTextLinkLocator);
+        await this.waitForLocator(ContactLocators.addToColumnListLocator);
+        await this.clickOnLocator(ContactLocators.addToColumnListLocator);
         await this.waitForButton(ContactLocators.saveLocator);
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForLocator(ContactLocators.testContactTextColumnLocator);
@@ -434,7 +433,7 @@ export class ContactPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
-        await this.page.waitForTimeout(3000);
+        await this.page.waitForTimeout(1000);
         await this.waitForText('Custom Contact1');
         await this.clickOnText('Custom Contact1');
         await this.waitForText('Test Contact Text');
@@ -675,34 +674,6 @@ export class ContactPage extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.page.waitForTimeout(3000);
         await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div/div');
-    }
-
-    async createNewTextAreaCustomColumnAndAddIttoGridColumns() {
-        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/CustomFields');
-        await this.waitForLocator(ContactLocators.addFieldLocator);
-        await this.clickOnLocator(ContactLocators.addFieldLocator);
-        await this.waitForHeading(ContactLocators.fieldFormHeadingLocator);
-        await this.selectingDropdownValuebyLabel(ContactLocators.recordTypeLocator,'Contacts');
-        await this.selectingDropdownValuebyLabel(ContactLocators.dataTypeLocator,'Text');
-        await this.waitForPlaceholder(ContactLocators.fieldNamePlaceholder);
-        await this.fillingPlaceholder(ContactLocators.fieldNamePlaceholder, 'Test Contact Text Area');
-        await this.waitForPlaceholder(ContactLocators.descriptionPlaceholder);
-        await this.fillingPlaceholder(ContactLocators.descriptionPlaceholder, 'Description for Custom Contact Text Area Field');
-        await this.waitForButton(ContactLocators.createFieldLocator);
-        await this.clickOnButton(ContactLocators.createFieldLocator);
-        await this.waitForText('Test Contact Text Area');
-        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/Contacts');
-        await this.waitForTitle(ContactLocators.columnTitleLocator);
-        await this.clickOnTitle(ContactLocators.columnTitleLocator);
-        await this.waitForText(ContactLocators.customFieldLocator);
-        await this.clickOnText(ContactLocators.customFieldLocator);
-        await this.hoverOverElement(ContactLocators.testContactTextAreaLinkLocator);
-        await this.waitForText('Description for Custom Contact Text Area');
-      //  await this.waitForElementByTextWithin('#modal', 'Test Contact Text');
-        await this.clickOnLocator(ContactLocators.testContactTextAreaLinkLocator);
-        await this.waitForButton(ContactLocators.saveLocator);
-        await this.clickOnButton(ContactLocators.saveLocator);
-        await this.waitForLocator(ContactLocators.testContactTextColumnLocator);
     }
 
 };

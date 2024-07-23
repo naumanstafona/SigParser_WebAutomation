@@ -25,6 +25,9 @@ export const CommonLocators = {
     dateLocator: 'input[type="date"]',
     defaultSourceScoreDropDownLocator: '//div[@class="c-dropdown"]//select[1]',
     modalFileDetailsButtonLocator:'Details',
+    //Contact Custom Fields
+    addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
+    fieldFormHeadingLocator: 'Create a Custom Field',
     
 
 
