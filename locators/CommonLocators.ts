@@ -20,14 +20,19 @@ export const CommonLocators = {
     mappingthirddropdownLocator: '#dropdown2',
     mappingfourthdropdownLocator: '#dropdown3',
     updatesButtonLocator: 'Updates',
-    domainTagFileLocator: ' CSVtest_Name',
+    domainTagFileLocator: 'CSVtest_Name',
     showAdvancedSettingsTextLocator: 'Show Advanced Settings',
     dateLocator: 'input[type="date"]',
     defaultSourceScoreDropDownLocator: '//div[@class="c-dropdown"]//select[1]',
     modalFileDetailsButtonLocator:'Details',
+    allContactUpdatesLocator:'//span[text()="All Contact Updates"]',
+    allRecordAndColumns:'//div[text()="All Records & Columns"]',
+    allValidCompaniesLocator:'//span[text()="All Valid Companies"]',
+    allValidContactsLocator:'//span[text()="All Valid Contacts"]',
     //Contact Custom Fields
     addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
     fieldFormHeadingLocator: 'Create a Custom Field',
+
     
 
 

@@ -16,6 +16,7 @@ export class LoginPage extends CommonSteps {
     await this.waitForPlaceholder(LoginLocators.enterYourPasswordInputFieldLocator);
     await this.fillingPlaceholder(LoginLocators.enterYourPasswordInputFieldLocator, password);
     await this.clickOnButton(LoginLocators.loginButtonLocator);
-    await this.waitingForURL(expectedUrl='https://beta-app.sigparser.com/Account/App/#/Dashboard');
+    await this.waitingForURL(expectedUrl='https://hotfix.sigparser.com/Account/App/#/Dashboard');
+    await this.waitForTime(6000);
   }
 }

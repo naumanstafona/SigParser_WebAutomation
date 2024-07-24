@@ -11,7 +11,7 @@ test.describe('Starting 30 CSV Imports - Coworkers  File', () => {
     let coworkerpage: CoworkerPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         coworkerpage = new CoworkerPage(page);
@@ -27,7 +27,7 @@ test.describe('Starting 30 CSV Imports - Coworkers  File', () => {
     });
 
     test('User should be able to verify coworker with score at All Row Level Verification ', async () => {
-        await coworkerpage.coworkerwithScoresAtAllRowsLevelVerification();//Source Score should be 10 as modieifed in second file
+        await coworkerpage.coworkerwithScoresAtAllRowsLevelVerification();
     });
 
     test.afterAll(async () => {

@@ -75,8 +75,8 @@ export class TextAreaField extends CommonSteps {
     }
 
     async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
         await this.clickOnLocator(ContactLocators.plusButtonLocator);
         await this.waitForLocator(ContactLocators.emailInputLocator);
@@ -158,8 +158,8 @@ export class TextAreaField extends CommonSteps {
     async updateExistingValueWithOverCharacterLimit(email1: string) {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -194,8 +194,8 @@ export class TextAreaField extends CommonSteps {
     async updateExistingFileDirectlyInGrid(email1: string) {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -210,8 +210,8 @@ export class TextAreaField extends CommonSteps {
         await this.fillingLocator('textarea', this.newValue);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -231,8 +231,8 @@ export class TextAreaField extends CommonSteps {
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -251,8 +251,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -261,8 +261,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('New Text Area Value 1');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -271,8 +271,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('Text Area Value 2');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -284,8 +284,8 @@ export class TextAreaField extends CommonSteps {
     async importSecondCSVFileUpdatingAndDeletingValues(email1: string, email2: string, email3: string) {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -305,8 +305,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -315,8 +315,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('New Text Area Value 1');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -325,8 +325,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('Text Area Value 2 - Updated');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -338,8 +338,8 @@ export class TextAreaField extends CommonSteps {
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -359,8 +359,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -369,8 +369,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('New Text Area Value 1');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -379,8 +379,8 @@ export class TextAreaField extends CommonSteps {
         await this.waitForText('Text Area Value 2 - Updated');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);

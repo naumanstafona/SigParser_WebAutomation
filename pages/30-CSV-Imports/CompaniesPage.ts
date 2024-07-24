@@ -30,13 +30,17 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);       
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
-        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
+        await this.waitForText('CSVtest_Name');
+        await this.clickOnText('CSVtest_Name');
         await this.waitForText(CompaniesLocators.tagVerificationLocator);
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -63,15 +67,19 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);    
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
-        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
-        await this.waitForText(CommonLocators.modalFileDetailsButtonLocator);
-        await this.clickOnText(CommonLocators.modalFileDetailsButtonLocator);
+        await this.waitForTextStrict('CSVtest_Name');
+        await this.clickOnTextStrict('CSVtest_Name');
+        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
+        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForText('StatusIgnoreCompany Name');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -99,13 +107,17 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
+        await this.waitForTextStrict('CSVtest_Name');
         await this.clickOnTextStrict('CSVtest_Name');
-        await this.waitForText('CSVtest_Name');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
@@ -224,5 +236,4 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForLocator(CompaniesLocators.awesomeCompanyLocator);
 
     }
-
-}
+};

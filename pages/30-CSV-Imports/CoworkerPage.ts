@@ -35,11 +35,15 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
+        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
+        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(1000);
+        await this.waitForTime(2000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('56');
@@ -73,17 +77,21 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
+        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
+        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(1000);
+        await this.waitForTime(2000);
         await this.waitingForCellHavingTextforVerification('Mary Balier');
     }
 
     async coworkerwithScoresAtAllRowsLevelVerification() {
-        await this.waitForLinkButton(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -113,13 +121,17 @@ export class CoworkerPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(CoworkerLocator.contactUpdateTrackingLocator);
+        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
+        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CoworkerLocator.contactEmailAddressPlaceholderLocator, 'mary.b@coworker-space.com');
-        await this.waitForTime(1000);
+        await this.waitForTime(2000);
         await this.waitingForCellHavingTextforVerification('Mary Tahoe');
         await this.waitingForCellHavingTextforVerification('Updated');
-        await this.waitingForCellHavingTextforVerification('10');
+        await this.waitingForCellHavingTextforVerification('90');
     }
 }

@@ -65,7 +65,7 @@ export class CommonSteps {
     }
   }
 
-  async waitForLinkButton(buttonName: string) {
+  async waitForLinkButtonstrict(buttonName: string) {
     try {
       console.log(`Waiting for link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName, exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
@@ -74,7 +74,25 @@ export class CommonSteps {
     }
   }
 
+  async waitForLinkButton(buttonName: string) {
+    try {
+      console.log(`Waiting for link button: ${buttonName}`);
+      await this.page.getByRole('link', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for button ${buttonName}:`, error);
+    }
+  }
+
   async clickOnLinkButton(buttonName: string) {
+    try {
+      console.log(`Clicking on link button: ${buttonName}`);
+      await this.page.getByRole('link', { name: buttonName }).click();
+    } catch (error) {
+      console.error(`Error waiting for button ${buttonName}:`, error);
+    }
+  }
+
+  async clickOnLinkButtonstrict(buttonName: string) {
     try {
       console.log(`Clicking on link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName, exact: true }).click();
@@ -320,15 +338,15 @@ export class CommonSteps {
   }
 
   async waitForTime(number: number) {
-    console.log(`Waiting for ${number} Second`);
+    console.log(`Waiting for ${number} Milli Second`);
     await this.page.waitForTimeout(number);
   }
 
   async waitForTextByN(textName: string, occurrence: number = 0) {
     try {
       console.log(`Waiting for Text: ${textName} (Occurrence: ${occurrence})`);
-      const element = occurrence === 0 
-        ? this.page.getByText(textName) 
+      const element = occurrence === 0
+        ? this.page.getByText(textName)
         : this.page.getByText(textName).nth(occurrence);
       await element.waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {

@@ -11,7 +11,7 @@ test.describe(' Starting 30 CSV Imports - Companies  File', () => {
     let companiespage: CompaniesPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         companiespage = new CompaniesPage(page);
