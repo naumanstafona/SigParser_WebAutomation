@@ -10,8 +10,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyDomainTagVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -28,8 +28,8 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
         await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
@@ -87,8 +87,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyNameVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -105,8 +105,8 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForText(CommonLocators.statusQueuedNameLocator);
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
         await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
@@ -123,8 +123,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyWithScoreAtRowLevelVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -160,8 +160,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyWithScoreAtFieldLevelLowerVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -195,8 +195,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyWithScoreAtAllRowLevelsVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);

@@ -52,8 +52,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidContactsLocator);
-        await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns);    
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -90,8 +90,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidContactsLocator);
-        await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns);  
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -99,8 +99,10 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForText('Joe Doe');
-        await this.clickOnText('Joe Doe');
+        await this.waitForText('Jonathan Doehopper');
+        await this.clickOnText('Jonathan Doehopper');
+        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
+        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForElementByTextWithin('#modal-contact', 'Ignore');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -131,14 +133,14 @@ export class ContactPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(ContactLocators.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(ContactLocators.contactUpdateTrackingLocator);
-        await this.waitForLocator(CommonLocators.allValidContactsLocator);
-        await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns);  
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
-        await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
-        await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
+        await this.waitingForEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator);
+        await this.fillingEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
         await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
         await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
@@ -184,8 +186,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(ContactLocators.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(ContactLocators.contactUpdateTrackingLocator);
-        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
-        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -229,8 +231,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(ContactLocators.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(ContactLocators.contactUpdateTrackingLocator);
-        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
-        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -273,8 +275,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnTextStrict(CommonLocators.updatesButtonLocator);
         await this.waitForLinkButton(ContactLocators.contactUpdateTrackingLocator);
         await this.clickOnLinkButton(ContactLocators.contactUpdateTrackingLocator);
-        await this.waitForLocator(CommonLocators.allContactUpdatesLocator);
-        await this.clickOnLocator(CommonLocators.allContactUpdatesLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -308,8 +310,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidContactsLocator);
-        await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -320,6 +322,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForLocator('//a[contains(text(),"Delete")]');//Delete hyperlinked contact name
         await this.clickOnLocator('//a[contains(text(),"Delete")]');//clicking Delete hyperlinked contact name
         await this.waitForLocator('(//div[text()="888-444-5555"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async contactDeleteFieldValue2() {
@@ -343,8 +347,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForText(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidContactsLocator);
-        await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
         await this.waitForLocator(CommonLocators.allRecordAndColumns);
         await this.clickOnLocator(CommonLocators.allRecordAndColumns); 
         await this.waitForButton(CommonLocators.searchButtonLocator);
@@ -357,6 +361,8 @@ export class ContactPage extends CommonSteps {
         await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForemptyphonenumber();
+        await this.waitForLocator('//button[@class="c-modal__exit"]//i[1]');
+        await this.clickOnLocator('//button[@class="c-modal__exit"]//i[1]');
 
     }
 
@@ -376,7 +382,7 @@ export class ContactPage extends CommonSteps {
     }
 
     async deleteEmailAddresses() {
-        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/TestingTools');
+        await this.navigateTo('https://beta-app.sigparser.com/Account/App/#/TestingTools');//button[@class="c-modal__exit"]//i[1]
         await this.waitForPlaceholder('john@doe.com')
         await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
         await this.waitForButton('Delete All Contacts and Emails ');

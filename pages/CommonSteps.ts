@@ -17,6 +17,7 @@ export class CommonSteps {
       await this.page.goto(url, { timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error navigating to ${url}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -26,6 +27,7 @@ export class CommonSteps {
       await this.page.waitForURL(expectedUrl, { timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for URL ${expectedUrl}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -35,6 +37,7 @@ export class CommonSteps {
       await this.page.getByRole('button', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -53,6 +56,7 @@ export class CommonSteps {
       await this.page.getByPlaceholder(placeHolderName).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
       console.error(`Error waiting for placeholder ${placeHolderName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -71,6 +75,7 @@ export class CommonSteps {
       await this.page.getByRole('link', { name: buttonName, exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -80,6 +85,7 @@ export class CommonSteps {
       await this.page.getByRole('link', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${buttonName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -107,6 +113,7 @@ export class CommonSteps {
       await this.page.locator(locatorName).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
       console.error(`Waiting for Choose File Text Box`, error);
+      process.exit(1); 
     }
   }
 
@@ -152,6 +159,7 @@ export class CommonSteps {
       await this.page.getByRole('heading', { name: headingName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${headingName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -170,6 +178,7 @@ export class CommonSteps {
       await this.page.getByText(textName).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${textName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -179,6 +188,7 @@ export class CommonSteps {
       await this.page.getByText(textName, { exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for button ${textName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -188,6 +198,7 @@ export class CommonSteps {
       await this.page.getByText(textName).click();
     } catch (error) {
       console.error(`Error waiting for button ${textName}:`, error);
+      
     }
   }
 
@@ -206,6 +217,7 @@ export class CommonSteps {
       await this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...').waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -224,6 +236,7 @@ export class CommonSteps {
       await this.page.getByRole('cell', { name: text }).first().waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for  Email Domain Placeholder ${text}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -233,6 +246,7 @@ export class CommonSteps {
       await this.page.getByTitle(titleName, { exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error Waiting for Title ${titleName}:`, error);
+      process.exit(1); 
     }
   }
 
@@ -284,6 +298,7 @@ export class CommonSteps {
       await element.waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for text '${textName}' within element '${selector}':`, error);
+      process.exit(1); 
     }
   }
 
@@ -340,17 +355,5 @@ export class CommonSteps {
   async waitForTime(number: number) {
     console.log(`Waiting for ${number} Milli Second`);
     await this.page.waitForTimeout(number);
-  }
-
-  async waitForTextByN(textName: string, occurrence: number = 0) {
-    try {
-      console.log(`Waiting for Text: ${textName} (Occurrence: ${occurrence})`);
-      const element = occurrence === 0
-        ? this.page.getByText(textName)
-        : this.page.getByText(textName).nth(occurrence);
-      await element.waitFor({ state: 'visible', timeout: this.timeout_large });
-    } catch (error) {
-      console.error(`Error waiting for text ${textName} (Occurrence: ${occurrence}):`, error);
-    }
   }
 }

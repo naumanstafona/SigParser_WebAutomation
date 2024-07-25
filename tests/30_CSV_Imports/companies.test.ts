@@ -4,29 +4,30 @@ import { chromium, Browser, Page } from 'playwright';
 import config from '../../config';
 import { LoginPage } from '../../pages/LoginPage';
 
-test.describe(' Starting 30 CSV Imports - Companies  File', () => {
-    let browser: Browser;
-    let page: Page;
-    let loginpage: LoginPage;
-    let companiespage: CompaniesPage;
+let browser: Browser;
+let page: Page;
+let loginpage: LoginPage;
+let companiespage: CompaniesPage;
+
+test.describe('30 CSV Imports - Companies File', () => {
 
     test.beforeAll(async () => {
         browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         companiespage = new CompaniesPage(page);
-        await loginpage.login(config.email, config.password, config.url)
+        await loginpage.login(config.email, config.password, config.url);
     });
 
-    test('User should be able to verify Company Domain and tag ', async () => {
+    test('User should be able to verify Company Domain and tag', async () => {
         await companiespage.companyDomainTagVerification();
     });
 
-    test('User should be able to verify Company Domain and status ', async () => {
+    test('User should be able to verify Company Domain and status', async () => {
         await companiespage.companyDomainStatusVerification();
     });
 
-    test('User should be able to verify Company Domain and Name ', async () => {
+    test('User should be able to verify Company Domain and Name', async () => {
         await companiespage.companyNameVerification();
     });
 
@@ -43,7 +44,8 @@ test.describe(' Starting 30 CSV Imports - Companies  File', () => {
     });
 
     test.afterAll(async () => {
-        console.log('Ending 30 CSV Imports - Companies  File')
+        console.log('Ending 30 CSV Imports - Companies File');
         await browser.close();
     });
+
 });

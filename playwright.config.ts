@@ -1,37 +1,18 @@
 import { defineConfig, devices } from '@playwright/test';
-// import { on } from 'events'; // This import is not needed and can be removed.
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 0 : 0,
-  /* Opt out of parallel tests on CI. */
+  retries: process.env.CI ? 1 : 0,
   workers: 3,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { outputFolder: 'playwright-report' }]],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 6 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
     headless: true,
     permissions: ['notifications'],
     screenshot: 'on',
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: {
       mode: 'retain-on-failure',
       attachments: true,
@@ -41,13 +22,12 @@ export default defineConfig({
     },
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    /* Test against mobile viewports. */
+    // Uncomment to test against mobile viewports or branded browsers
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
@@ -56,8 +36,6 @@ export default defineConfig({
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
-
-    /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
@@ -68,7 +46,7 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  // Uncomment if you need to run your local dev server before starting the tests
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://127.0.0.1:3000',

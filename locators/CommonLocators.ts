@@ -29,6 +29,8 @@ export const CommonLocators = {
     allRecordAndColumns:'//div[text()="All Records & Columns"]',
     allValidCompaniesLocator:'//span[text()="All Valid Companies"]',
     allValidContactsLocator:'//span[text()="All Valid Contacts"]',
+    clickingOnColumns:'//div[contains(@class,"c-container --space-between")]//span[1]',
+
     //Contact Custom Fields
     addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
     fieldFormHeadingLocator: 'Create a Custom Field',
