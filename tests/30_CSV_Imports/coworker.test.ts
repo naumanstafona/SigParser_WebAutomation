@@ -17,7 +17,8 @@ test.describe('Starting 30 CSV Imports - Coworkers  File', () => {
         coworkerpage = new CoworkerPage(page);
         await loginpage.login(config.email, config.password, config.url)
     });
-
+    
+    console.log('Starting 30 CSV Imports - Coworkers  File');
     test('User should be able to verify coworker with score at Row Level ', async () => {
         await coworkerpage.coworkerWithScoresAtRowLevelVerification();
     });

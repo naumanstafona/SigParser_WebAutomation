@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { chromium, Browser, Page } from "playwright";
 import config from "../../config";
 import { LoginPage } from "../../pages/LoginPage";
-import { TextAreaField } from "../../pages/32_Custom_Fields_Contacts/TextAreaField.ts";
+import { TextAreaField } from "../../pages/31_Custom_Fields_Contacts/TextAreaField";
 
 test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => {
 
@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     textareafield = new TextAreaField(page);
@@ -23,7 +23,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
 
   test("User should be able to create a new custom Text Area field column", async () => {
 
-
+    console.log ('Starting 31 Custom Fields - Contacts - 3 - TextAreaField');
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
       await textareafield.deleteEmailAddresses();
     });
@@ -64,6 +64,15 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
     await test.step("Import the third CSV file (No changes)", async () => {
       await textareafield.importThirdCSVFileNoChanges(emails[0], emails[1], emails[2]);
     });
+
+    await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+      await textareafield.deleteEmailAddresses();
+    });
+
+    await test.step("Delete the custom fields", async () => {
+      await textareafield.deleteTextAreaField();
+    });
+
 
 
   });

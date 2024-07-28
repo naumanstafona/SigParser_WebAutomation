@@ -18,7 +18,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainTag.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company - DomainTag.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -55,7 +55,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainStatus.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company - DomainStatus.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -95,7 +95,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company - DomainName.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company - DomainName.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -131,7 +131,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_WithRowScores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company_WithRowScores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -168,7 +168,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_WithRowScores_Lower.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company_WithRowScores_Lower.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
@@ -203,7 +203,7 @@ export class CompaniesPage extends CommonSteps {
         await this.clickOnSelectFileButton();
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
         await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
-        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, '30-CSV-Imports-UploadItems/Company_ALL_ROWS_Scores.csv');
+        await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/30-CSV-Imports-UploadItems/Company_ALL_ROWS_Scores.csv');
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);

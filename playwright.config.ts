@@ -20,6 +20,7 @@ export default defineConfig({
       snapshots: true,
       sources: true,
     },
+    storageState: 'storageState.json',
   },
 
   projects: [

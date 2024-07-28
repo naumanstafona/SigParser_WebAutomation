@@ -6,7 +6,7 @@ import { addAbortListener } from 'events';
 import { availableParallelism } from 'os';
 import { LoginPage } from '../../pages/LoginPage';
 
-test.describe(' Starting 30 CSV Imports - Contacts File', () => {
+test.describe('Starting 30 CSV Imports - Contacts File', () => {
     let browser: Browser;
     let page: Page;
     let loginpage: LoginPage;
@@ -21,6 +21,7 @@ test.describe(' Starting 30 CSV Imports - Contacts File', () => {
     });
 
 
+    console.log('Starting 30 CSV Imports - Contacts File');
     test('User should be able to verify contact with Email Tag ', async () => {
         await contactpage.contactEmailTagVerification();
     });
