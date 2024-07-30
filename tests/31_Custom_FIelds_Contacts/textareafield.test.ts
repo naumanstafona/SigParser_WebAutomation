@@ -73,8 +73,6 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
       await textareafield.deleteTextAreaField();
     });
 
-
-
   });
 
   test.afterAll(async () => {

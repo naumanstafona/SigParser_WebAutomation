@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: false });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     contacttextfield = new ContactTextField(page);

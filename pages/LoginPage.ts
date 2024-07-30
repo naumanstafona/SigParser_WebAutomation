@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import { LoginLocators } from '../locators/LoginLocators'; 
 import { CommonSteps } from './CommonSteps';
+import config from '../config';
 
 export class LoginPage extends CommonSteps {
   constructor(page: Page) {
@@ -16,7 +17,7 @@ export class LoginPage extends CommonSteps {
     await this.waitForPlaceholder(LoginLocators.enterYourPasswordInputFieldLocator);
     await this.fillingPlaceholder(LoginLocators.enterYourPasswordInputFieldLocator, password);
     await this.clickOnButton(LoginLocators.loginButtonLocator);
-    await this.waitingForURL(expectedUrl='https://hotfix.sigparser.com/Account/App/#/Dashboard');
+    await this.waitingForURL(expectedUrl=config.url+'/Account/App/#/Dashboard');
     await this.waitForTime(5000);
   }
 }

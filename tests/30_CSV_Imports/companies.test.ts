@@ -19,6 +19,7 @@ test.describe('30 CSV Imports - Companies File', () => {
         await loginpage.login(config.email, config.password, config.url);
     });
 
+    console.log('Starting 30 CSV Imports - Companies File');
     test('User should be able to verify Company Domain and tag', async () => {
         await companiespage.companyDomainTagVerification();
     });
