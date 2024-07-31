@@ -47,8 +47,8 @@ export class CompaniesPage extends CommonSteps {
     }
 
     async companyDomainStatusVerification() {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
