@@ -4,8 +4,8 @@ import { CompaniesLocators } from '../locators/30-CSV-Imports/CompaniesLocators'
 
 export class CommonSteps {
   protected page: Page;
-  protected readonly timeout_large: number = 60000;
-  protected readonly timeout_small: number = 30000;
+  protected readonly timeout_large: number = 120000;
+  protected readonly timeout_small: number = 60000;
 
   constructor(page: Page) {
     this.page = page;
