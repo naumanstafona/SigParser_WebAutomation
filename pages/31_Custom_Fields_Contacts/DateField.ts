@@ -64,7 +64,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForText(email1);
+        await this.waitForTextStrict(email1);
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -80,7 +80,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForText(email2);
+        await this.waitForTextStrict(email2);
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -96,7 +96,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForText(email3);
+        await this.waitForTextStrict(email3);
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
     }
@@ -114,14 +114,14 @@ export class DateFields extends CommonSteps {
         await this.fillingPlaceholder(ContactLocators.descriptionPlaceholder, 'Description for Custom Contact Date Field');
         await this.waitForButton(ContactLocators.createFieldLocator);
         await this.clickOnButton(ContactLocators.createFieldLocator);
-        await this.waitForText('Test Contact Date');
+        await this.waitForTextStrict('Test Contact Date');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(ContactLocators.columnTitleLocator);
         await this.clickOnTitle(ContactLocators.columnTitleLocator);
-        await this.waitForText(ContactLocators.customFieldLocator);
-        await this.clickOnText(ContactLocators.customFieldLocator);
+        await this.waitForTextStrict(ContactLocators.customFieldLocator);
+        await this.clickOnTextStrict(ContactLocators.customFieldLocator);
         await this.hoverOverElement('//b[text()="Test Contact Date"]');
-        await this.waitForText('Description for Custom Contact Date Field');
+        await this.waitForTextStrict('Description for Custom Contact Date Field');
         await this.waitForLocator(DateFieldLocator.addToColumnListLocator);
         await this.clickOnLocator(DateFieldLocator.addToColumnListLocator);
         await this.waitForButton(ContactLocators.saveLocator);
@@ -136,9 +136,9 @@ export class DateFields extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForText('Custom Contact1');
-        await this.clickOnText('Custom Contact1');
-        await this.waitForText('Test Contact Date');
+        await this.waitForTextStrict('Custom Contact1');
+        await this.clickOnTextStrict('Custom Contact1');
+        await this.waitForTextStrict('Test Contact Date');
         await this.waitForTextUnderTestContactText('Test Contact Date-');
         await this.waitForLocator(ContactLocators.pencilLocator);
         await this.clickOnLocator(ContactLocators.pencilLocator);
@@ -167,8 +167,8 @@ export class DateFields extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForText('Custom Contact1');
-        await this.clickOnText('Custom Contact1');
+        await this.waitForTextStrict('Custom Contact1');
+        await this.clickOnTextStrict('Custom Contact1');
         await this.waitForLocator('//div[normalize-space(text())="Jan 1, 2001"]');
         await this.waitForLocator(ContactLocators.pencilLocator);
         await this.clickOnLocator(ContactLocators.pencilLocator);
@@ -255,8 +255,8 @@ export class DateFields extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Date');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -320,8 +320,8 @@ export class DateFields extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Date');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -385,8 +385,8 @@ export class DateFields extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Date');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);

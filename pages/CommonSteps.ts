@@ -114,7 +114,7 @@ export class CommonSteps {
   async waitForLocator(locatorName: string) {
     try {
       console.log(`Waiting for locator:${locatorName}`);
-      await this.page.locator(locatorName).waitFor({ state: 'visible', timeout: this.timeout_small });
+      await this.page.locator(locatorName,).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
       console.error(`Waiting for Choose File Text Box`, error);
       process.exit(1);
@@ -181,15 +181,15 @@ export class CommonSteps {
     }
   }
 
-  async waitForText(textName: string) {
-    try {
-      console.log(`Waiting for Text: ${textName}`);
-      await this.page.getByText(textName).waitFor({ state: 'visible', timeout: this.timeout_large });
-    } catch (error) {
-      console.error(`Error waiting for button ${textName}:`, error);
-      process.exit(1);
-    }
-  }
+  // async waitForText(textName: string) {
+  //   try {
+  //     console.log(`Waiting for Text: ${textName}`);
+  //     await this.page.getByText(textName).waitFor({ state: 'visible', timeout: this.timeout_large });
+  //   } catch (error) {
+  //     console.error(`Error waiting for button ${textName}:`, error);
+  //     process.exit(1);
+  //   }
+  // }
 
   async waitForTextStrict(textName: string) {
     try {
@@ -201,16 +201,16 @@ export class CommonSteps {
     }
   }
 
-  async clickOnText(textName: string) {
-    try {
-      console.log(`Clicking on Text: ${textName}`);
-      await this.page.getByText(textName).click();
-    } catch (error) {
-      console.error(`Error waiting for button ${textName}:`, error);
-      process.exit(1);
+  // async clickOnText(textName: string) {
+  //   try {
+  //     console.log(`Clicking on Text: ${textName}`);
+  //     await this.page.getByText(textName).click();
+  //   } catch (error) {
+  //     console.error(`Error waiting for button ${textName}:`, error);
+  //     process.exit(1);
 
-    }
-  }
+  //   }
+  // }
 
   async clickOnTextStrict(textName: string) {
     try {

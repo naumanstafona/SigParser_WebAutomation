@@ -12,7 +12,7 @@ let companiespage: CompaniesPage;
 test.describe('30 CSV Imports - Companies File', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: true });
+        browser = await chromium.launch({ headless: false });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         companiespage = new CompaniesPage(page);

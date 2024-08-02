@@ -48,8 +48,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Tag');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(CommonLocators.clickingOnColumns);
@@ -61,9 +61,9 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForText(CommonLocators.domainTagFileLocator);
-        await this.clickOnText(CommonLocators.domainTagFileLocator);
-        await this.waitForText(ContactLocators.tagVerificationFieldLocator);
+        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
+        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
+        await this.waitForTextStrict(ContactLocators.tagVerificationFieldLocator);
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
 
@@ -86,8 +86,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'status');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(CommonLocators.clickingOnColumns);
@@ -99,8 +99,8 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForText('Jonathan Doehopper');
-        await this.clickOnText('Jonathan Doehopper');
+        await this.waitForTextStrict('Joe Doe');
+        await this.clickOnTextStrict('Joe Doe');
         await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForElementByTextWithin('#modal-contact', 'Ignore');
@@ -125,8 +125,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Full Name');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
         await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
@@ -146,8 +146,8 @@ export class ContactPage extends CommonSteps {
         await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
         await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.waitForTextStrict('Jonathan');
-        await this.waitForTextStrict('Doehopper');
+        await this.waitForTextStrict('Joe Doe');
+        await this.waitForTextStrict('Joe Doe');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
 
@@ -178,8 +178,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingfourthdropdownLocator, 'Source Score');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
         await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
@@ -223,8 +223,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingfourthdropdownLocator, 'Source Score');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
         await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
@@ -259,16 +259,16 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Full Name');
-        await this.waitForText(CommonLocators.showAdvancedSettingsTextLocator);
-        await this.clickOnText(CommonLocators.showAdvancedSettingsTextLocator);
+        await this.waitForTextStrict(CommonLocators.showAdvancedSettingsTextLocator);
+        await this.clickOnTextStrict(CommonLocators.showAdvancedSettingsTextLocator);
         await this.waitForLocator(CommonLocators.dateLocator);
         const nextDayDate = await this.getNextDayDate();
         await this.fillingLocator(CommonLocators.dateLocator, nextDayDate);
         await this.selectingDropdownValue(CommonLocators.defaultSourceScoreDropDownLocator, 'High (score = 90)');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
         await this.waitForTextStrict(CommonLocators.updatesButtonLocator);
@@ -306,8 +306,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Phone - Work');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(CommonLocators.clickingOnColumns);
@@ -343,8 +343,8 @@ export class ContactPage extends CommonSteps {
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Phone - Work');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
-        await this.waitForText(CommonLocators.statusQueuedNameLocator);
-        await this.waitForText(CommonLocators.statusFinishedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(CommonLocators.clickingOnColumns);
