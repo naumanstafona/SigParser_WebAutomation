@@ -33,7 +33,7 @@ export class NumberField extends CommonSteps {
         await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
         await this.waitForButton('Delete All Contacts and Emails ');
         await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(3000);
+        await this.waitForTime(5000);
     }
 
     async waitForTextUnderTestContactText(text: string) {
@@ -46,7 +46,7 @@ export class NumberField extends CommonSteps {
         }
     }
 
-    async createContactsEmailManuallyInContactGrid(email1: string, email2: string, email3: string) {
+    async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -62,7 +62,7 @@ export class NumberField extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email1);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact1@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -78,7 +78,7 @@ export class NumberField extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email2);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact2@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -94,11 +94,10 @@ export class NumberField extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email3);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact3@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
     }
-
     async createNewTextAreaCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);

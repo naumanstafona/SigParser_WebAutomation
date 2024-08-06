@@ -11,13 +11,13 @@ test.describe('Starting 30 CSV Imports - Coworkers  File', () => {
     let coworkerpage: CoworkerPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         coworkerpage = new CoworkerPage(page);
         await loginpage.login(config.email, config.password, config.url)
     });
-    
+
     console.log('Starting 30 CSV Imports - Coworkers  File');
     test('User should be able to verify coworker with score at Row Level ', async () => {
         await coworkerpage.coworkerWithScoresAtRowLevelVerification();

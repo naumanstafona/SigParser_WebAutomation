@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Playwright Script with Inspector",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/script.js",
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PWDEBUG": "1"
+        },
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }

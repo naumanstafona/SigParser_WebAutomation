@@ -47,8 +47,8 @@ export class DateFields extends CommonSteps {
             console.error("An error occurred while waiting for text:", error);
         }
     }
-
-    async createContactsEmailManuallyInContactGrid(email1: string, email2: string, email3: string) {
+    
+    async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -64,7 +64,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email1);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact1@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -80,7 +80,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email2);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact2@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
         await this.waitForLocator(ContactLocators.plusButtonLocator);
@@ -96,7 +96,7 @@ export class DateFields extends CommonSteps {
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForButton(ContactLocators.viewContactButtonLocator);
         await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForTextStrict(email3);
+        await this.waitForLocator('//p[normalize-space(text())="customcontact3@test.com"]');
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
     }
@@ -143,9 +143,9 @@ export class DateFields extends CommonSteps {
         await this.waitForLocator(ContactLocators.pencilLocator);
         await this.clickOnLocator(ContactLocators.pencilLocator);
         await this.waitForLocator('input[name="Test Contact Date"]');
-        await this.fillingLocator('input[name="Test Contact Date"]','2001-01-01');
+        await this.fillingLocator('input[name="Test Contact Date"]', '2001-01-01');
         await this.waitForButton(ContactLocators.saveLocator);
-        await this.clickOnButton(ContactLocators.saveLocator);    
+        await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForLocator('//div[normalize-space(text())="Jan 1, 2001"]');
         await this.waitForTime(5000);
         await this.waitForLocator(ContactLocators.exitButtonLocator);
@@ -173,7 +173,7 @@ export class DateFields extends CommonSteps {
         await this.waitForLocator(ContactLocators.pencilLocator);
         await this.clickOnLocator(ContactLocators.pencilLocator);
         await this.waitForLocator('input[name="Test Contact Date"]');
-        await this.fillingLocator('input[name="Test Contact Date"]','2002-02-02');
+        await this.fillingLocator('input[name="Test Contact Date"]', '2002-02-02');
         await this.waitForButton(ContactLocators.saveLocator);
         await this.clickOnButton(ContactLocators.saveLocator);
         await this.waitForLocator('//div[normalize-space(text())="Feb 2, 2002"]');

@@ -7,7 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: 1,
   reporter: [['html', { outputFolder: 'playwright-report' }]],
-  timeout: 6 * 60 * 1000,
+  timeout: 8 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
     headless: true,

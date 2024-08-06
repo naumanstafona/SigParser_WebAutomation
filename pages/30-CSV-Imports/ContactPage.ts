@@ -151,8 +151,6 @@ export class ContactPage extends CommonSteps {
         await this.waitForLocator(ContactLocators.exitButtonLocator);
         await this.clickOnLocator(ContactLocators.exitButtonLocator);
 
-
-
     }
 
     async contactwithScoresAtRowLevelVerification() {

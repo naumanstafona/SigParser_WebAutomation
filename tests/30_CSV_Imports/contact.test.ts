@@ -13,7 +13,7 @@ test.describe('Starting 30 CSV Imports - Contacts File', () => {
     let contactpage: ContactPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({headless: true});
+        browser = await chromium.launch({ headless: true });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactpage = new ContactPage(page);

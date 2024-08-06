@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     contacttextfield = new ContactTextField(page);
@@ -23,7 +23,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
 
   test("User should be able to create a new custom field column", async () => {
 
-    console.log ('Starting 31 Custom Fields - Contacts - 2 - CustomFields');
+    console.log('Starting 31 Custom Fields - Contacts - 2 - CustomFields');
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
       await contacttextfield.deleteEmailAddresses();
     });
@@ -73,10 +73,15 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
       await contacttextfield.deleteCustomField();
     });
 
+    await test.step("Delete the custom fields", async () => {
+      await contacttextfield.deleteCustomField();
+    });
+
   });
 
   test.afterAll(async () => {
-    console.log ('Ending 31 Custom Fields - Contacts - 2 - CustomFields');
+
+    console.log('Ending 31 Custom Fields - Contacts - 2 - CustomFields');
     await browser.close();
   });
 

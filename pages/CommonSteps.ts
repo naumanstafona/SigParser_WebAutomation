@@ -1,5 +1,8 @@
 import { Page } from 'playwright';
 import { expect } from '@playwright/test';
+import config from '../config';
+import { CommonLocators } from '../locators/CommonLocators';
+import { ContactLocators } from '../locators/30-CSV-Imports/ContactLocators';
 import { CompaniesLocators } from '../locators/30-CSV-Imports/CompaniesLocators';
 
 export class CommonSteps {
@@ -181,16 +184,6 @@ export class CommonSteps {
     }
   }
 
-  // async waitForText(textName: string) {
-  //   try {
-  //     console.log(`Waiting for Text: ${textName}`);
-  //     await this.page.getByText(textName).waitFor({ state: 'visible', timeout: this.timeout_large });
-  //   } catch (error) {
-  //     console.error(`Error waiting for button ${textName}:`, error);
-  //     process.exit(1);
-  //   }
-  // }
-
   async waitForTextStrict(textName: string) {
     try {
       console.log(`Waiting for Text strict: ${textName}`);
@@ -200,17 +193,6 @@ export class CommonSteps {
       process.exit(1);
     }
   }
-
-  // async clickOnText(textName: string) {
-  //   try {
-  //     console.log(`Clicking on Text: ${textName}`);
-  //     await this.page.getByText(textName).click();
-  //   } catch (error) {
-  //     console.error(`Error waiting for button ${textName}:`, error);
-  //     process.exit(1);
-
-  //   }
-  // }
 
   async clickOnTextStrict(textName: string) {
     try {
@@ -329,17 +311,22 @@ export class CommonSteps {
     }
   }
 
+  private dialogHandled = false;
+
   async handleAndAcceptDialog(triggerSelector: string) {
-    this.page.on('dialog', async (dialog) => {
-      try {
-        console.log(`Dialog message: ${dialog.message()}`);
-        await dialog.accept(); // Automatically accepts the dialog
-        console.log('Dialog accepted');
-      } catch (error) {
-        console.error('Error accepting dialog:', error);
-        process.exit(1);
-      }
-    });
+    if (!this.dialogHandled) {
+      this.page.on('dialog', async (dialog) => {
+        try {
+          console.log(`Dialog message: ${dialog.message()}`);
+          await dialog.accept(); // Automatically accepts the dialog
+          console.log('Dialog accepted');
+        } catch (error) {
+          console.error('Error accepting dialog:', error);
+          process.exit(1);
+        }
+      });
+      this.dialogHandled = true;
+    }
 
     try {
       console.log(`Clicking on element: '${triggerSelector}' to trigger dialog`);
@@ -398,6 +385,4 @@ export class CommonSteps {
       process.exit(1);
     }
   }
-
-
 };

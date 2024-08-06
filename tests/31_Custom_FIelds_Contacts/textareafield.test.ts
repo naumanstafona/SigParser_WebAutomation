@@ -23,7 +23,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
 
   test("User should be able to create a new custom Text Area field column", async () => {
 
-    console.log ('Starting 31 Custom Fields - Contacts - 3 - TextAreaField');
+    console.log('Starting 31 Custom Fields - Contacts - 3 - TextAreaField');
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
       await textareafield.deleteEmailAddresses();
     });

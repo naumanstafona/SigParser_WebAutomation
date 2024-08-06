@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     booleanfield = new BooleanField(page);
@@ -25,63 +25,56 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
 
     console.log('Starting 31 Custom Fields - Contacts - 5 - BooleanField');
 
-    //   await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-    //     await booleanfield.deleteEmailAddresses();
-    //   });
+    await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+      await booleanfield.deleteEmailAddresses();
+    });
 
-    //   await test.step("Delete the custom fields", async () => {
-    //     await booleanfield.deleteNumberField();
-    //   });
+    await test.step("Delete the custom fields", async () => {
+      await booleanfield.deleteNumberField();
+    });
 
-    // await test.step("Create a new custom column and add it to the contacts grid", async () => {
-    //   await booleanfield.createNewBooleanCustomColumnAndAddIttoGridColumns();
-    // });
+    await test.step("Create a new custom column and add it to the contacts grid", async () => {
+      await booleanfield.createNewBooleanCustomColumnAndAddIttoGridColumns();
+    });
 
-      // await test.step("Manually create a couple of contacts in the Contact grid", async () => {
-      //   await booleanfield.createContactsEmailManuallyInContactGrid(emails[0], emails[1], emails[2]);
-      // });
-
-
-      // await test.step("Manually set the value for the custom field", async () => {
-      //   await booleanfield.setTheValueForTestContactBoolean(emails[0]);
-      // });
-
-    //   await test.step("Update the existing field value", async () => {
-    //     await numberfield.updateExistingalue(emails[0]);
-    //   });
-
-    //   await test.step("Update the existing field value directly in the grid", async () => {
-    //     await numberfield.updateExistingFileDirectlyInGrid(emails[0]);
-    //   });
+    await test.step("Manually create a couple of contacts in the Contact grid", async () => {
+      await booleanfield.createContactManuallyInContactGrid(emails[0], emails[1], emails[2]);
+    });
 
 
-    //   await test.step("Import a CSV to set the value for the custom field", async () => {
-    //     await numberfield.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
-    //   });
+    await test.step("Manually set the value for the custom field", async () => {
+      await booleanfield.setTheValueForTestContactBoolean(emails[0]);
+    });
 
-    //   await test.step("Changing decimal value to two digits and checking its values in the grid", async () => {
-    //     await numberfield.updateCustomContactNumberValueToTwoDecimals(emails[0], emails[1], emails[2]);
-    //   });
+    await test.step("Update the existing field value", async () => {
+      await booleanfield.updateExistingalue(emails[0]);
+    });
 
-    //   await test.step("Import the second CSV file (Updating and deleting a value)", async () => {
-    //     await numberfield.importSecondCSVFileUpdatingAndDeletingValues(emails[0], emails[1], emails[2]);
-    //   });
+    await test.step("Update the existing field value directly in the grid", async () => {
+      await booleanfield.updateExistingFileDirectlyInGrid(emails[0]);
+    });
 
-    //   await test.step("Changing decimal value to two digits and checking its values in the grid", async () => {
-    //     await numberfield.updateCustomContactNumberValueToThreeDecimals(emails[0], emails[1], emails[2]);
-    //   });
 
-    //   await test.step("Import the third CSV file (No changes)", async () => {
-    //     await numberfield.importThirdCSVFileNoChanges(emails[0], emails[1], emails[2]);
-    //   });
+    await test.step("Import a CSV to set the value for the custom field", async () => {
+      await booleanfield.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
+    });
 
-    //   await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-    //     await numberfield.deleteEmailAddresses();
-    //   });
 
-    //   await test.step("Delete the custom fields", async () => {
-    //     await numberfield.deleteNumberField();
-    //   });
+    await test.step("Import the second CSV file (Updating and deleting a value)", async () => {
+      await booleanfield.importSecondCSVFileUpdatingAndDeletingValues(emails[0], emails[1], emails[2]);
+    });
+
+    await test.step("Import the third CSV file (No changes)", async () => {
+      await booleanfield.importThirdCSVFileNoChanges(emails[0], emails[1], emails[2]);
+    });
+
+    await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+      await booleanfield.deleteEmailAddresses();
+    });
+
+    await test.step("Delete the custom fields", async () => {
+      await booleanfield.deleteNumberField();
+    });
 
   });
 
