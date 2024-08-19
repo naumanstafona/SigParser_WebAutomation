@@ -24,18 +24,30 @@ export const CommonLocators = {
     showAdvancedSettingsTextLocator: 'Show Advanced Settings',
     dateLocator: 'input[type="date"]',
     defaultSourceScoreDropDownLocator: '//div[@class="c-dropdown"]//select[1]',
-    modalFileDetailsButtonLocator:'Details',
-    allContactUpdatesLocator:'//span[text()="All Contact Updates"]',
-    allRecordAndColumns:'//div[text()="All Records & Columns"]',
-    allValidCompaniesLocator:'//span[text()="All Valid Companies"]',
-    allValidContactsLocator:'//span[text()="All Valid Contacts"]',
-    clickingOnColumns:'//div[contains(@class,"c-container --space-between")]//span[1]',
-
+    modalFileDetailsButtonLocator: 'Details',
+    allContactUpdatesLocator: '//span[text()="All Contact Updates"]',
+    allRecordAndColumns: '//div[text()="All Records & Columns"]',
+    allValidCompaniesLocator: '//span[text()="All Valid Companies"]',
+    allValidContactsLocator: '//span[text()="All Valid Contacts"]',
+    clickingOnColumns: '//div[contains(@class,"c-container --space-between")]//span[1]',
     //Contact Custom Fields
     addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
     fieldFormHeadingLocator: 'Create a Custom Field',
+    deleteLocator: 'Delete',
+    plusButtonLocator: '(//button[contains(@class,"c-btn --inverse")])[1]',
+    saveLocator: 'Save',
+    fieldNamePlaceholder: 'Field Name',
+    descriptionPlaceholder: 'Description',
+    createFieldLocator: 'Create Field',
+    columnTitleLocator: 'Columns',
+    customFieldLocator: 'Custom Fields',
+    testContactTextLinkLocator: '//b[text()="Test Contact Text"]',
+    testContactTextColumnLocator: '(//div[@title="Test Contact Text : Click to Sort"]//div)[1]',
+    recordTypeLocator: 'Add Field',
+    pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[2]',
+    dataTypeLocator: 'Data TypeTextText',
 
-    
+
 
 
 

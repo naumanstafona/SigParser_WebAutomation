@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { chromium, Browser, Page } from "playwright";
 import config from "../../config";
 import { LoginPage } from "../../pages/LoginPage";
-import { BooleanField } from "../../pages/31_Custom_Fields_Contacts/BooleanField";
+import { BooleanField } from "../../pages/32_Custom_Fields_Companies/BooleanField";
 
 test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
 
@@ -11,7 +11,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
   let loginpage: LoginPage;
   let booleanfield: BooleanField;
 
-  const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
+  const emails: string[] = ['customcompany1.com', 'customcompany2.com', 'customcompany3.com'];
 
   test.beforeAll(async () => {
     browser = await chromium.launch({ headless: false });
@@ -21,9 +21,9 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     await loginpage.login(config.email, config.password, config.url);
   });
 
-  test("User should be able to create a new custom Text Area field column", async () => {
+  test("User should be able to create a new custom Boolean field column", async () => {
 
-    console.log('Starting 31 Custom Fields - Contacts - 5 - BooleanField');
+    console.log('Starting 32 Custom Fields - Companies - 5 - BooleanField');
 
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
       await booleanfield.deleteEmailAddresses();
@@ -38,7 +38,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     });
 
     await test.step("Manually create a couple of contacts in the Contact grid", async () => {
-      await booleanfield.createContactManuallyInContactGrid(emails[0], emails[1], emails[2]);
+      await booleanfield.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
     });
 
 
@@ -79,7 +79,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
   });
 
   test.afterAll(async () => {
-    console.log('Ending 31 Custom Fields - Contacts - 5 - BooleanField');
+    console.log('Ending 32 Custom Fields - Companies - 5 - BooleanField');
     await browser.close();
   });
 

@@ -2,84 +2,83 @@ import { test, expect } from "@playwright/test";
 import { chromium, Browser, Page } from "playwright";
 import config from "../../config";
 import { LoginPage } from "../../pages/LoginPage";
-import { BooleanField } from "../../pages/31_Custom_Fields_Contacts/BooleanField";
+import { MultiSelectField } from "../../pages/32_Custom_Fields_Companies/MultiSelect";
 
-test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
+test.describe('Starting 32 Custom Fields - Company - 8 - Multi Select Field', () => {
 
   let browser: Browser;
   let page: Page;
   let loginpage: LoginPage;
-  let booleanfield: BooleanField;
+  let multiselectfield: MultiSelectField;
 
-  const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
+  const emails: string[] = ['customcompany1.com', 'customcompany2.com', 'customcompany3.com'];
 
   test.beforeAll(async () => {
     browser = await chromium.launch({ headless: false });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
-    booleanfield = new BooleanField(page);
+    multiselectfield = new MultiSelectField(page);
     await loginpage.login(config.email, config.password, config.url);
   });
 
   test("User should be able to create a new custom Text Area field column", async () => {
 
-    console.log('Starting 31 Custom Fields - Contacts - 5 - BooleanField');
+    console.log('Starting Starting 32 Custom Fields - Company - 8 - Multi Select Field');
 
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-      await booleanfield.deleteEmailAddresses();
+      await multiselectfield.deleteEmailAddresses();
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await multiselectfield.deleteCustomField();
     });
 
     await test.step("Create a new custom column and add it to the contacts grid", async () => {
-      await booleanfield.createNewBooleanCustomColumnAndAddIttoGridColumns();
+      await multiselectfield.createNewMultiSelectCustomColumnAndAddIttoGridColumns();
     });
 
     await test.step("Manually create a couple of contacts in the Contact grid", async () => {
-      await booleanfield.createContactManuallyInContactGrid(emails[0], emails[1], emails[2]);
+      await multiselectfield.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
     });
 
-
     await test.step("Manually set the value for the custom field", async () => {
-      await booleanfield.setTheValueForTestContactBoolean(emails[0]);
+      await multiselectfield.manuallySetTheVaueForCustomField(emails[0]);
     });
 
     await test.step("Update the existing field value", async () => {
-      await booleanfield.updateExistingalue(emails[0]);
+      await multiselectfield.updateExistingalue(emails[0]);
     });
 
     await test.step("Update the existing field value directly in the grid", async () => {
-      await booleanfield.updateExistingFileDirectlyInGrid(emails[0]);
+      await multiselectfield.updateExistingFileDirectlyInGrid(emails[0]);
     });
 
 
     await test.step("Import a CSV to set the value for the custom field", async () => {
-      await booleanfield.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
+      await multiselectfield.importCSVtoSettheValuesForTheCustomField(emails[0], emails[1], emails[2]);
     });
 
 
     await test.step("Import the second CSV file (Updating and deleting a value)", async () => {
-      await booleanfield.importSecondCSVFileUpdatingAndDeletingValues(emails[0], emails[1], emails[2]);
+      await multiselectfield.importSecondCSVFileUpdatingAndDeletingValues(emails[0], emails[1], emails[2]);
     });
 
     await test.step("Import the third CSV file (No changes)", async () => {
-      await booleanfield.importThirdCSVFileNoChanges(emails[0], emails[1], emails[2]);
+      await multiselectfield.importThirdCSVFileNoChanges(emails[0], emails[1], emails[2]);
     });
 
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-      await booleanfield.deleteEmailAddresses();
+      await multiselectfield.deleteEmailAddresses();
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await multiselectfield.deleteCustomField();
     });
 
   });
 
   test.afterAll(async () => {
-    console.log('Ending 31 Custom Fields - Contacts - 5 - BooleanField');
+    console.log('Ending Starting 32 Custom Fields - Company - 8 - Multi Select Field');
     await browser.close();
   });
 

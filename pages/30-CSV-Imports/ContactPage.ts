@@ -61,8 +61,8 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForTextStrict(CommonLocators.domainTagFileLocator);
-        await this.clickOnTextStrict(CommonLocators.domainTagFileLocator);
+        await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
+        await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
         await this.waitForTextStrict(ContactLocators.tagVerificationFieldLocator);
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
@@ -99,8 +99,8 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForTextStrict('Joe Doe');
-        await this.clickOnTextStrict('Joe Doe');
+        await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
+        await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
         await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
         await this.waitForElementByTextWithin('#modal-contact', 'Ignore');

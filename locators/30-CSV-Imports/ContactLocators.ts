@@ -3,32 +3,16 @@ export const ContactLocators = {
     tagVerificationFieldLocator: 'CSV_TEST_TAG:Email-TAG',
     emailAddressLocator: 'Email Address',
     contactEmailAddressPlaceholderLocator: 'Contact Email Address',
-
     //Contact Custom Fields
-    fieldNamePlaceholder: 'Field Name',
-    descriptionPlaceholder: 'Description',
-    createFieldLocator: 'Create Field',
-    columnTitleLocator: 'Columns',
-    customFieldLocator: 'Custom Fields',
-    saveLocator: 'Save',
-    testContactTextLinkLocator: '//b[text()="Test Contact Text"]',
-    testContactTextColumnLocator: '(//div[@title="Test Contact Text : Click to Sort"]//div)[1]',
-    plusButtonLocator: '(//button[contains(@class,"c-btn --inverse")])[1]',
     emailInputLocator: 'input[name="work_email"]',
     firstNameInputLocator: 'input[name="firstname"]',
     lastNameInputLocator: 'input[name="lastname"]',
     titleInputLocator: 'input[name="title"]',
     viewContactButtonLocator: 'View Contact',
     exitButtonLocator: '//div[@id="modal-contact"]/main[1]/button[1]/i[1]',
-    pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
-    deleteLocator: 'Delete',
-
-    //Custom Text Area
-    recordTypeLocator: 'Add Field',
-    dataTypeLocator: 'Data TypeTextText',
+    
     addToColumnListLocator: '//b[contains(@class, "u-center-vertically") and text()="Test Contact Text"]',
 
-    //NumberField
 
 
 
