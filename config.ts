@@ -1,4 +1,4 @@
-process.env.ENVIRONMENT = 'stage';
+process.env.ENVIRONMENT = 'dev';
 
 interface Config {
   url: string;

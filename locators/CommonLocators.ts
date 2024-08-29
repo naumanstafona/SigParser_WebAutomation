@@ -44,7 +44,7 @@ export const CommonLocators = {
     testContactTextLinkLocator: '//b[text()="Test Contact Text"]',
     testContactTextColumnLocator: '(//div[@title="Test Contact Text : Click to Sort"]//div)[1]',
     recordTypeLocator: 'Add Field',
-    pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[2]',
+    pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
     dataTypeLocator: 'Data TypeTextText',
 
 

@@ -21,7 +21,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     await loginpage.login(config.email, config.password, config.url);
   });
 
-  test("User should be able to create a new custom Text Area field column", async () => {
+  test("User should be able to create a new custom Boolean column", async () => {
 
     console.log('Starting 31 Custom Fields - Contacts - 5 - BooleanField');
 
@@ -30,7 +30,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await booleanfield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column and add it to the contacts grid", async () => {
@@ -73,7 +73,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await booleanfield.deleteCustomfield();
     });
 
   });

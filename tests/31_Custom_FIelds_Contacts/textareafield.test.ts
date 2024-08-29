@@ -29,7 +29,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
     });
 
     await test.step("Delete the custom fields", async () => {
-      await textareafield.deleteTextAreaField();
+      await textareafield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column text and add it to the contacts grid", async () => {
@@ -70,7 +70,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 3 - TextAreaField', () => 
     });
 
     await test.step("Delete the custom fields", async () => {
-      await textareafield.deleteTextAreaField();
+      await textareafield.deleteCustomfield();
     });
 
   });

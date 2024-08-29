@@ -22,32 +22,6 @@ export class ContactTextField extends CommonSteps {
         }
     }
 
-    async deleteCustomField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Contact Text').count();
-        if (isTextPresent === 0) {
-            console.log('Test Contact Text does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Contact Text');
-        await this.clickOnTextStrict('Test Contact Text');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(5000);
-    }
-
     async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);

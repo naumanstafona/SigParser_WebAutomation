@@ -30,10 +30,6 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
-        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
@@ -67,10 +63,6 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
-        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
@@ -107,10 +99,6 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
-        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);

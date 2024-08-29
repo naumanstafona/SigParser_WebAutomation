@@ -12,30 +12,6 @@ export class DateFields extends CommonSteps {
         super(page);
     }
 
-    async deleteCustomDateField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Company Date').count();
-        if (isTextPresent === 0) {
-            console.log('Test Contact Date does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Company Date');
-        await this.clickOnTextStrict('Test Company Date');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(3000);
-    }
 
     async waitForTextUnderTestContactText(text: string) {
         console.log(`Waiting for text: ${text}`);

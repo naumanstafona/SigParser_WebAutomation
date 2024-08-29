@@ -11,30 +11,7 @@ export class SingleSelectField extends CommonSteps {
     constructor(page: Page) {
         super(page);
     }
-    async deleteCustomField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForTime(5000);
 
-        const isTextPresent = await this.page.getByText('Test Contact Single Select').count();
-        if (isTextPresent === 0) {
-            console.log('Test Contact Single Select does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Contact Single Select');
-        await this.clickOnTextStrict('Test Contact Single Select');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(3000);
-    }
 
     async waitForTextUnderTestContactText(text: string) {
         console.log(`Waiting for text: ${text}`);
@@ -328,7 +305,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -389,7 +366,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
     }
 
 };

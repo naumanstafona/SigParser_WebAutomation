@@ -30,7 +30,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await booleanfield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column and add it to the contacts grid", async () => {
@@ -73,7 +73,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
     });
 
     await test.step("Delete the custom fields", async () => {
-      await booleanfield.deleteNumberField();
+      await booleanfield.deleteCustomfield();
     });
 
   });

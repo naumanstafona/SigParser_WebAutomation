@@ -23,31 +23,6 @@ export class TextField extends CommonSteps {
         }
     }
 
-    async deleteCustomField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Company Text').count();
-        if (isTextPresent === 0) {
-            console.log('Test Company Text does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Company Text');
-        await this.clickOnTextStrict('Test Company Text');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(5000);
-    }
 
     async createNewTextCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
@@ -354,7 +329,7 @@ export class TextField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -407,7 +382,7 @@ export class TextField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
 

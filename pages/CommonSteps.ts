@@ -44,6 +44,26 @@ export class CommonSteps {
     }
   }
 
+  async waitForButtonByRow(buttonName: string) {
+    try {
+      console.log(`Waiting for button: ${buttonName} by row`);
+      await this.page.getByRole('row', { name: buttonName }).getByRole('button').waitFor({ state: 'visible', timeout: this.timeout_large });
+    } catch (error) {
+      console.error(`Error waiting for button by row ${buttonName}:`, error);
+      process.exit(1);
+    }
+  }
+
+  async clickOnButtonByRow(buttonName: string) {
+    try {
+      console.log(`Waiting for button: ${buttonName}`);
+      await this.page.getByRole('row', { name: buttonName }).getByRole('button').click();
+    } catch (error) {
+      console.error(`Error waiting for button ${buttonName}:`, error);
+      process.exit(1);
+    }
+  }
+
   async clickOnButton(buttonName: string) {
     try {
       console.log(`Clicking on button: ${buttonName}`);
@@ -291,7 +311,7 @@ export class CommonSteps {
   async waitForElementByTextWithin(selector: string, textName: string) {
     try {
       console.log(`Waiting for text: '${textName}' within element: '${selector}'`);
-      const element = this.page.locator(selector).getByText(textName);
+      const element = this.page.locator(selector).getByText(textName, { exact: true });
       await element.waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
       console.error(`Error waiting for text '${textName}' within element '${selector}':`, error);
@@ -374,7 +394,6 @@ export class CommonSteps {
     }
   }
 
-
   async fillingLocatorByRole(expectedValue: string) {
     try {
       console.log('waiting For spinbutton');
@@ -384,5 +403,50 @@ export class CommonSteps {
       console.error('Error in waiting For spinbutton', error);
       process.exit(1);
     }
+  }
+
+  async waitforLabel(labelName: string) {
+    try {
+      console.log('waiting For label name');
+      await this.page.getByLabel(labelName).waitFor({ state: 'visible', timeout: this.timeout_small });
+    } catch (error) {
+      console.error('waiting For label name', error);
+      process.exit(1);
+    }
+  }
+
+  async checkLabel(labelName: string) {
+    try {
+      console.log('checking label name');
+      await this.page.getByLabel(labelName).check();
+    } catch (error) {
+      console.error('Error in checking label', error);
+      process.exit(1);
+    }
+  }
+
+  async deleteEmailAddresses() {
+    await this.navigateTo(config.url + '/Account/App/#/TestingTools');
+    await this.waitForPlaceholder('john@doe.com')
+    await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
+    await this.waitForButton('Delete All Contacts and Emails ');
+    await this.clickOnButton('Delete All Contacts and Emails ');
+    await this.waitForTime(3000);
+  }
+
+  async deleteCustomfield() {
+    await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+    await this.waitForTime(5000);
+
+    const rows = await this.page.$$('tr.c-table-dynamic__row')
+    for (const row of rows) {
+      await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
+      await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
+      await this.waitForButton(CommonLocators.deleteLocator);
+      await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
+      await this.waitForTime(3000);
+    }
+    const remainingRows = await this.page.$$('tr.c-table-dynamic__row');
+    expect(remainingRows.length).toBe(0);
   }
 };

@@ -30,7 +30,7 @@ test.describe('Starting 32 Custom Fields - Company - 8 - Multi Select Field', ()
     });
 
     await test.step("Delete the custom fields", async () => {
-      await multiselectfield.deleteCustomField();
+      await multiselectfield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column and add it to the contacts grid", async () => {
@@ -72,7 +72,7 @@ test.describe('Starting 32 Custom Fields - Company - 8 - Multi Select Field', ()
     });
 
     await test.step("Delete the custom fields", async () => {
-      await multiselectfield.deleteCustomField();
+      await multiselectfield.deleteCustomfield();
     });
 
   });

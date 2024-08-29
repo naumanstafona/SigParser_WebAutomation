@@ -29,7 +29,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - DateFields ', () => {
     });
 
     await test.step("Delete the custom date fields", async () => {
-      await contactdatefield.deleteCustomDateField();
+      await contactdatefield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column text and add it to the contacts grid", async () => {
@@ -70,7 +70,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - DateFields ', () => {
     });
 
     await test.step("Delete the custom fields", async () => {
-      await contactdatefield.deleteCustomDateField();
+      await contactdatefield.deleteCustomfield();
     });
 
   });

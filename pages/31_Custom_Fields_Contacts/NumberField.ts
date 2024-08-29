@@ -11,30 +11,6 @@ export class NumberField extends CommonSteps {
     constructor(page: Page) {
         super(page);
     }
-    async deleteNumberField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Contact Number').count();
-        if (isTextPresent === 0) {
-            console.log('Test Contact NUmber does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Contact Number');
-        await this.clickOnTextStrict('Test Contact Number');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(5000);
-    }
 
     async waitForTextUnderTestContactText(text: string) {
         console.log(`Waiting for text: ${text}`);
@@ -323,7 +299,7 @@ export class NumberField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email2);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('2.00');
+        await this.waitForTextStrict('1.56');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -337,7 +313,7 @@ export class NumberField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('3.00');
+        await this.waitForTextStrict('3.33');
     }
 
 

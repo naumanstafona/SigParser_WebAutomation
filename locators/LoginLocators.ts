@@ -1,6 +1,6 @@
 export const LoginLocators = {
-    loginWithEmailButtonLocator: 'Envelope Login with Email',
-    enterYourEmailInputFieldLocator: 'Enter your email address',
-    enterYourPasswordInputFieldLocator: 'Enter your password',
-    loginButtonLocator: 'LOG IN',
+    loginWithEmailButtonLocator: 'Log in with Email',
+    enterYourEmailInputFieldLocator: 'Email',
+    enterYourPasswordInputFieldLocator: 'Password',
+    loginButtonLocator: 'Log In',
 };

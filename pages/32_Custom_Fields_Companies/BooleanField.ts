@@ -11,30 +11,6 @@ export class BooleanField extends CommonSteps {
     constructor(page: Page) {
         super(page);
     }
-    async deleteNumberField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Company Boolean').count();
-        if (isTextPresent === 0) {
-            console.log('Test Company Boolean does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Company Boolean');
-        await this.clickOnTextStrict('Test Company Boolean');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(3000);
-    }
 
     async waitForTextUnderTestContactText(text: string) {
         console.log(`Waiting for text: ${text}`);
@@ -203,8 +179,8 @@ export class BooleanField extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
         await this.waitForTextStrict('customcompany1');
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
-        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[11]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
+        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[12]');
         await this.clickOnLocator('//input[@value="true"]')
         await this.waitForTime(5000);
         await this.waitForLocator('//img[@alt="Check"]');

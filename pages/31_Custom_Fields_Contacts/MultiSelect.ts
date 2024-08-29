@@ -11,30 +11,6 @@ export class MultiSelectField extends CommonSteps {
     constructor(page: Page) {
         super(page);
     }
-    async deleteCustomField() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
-        await this.waitForTime(5000);
-
-        const isTextPresent = await this.page.getByText('Test Contact Multi Select').count();
-        if (isTextPresent === 0) {
-            console.log('Test Contact Multi Select does not exist, aborting function.');
-            return;
-        }
-        await this.waitForTextStrict('Test Contact Multi Select');
-        await this.clickOnTextStrict('Test Contact Multi Select');
-        await this.waitForButton(CommonLocators.deleteLocator);
-        await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
-        await this.waitForTime(5000);
-    }
-
-    async deleteEmailAddresses() {
-        await this.navigateTo(config.url + '/Account/App/#/TestingTools');
-        await this.waitForPlaceholder('john@doe.com')
-        await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
-        await this.waitForButton('Delete All Contacts and Emails ');
-        await this.clickOnButton('Delete All Contacts and Emails ');
-        await this.waitForTime(3000);
-    }
 
     async waitForTextUnderTestContactText(text: string) {
         console.log(`Waiting for text: ${text}`);
@@ -198,10 +174,6 @@ export class MultiSelectField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -209,13 +181,13 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.waitForLocator('//div[normalize-space(text())="Multi1, Multi2, Multi3"]');
-        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[126]/div[1]/div[1]/div[1]');
+        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[11]/div[1]/div[1]/div[1]');
         await this.waitForTextStrict('Multi2');
         await this.clickOnTextStrict('Multi2');
         await this.waitForLocator('//span[normalize-space(text())="Contacts"]');
         await this.clickOnLocator('//span[normalize-space(text())="Contacts"]');
         await this.waitForLocator('//div[normalize-space(text())="Multi1, Multi3"]')
-        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[126]/div[1]/div[1]/div[1]');
+        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[11]/div[1]/div[1]/div[1]');
         await this.waitForTextStrict('Multi2');
         await this.clickOnTextStrict('Multi2');
         await this.waitForLocator('//span[normalize-space(text())="Contacts"]');
@@ -344,7 +316,7 @@ export class MultiSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -403,6 +375,6 @@ export class MultiSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]/div');
     }
 };

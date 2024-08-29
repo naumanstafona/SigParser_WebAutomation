@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: false });
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     contacttextfield = new ContactTextField(page);
@@ -29,7 +29,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
     });
 
     await test.step("Delete the custom fields", async () => {
-      await contacttextfield.deleteCustomField();
+      await contacttextfield.deleteCustomfield();
     });
 
     await test.step("Create a new custom column text and add it to the contacts grid", async () => {
@@ -69,12 +69,9 @@ test.describe('Starting 31 Custom Fields - Contacts - 2 - CustomFields ', () => 
       await contacttextfield.deleteEmailAddresses();
     });
 
-    await test.step("Delete the custom fields", async () => {
-      await contacttextfield.deleteCustomField();
-    });
 
     await test.step("Delete the custom fields", async () => {
-      await contacttextfield.deleteCustomField();
+      await contacttextfield.deleteCustomfield();
     });
 
   });
