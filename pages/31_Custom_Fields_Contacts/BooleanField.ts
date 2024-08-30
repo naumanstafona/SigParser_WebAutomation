@@ -22,7 +22,6 @@ export class BooleanField extends CommonSteps {
         }
     }
 
-
     async checkVisibility(locator: string) {
         console.log(`Waiting for Locator: ${locator}`);
         try {
@@ -38,8 +37,6 @@ export class BooleanField extends CommonSteps {
             console.error("An error occurred while waiting for Locator:", error);
         }
     }
-
-
 
     async createNewBooleanCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
@@ -68,61 +65,6 @@ export class BooleanField extends CommonSteps {
         await this.clickOnButton(CommonLocators.saveLocator);
         await this.waitForLocator(BooleanFieldLocator.customContactNumberColumnLocator);
     }
-
-    async createContactManuallyInContactGrid(email1: string, email2: string, email3: string) {
-        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForLocator(ContactLocators.emailInputLocator);
-        await this.fillingLocator(ContactLocators.emailInputLocator, email1);
-        await this.waitForLocator(ContactLocators.firstNameInputLocator);
-        await this.fillingLocator(ContactLocators.firstNameInputLocator, 'Custom');
-        await this.waitForLocator(ContactLocators.lastNameInputLocator);
-        await this.fillingLocator(ContactLocators.lastNameInputLocator, 'Contact1');
-        await this.waitForLocator(ContactLocators.titleInputLocator);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(ContactLocators.viewContactButtonLocator);
-        await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcontact1@test.com"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForLocator(ContactLocators.emailInputLocator);
-        await this.fillingLocator(ContactLocators.emailInputLocator, email2);
-        await this.waitForLocator(ContactLocators.firstNameInputLocator);
-        await this.fillingLocator(ContactLocators.firstNameInputLocator, 'Custom');
-        await this.waitForLocator(ContactLocators.lastNameInputLocator);
-        await this.fillingLocator(ContactLocators.lastNameInputLocator, 'Contact2');
-        await this.waitForLocator(ContactLocators.titleInputLocator);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(ContactLocators.viewContactButtonLocator);
-        await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcontact2@test.com"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForLocator(ContactLocators.emailInputLocator);
-        await this.fillingLocator(ContactLocators.emailInputLocator, email3);
-        await this.waitForLocator(ContactLocators.firstNameInputLocator);
-        await this.fillingLocator(ContactLocators.firstNameInputLocator, 'Custom');
-        await this.waitForLocator(ContactLocators.lastNameInputLocator);
-        await this.fillingLocator(ContactLocators.lastNameInputLocator, 'Contact3');
-        await this.waitForLocator(ContactLocators.titleInputLocator);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(ContactLocators.viewContactButtonLocator);
-        await this.clickOnButton(ContactLocators.viewContactButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcontact3@test.com"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
-    }
-
-
 
     async setTheValueForTestContactBoolean(email1: string) {
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
@@ -268,7 +210,6 @@ export class BooleanField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('//img[@alt="Check"]');
     }
-
 
     async importSecondCSVFileUpdatingAndDeletingValues(email1: string, email2: string, email3: string) {
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);

@@ -39,8 +39,6 @@ export class BooleanField extends CommonSteps {
         }
     }
 
-
-
     async createNewBooleanCustomColumnAndAddIttoGridColumns() {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
@@ -67,47 +65,6 @@ export class BooleanField extends CommonSteps {
         await this.waitForButton(CommonLocators.saveLocator);
         await this.clickOnButton(CommonLocators.saveLocator);
         await this.waitForLocator(BooleanFieldLocator.customContactNumberColumnLocator);
-    }
-
-    async createCompaniesManuallyInCompanyGrid(email1: string, email2: string, email3: string) {
-        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForHeading(CompaniesLocators.addNewCompanyLocator);
-        await this.waitForLocator('//label[normalize-space(text())="Company Domain"]/following::input');
-        await this.fillingLocator('//label[normalize-space(text())="Company Domain"]/following::input', email1);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.clickOnButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcompany1.com"]');
-        await this.waitForLocator(CompaniesLocators.modalExitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.modalExitButtonLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForHeading(CompaniesLocators.addNewCompanyLocator);
-        await this.waitForLocator('//label[normalize-space(text())="Company Domain"]/following::input');
-        await this.fillingLocator('//label[normalize-space(text())="Company Domain"]/following::input', email2);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.clickOnButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcompany2.com"]');
-        await this.waitForLocator(CompaniesLocators.modalExitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.modalExitButtonLocator);
-        await this.waitForLocator(CommonLocators.plusButtonLocator);
-        await this.clickOnLocator(CommonLocators.plusButtonLocator);
-        await this.waitForHeading(CompaniesLocators.addNewCompanyLocator);
-        await this.waitForLocator('//label[normalize-space(text())="Company Domain"]/following::input');
-        await this.fillingLocator('//label[normalize-space(text())="Company Domain"]/following::input', email3);
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.clickOnButton(CompaniesLocators.viewCompanyButtonLocator);
-        await this.waitForLocator('//p[normalize-space(text())="customcompany3.com"]');
-        await this.waitForLocator(CompaniesLocators.modalExitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.modalExitButtonLocator);
     }
 
 
