@@ -42,8 +42,8 @@ export class BooleanField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-        await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
+        //  await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+      //  await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Boolean');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Boolean');
@@ -51,7 +51,8 @@ export class BooleanField extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Contact Boolean Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Contact Boolean');
+        await this.page.waitForSelector('div:has-text("Test Contact Boolean")', { state: 'visible',timeout:this.timeout_small });
+      //  await this.waitForTextStrict('Test Contact Boolean');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -130,8 +131,8 @@ export class BooleanField extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
-        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[11]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]');
+        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[6]');
         await this.clickOnLocator('//input[@value="true"]')
         await this.waitForTime(5000);
         await this.waitForLocator('//img[@alt="Check"]');

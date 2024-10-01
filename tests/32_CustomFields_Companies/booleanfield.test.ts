@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
   const emails: string[] = ['customcompany1.com', 'customcompany2.com', 'customcompany3.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch();
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     booleanfield = new BooleanField(page);

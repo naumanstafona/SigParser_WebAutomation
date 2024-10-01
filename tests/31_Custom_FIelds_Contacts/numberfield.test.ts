@@ -14,14 +14,14 @@ test.describe('Starting 31 Custom Fields - Contacts - 4 - NumberField', () => {
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch();
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     numberfield = new NumberField(page);
     await loginpage.login(config.email, config.password, config.url);
   });
 
-  test("User should be able to create a new custom Text Area field column", async () => {
+  test("User should be able to create a new custom Number Field column", async () => {
 
     console.log('Starting 31 Custom Fields - Contacts - 4 - NumberField');
 

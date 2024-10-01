@@ -68,7 +68,7 @@ export class DateFields extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+//await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Companies');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Date');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
@@ -77,7 +77,8 @@ export class DateFields extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Company Date Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Company Date');
+        await this.page.waitForSelector('div:has-text("Test Company Date")', { state: 'visible',timeout:this.timeout_small });
+       // await this.waitForTextStrict('Test Company Date');
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);

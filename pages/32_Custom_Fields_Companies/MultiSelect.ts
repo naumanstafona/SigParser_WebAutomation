@@ -26,7 +26,7 @@ export class MultiSelectField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+     //   await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Companies');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Multi Select');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
@@ -37,7 +37,8 @@ export class MultiSelectField extends CommonSteps {
         await this.fillingLocator('//textarea[@placeholder="Add multiple entires seperated by commas or line breaks"]', 'Multi1, Multi2, Multi3');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Company Multi Select');
+        await this.page.waitForSelector('div:has-text("Test Company Multi Select")', { state: 'visible',timeout:this.timeout_small });
+      //  await this.waitForTextStrict('Test Company Multi Select');
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);

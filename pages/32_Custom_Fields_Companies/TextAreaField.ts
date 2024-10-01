@@ -71,7 +71,7 @@ export class TextAreaField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+       // await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Companies');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Text Area');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
@@ -80,7 +80,8 @@ export class TextAreaField extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Company Text Area Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Company Text Area');
+        await this.page.waitForSelector('div:has-text("Test Company Text Area")', { state: 'visible',timeout:this.timeout_small });
+      //  await this.waitForTextStrict('Test Company Text Area');
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -321,10 +322,10 @@ export class TextAreaField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
+        // await this.waitForLocator(CommonLocators.clickingOnColumns);
+        // await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        // await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        // await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);

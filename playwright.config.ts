@@ -10,9 +10,11 @@ export default defineConfig({
   timeout: 8 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
-    headless: true,
     permissions: ['notifications'],
     screenshot: 'on',
+    launchOptions: {
+      headless: false,
+    },
     trace: {
       mode: 'retain-on-failure',
       attachments: true,

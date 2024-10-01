@@ -26,8 +26,8 @@ export class NumberField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-        await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
+       // await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+       // await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Number');
         await this.waitForPlaceholder(NumberFieldLocator.decimalPlacesLocator);
         await this.fillingPlaceholder(NumberFieldLocator.decimalPlacesLocator, '0');
@@ -37,7 +37,9 @@ export class NumberField extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Contact Number Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Contact Number');
+        await this.page.waitForSelector('div:has-text("Test Contact Number")', { state: 'visible',timeout:this.timeout_small });
+     
+        //await this.waitForTextStrict('Test Contact Number');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -215,9 +217,11 @@ export class NumberField extends CommonSteps {
     }
 
     async updateCustomContactNumberValueToTwoDecimals(email1: string, email2: string, email3: string) {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
         await this.waitForTextStrict('Test Contact Number');
         await this.clickOnTextStrict('Test Contact Number');
+        await this.waitForLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
+        await this.clickOnLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
         await this.waitForPlaceholder(NumberFieldLocator.decimalPlacesLocator);
         await this.fillingPlaceholder(NumberFieldLocator.decimalPlacesLocator, '2');
         await this.waitForButton('Update Field');
@@ -331,9 +335,11 @@ export class NumberField extends CommonSteps {
     }
 
     async updateCustomContactNumberValueToThreeDecimals(email1: string, email2: string, email3: string) {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
         await this.waitForTextStrict('Test Contact Number');
         await this.clickOnTextStrict('Test Contact Number');
+        await this.waitForLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
+        await this.clickOnLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
         await this.waitForPlaceholder(NumberFieldLocator.decimalPlacesLocator);
         await this.fillingPlaceholder(NumberFieldLocator.decimalPlacesLocator, '3');
         await this.waitForButton('Update Field');

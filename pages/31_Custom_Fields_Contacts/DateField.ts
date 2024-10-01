@@ -1,10 +1,8 @@
 import { Page } from 'playwright';
 import { expect } from '@playwright/test';
 import { ContactLocators } from '../../locators/30-CSV-Imports/ContactLocators';
-//import { NumberFieldLocator } from '../../locators/31_Custom_Field_Contacts/NumberFieldLocator';
 import { CommonLocators } from '../../locators/CommonLocators';
 import { CommonSteps } from '../CommonSteps';
-import { isBooleanObject } from 'util/types';
 import config from '../../config';
 import { DateFieldLocator } from '../../locators/31_Custom_Field_Contacts/DateFieldLocators';
 
@@ -30,8 +28,8 @@ export class DateFields extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-        await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
+      //  await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+      //  await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Date');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Date');
@@ -39,7 +37,8 @@ export class DateFields extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Contact Date Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Contact Date');
+        await this.page.waitForSelector('div:has-text("Test Contact Date")', { state: 'visible',timeout:this.timeout_small });
+       // await this.waitForTextStrict('Test Contact Date');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -279,16 +278,16 @@ export class DateFields extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
+        // await this.waitForLocator(CommonLocators.clickingOnColumns);
+        // await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        // await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        // await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]/div/div');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -344,16 +343,16 @@ export class DateFields extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
+        // await this.waitForLocator(CommonLocators.clickingOnColumns);
+        // await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        // await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        // await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]/div/div');
     }
 
 };

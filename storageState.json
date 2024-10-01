@@ -1,0 +1,195 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.281654488.1726674260",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1761234266.851773,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "value": "d2216535-6201-49be-b533-5834b8f117b5",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1758210262,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "session-id",
+      "value": "EAAAAKNTHNlCIxbyuheiOKz9QPtZFS1iqkFrtWTzB7JVtbKTdN9ciVRTpnpFYP%2FH0PsqJMoHrcZyzkVEbPh56NBvVrGrS50YQmSRpx4Qscp%2BQBqwpgq24FlXLu2bjLpcU0TVyenn%2FXcFgKnWjUhwTs8jl28b5yZBcMA6jmgRtCa2ITCqFdruZ4sPE7mNjm3m5b%2FMrbXFvZ9fClN%2BS%2FSl7dWPQGWqiilxQ3UYFZbZMMQp1owZ",
+      "domain": "beta-app.sigparser.com",
+      "path": "/",
+      "expires": 1726760668.249385,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "intercom-id-bk9zdoda",
+      "value": "458b22a9-e795-41c4-9f0b-e25e4113429e",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1750004270,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "intercom-session-bk9zdoda",
+      "value": "",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1727279070,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "intercom-device-id-bk9zdoda",
+      "value": "443f8f7d-f8e9-4400-90d8-367c196938a3",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1750004270,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "m",
+      "value": "826dd7d0-7683-4c4c-9ca4-d0a1374fd2e8c4dd73",
+      "domain": "m.stripe.com",
+      "path": "/",
+      "expires": 1761234281.139409,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__stripe_mid",
+      "value": "4d766e3b-fe9f-4eed-92ae-29ce5a58692096e7fb",
+      "domain": ".beta-app.sigparser.com",
+      "path": "/",
+      "expires": 1758210281,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "__stripe_sid",
+      "value": "77f9b7bc-069c-4691-8d4f-3438db6c19a85fbed9",
+      "domain": ".beta-app.sigparser.com",
+      "path": "/",
+      "expires": 1726676081,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "AWSALB",
+      "value": "HGynVc5QSNJ/O2shA/Zjh8kMq4NV75uwxI9aPB96zmWqSZg2r3ayVtq2Je95oUhvOEIbSeVVAMuUX+zHpEvuXe0p5yaBuSF1xOYaYuJi0tHbKKv5EfAQ/8qUJt/u",
+      "domain": "beta-app.sigparser.com",
+      "path": "/",
+      "expires": 1727279073.446478,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "HGynVc5QSNJ/O2shA/Zjh8kMq4NV75uwxI9aPB96zmWqSZg2r3ayVtq2Je95oUhvOEIbSeVVAMuUX+zHpEvuXe0p5yaBuSF1xOYaYuJi0tHbKKv5EfAQ/8qUJt/u",
+      "domain": "beta-app.sigparser.com",
+      "path": "/",
+      "expires": 1727279073.446602,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga_ZY792NZM5D",
+      "value": "GS1.1.1726674260.1.1.1726674277.0.0.0",
+      "domain": ".sigparser.com",
+      "path": "/",
+      "expires": 1761234277.491902,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALB",
+      "value": "pjMoC48Yv/1M8Mf33PfSdWV5fES0hiXMK+ozozWbhGXifxrD8wTwSHZo45wLyDGJ/NoHfB6Qwl1lVtONStgB9SUXJRincpuKjMQZijD6rAqd/P5K8cp7Kt8KhaSi",
+      "domain": "beta-app-us.sigparser.com",
+      "path": "/",
+      "expires": 1727279078.838338,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "pjMoC48Yv/1M8Mf33PfSdWV5fES0hiXMK+ozozWbhGXifxrD8wTwSHZo45wLyDGJ/NoHfB6Qwl1lVtONStgB9SUXJRincpuKjMQZijD6rAqd/P5K8cp7Kt8KhaSi",
+      "domain": "beta-app-us.sigparser.com",
+      "path": "/",
+      "expires": 1727279078.839699,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://beta-app.sigparser.com",
+      "localStorage": [
+        {
+          "name": "ajs_user_id",
+          "value": "null"
+        },
+        {
+          "name": "intercom.intercom-state-bk9zdoda",
+          "value": "{\"app\":{\"openConfig\":{\"layout\":\"default\",\"openTo\":\"home\",\"spaces\":[{\"type\":\"home\",\"label\":\"Home\",\"navigationLabel\":\"Home\",\"badge\":null},{\"type\":\"messages\",\"label\":\"Messages\",\"navigationLabel\":\"Messages\",\"badge\":null},{\"type\":\"tickets\",\"label\":\"Tickets\",\"navigationLabel\":\"Tickets\",\"badge\":null}],\"userHasReceivedChecklists\":false,\"userHasLiveNewsfeed\":false,\"userHasTickets\":false},\"selfServeSuggestionsMatch\":false,\"name\":\"SigParser\",\"features\":{\"anonymousInboundMessages\":true,\"googleAnalytics\":false,\"hubspotInstalled\":false,\"inboundMessages\":true,\"launcherSettingsEndpoint\":false,\"marketoEnrichmentInstalled\":false,\"googleAnalytics4Integration\":true},\"helpCenterSiteUrl\":\"https://support.sigparser.com\",\"inboundConversationsDisabled\":false,\"isDeveloperWorkspace\":false,\"customGoogleAnalyticsTrackerId\":null},\"launcher\":{\"isLauncherEnabled\":true},\"launcherDiscoveryMode\":{\"hasDiscoveredLauncher\":true},\"launcherSettings\":{\"alignment\":\"right\",\"color\":\"#0071b2\",\"hasRequiredFeatures\":true,\"horizontalPadding\":20,\"instantBootEnabled\":true,\"launcherLogoUrl\":null,\"secondaryColor\":\"#0071b2\",\"showLauncher\":true,\"updatedAt\":1726641696,\"verticalPadding\":20},\"user\":{\"role\":\"visitor\",\"locale\":\"en\",\"hasConversations\":false},\"message\":{},\"conversations\":{\"byId\":{}},\"openOnBoot\":{\"type\":null,\"metadata\":{},\"lastOpenAtTimestamp\":1726674281193},\"operator\":{\"lastComposerEvent\":0},\"router\":{\"isInitialized\":false,\"navigationQueue\":[]}}"
+        },
+        {
+          "name": "identifiedUser",
+          "value": "true"
+        },
+        {
+          "name": "persisted-queue:v1:4bpHuFs7oTQpM6P9poJiR6C1iNu2s8Pl:dest-Segment.io:items",
+          "value": "[{\"id\":\"21653562-0189-4eb5-b358-34b8f117b5cc\",\"event\":{\"timestamp\":\"2024-09-18T15:44:21.795Z\",\"integrations\":{},\"type\":\"page\",\"properties\":{\"path\":\"/\",\"referrer\":\"\",\"search\":\"\",\"title\":\"SigParser\",\"url\":\"https://beta-app.sigparser.com/\",\"name\":\"/Home/Login\"},\"name\":\"/Home/Login\",\"context\":{\"page\":{\"path\":\"/\",\"referrer\":\"\",\"search\":\"\",\"title\":\"SigParser\",\"url\":\"https://beta-app.sigparser.com/\"},\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\",\"userAgentData\":{\"brands\":[{\"brand\":\"Chromium\",\"version\":\"127\"},{\"brand\":\"Not)A;Brand\",\"version\":\"99\"}],\"mobile\":false,\"platform\":\"Windows\"},\"locale\":\"en-US\",\"library\":{\"name\":\"analytics.js\",\"version\":\"next-1.72.1\"},\"timezone\":\"Asia/Karachi\"},\"messageId\":\"ajs-next-1726674261795-f2d22165-3562-4189-beb5-335834b8f117\",\"anonymousId\":\"d2216535-6201-49be-b533-5834b8f117b5\"},\"logs\":[],\"metrics\":[]}]"
+        },
+        {
+          "name": "client",
+          "value": "webShortTerm"
+        },
+        {
+          "name": "isLoggedIn",
+          "value": "true"
+        },
+        {
+          "name": "username",
+          "value": "test+stafona+haseeb@dragnettech.com"
+        },
+        {
+          "name": "ajs_anonymous_id",
+          "value": "\"d2216535-6201-49be-b533-5834b8f117b5\""
+        },
+        {
+          "name": "persisted-queue:v1:4bpHuFs7oTQpM6P9poJiR6C1iNu2s8Pl:dest-Segment.io:seen",
+          "value": "{\"21653562-0189-4eb5-b358-34b8f117b5cc\":1}"
+        },
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdCtzdGFmb25hK2hhc2VlYkBkcmFnbmV0dGVjaC5jb20iLCJ1c2VyaWQiOiJiNmRiZDkwNS0zNWU3LTQ4YjgtYmNmYS00MDQ0ZjE2YTEyYTAiLCJleHAiOjE3MjY4NDcwNjMsImlzcyI6Imh0dHBzOi8vYmV0YS1hcHAuc2lncGFyc2VyLmNvbSIsImF1ZCI6ImRyYWduZXQifQ.8ZTV0dbtS_Ga8peCStbtexWhaj7ICO9Voqe5AXa4rxI"
+        },
+        {
+          "name": "region_url",
+          "value": "https://beta-app-us.sigparser.com"
+        }
+      ]
+    }
+  ]
+}

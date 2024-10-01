@@ -394,6 +394,26 @@ export class CommonSteps {
     }
   }
 
+  async waitForLocatorBySpan(locatorName: string) {
+    try {
+      console.log('waiting For Locator By Span');
+      await this.page.locator('span').filter({ hasText: locatorName }).waitFor({ state: 'visible', timeout: this.timeout_small })
+    } catch (error) {
+      console.error('Error in aiting For Locator By Span', error);
+      process.exit(1);
+    }
+  }
+
+  async clickonLocatorBySpan(locatorName: string) {
+    try {
+      console.log('waiting For Locator By Span');
+      await this.page.locator('span').filter({ hasText: locatorName }).click();
+    } catch (error) {
+      console.error('Error in aiting For Locator By Span', error);
+      process.exit(1);
+    }
+  }
+
   async fillingLocatorByRole(expectedValue: string) {
     try {
       console.log('waiting For spinbutton');
@@ -415,6 +435,16 @@ export class CommonSteps {
     }
   }
 
+  async fillingLabel(labelName: string, expectedValue) {
+    try {
+      console.log('filling label name');
+      await this.page.getByLabel(labelName).fill(expectedValue);
+    } catch (error) {
+      console.error('Error in filling label name', error);
+      process.exit(1);
+    }
+  }
+
   async checkLabel(labelName: string) {
     try {
       console.log('checking label name');
@@ -422,6 +452,41 @@ export class CommonSteps {
     } catch (error) {
       console.error('Error in checking label', error);
       process.exit(1);
+    }
+  }
+
+  async checkLocatorAbsence(locatorName: string) {
+    try {
+      console.log(`Checking for locator: ${locatorName}`);
+      const locator = this.page.locator(locatorName);
+      const isVisible = await locator.isVisible({ timeout: 10000 });
+
+      if (!isVisible) {
+        console.log(`Locator ${locatorName} is not present. Test will pass.`);
+      } else {
+        throw new Error(`Locator ${locatorName} is present, but it should not be.`);
+      }
+    } catch (error) {
+      console.error(`Error checking locator: ${locatorName}`, error);
+      process.exit(1);
+    }
+  }
+
+  async compareLocators(firstLocator: string, secondLocator: string) {
+    try {
+      // Get the first text based on the provided first locator
+      const firstText = await this.page.locator(firstLocator).textContent();
+
+      // Get the second text based on the provided second locator
+      const secondText = await this.page.locator(secondLocator).textContent();
+
+      // Ensure both texts are not null or undefined and trim extra spaces
+      expect(firstText?.trim()).toBe(secondText?.trim());
+
+      console.log('Text comparison successful!');
+    } catch (error) {
+      console.error('Error during text comparison:', error);
+      process.exit(1); // Exit the process with a non-zero code to indicate failure
     }
   }
 
@@ -435,13 +500,14 @@ export class CommonSteps {
   }
 
   async deleteCustomfield() {
-    await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+    await this.navigateTo(config.url + '/Account/App/#/Fields/');
     await this.waitForTime(5000);
-
     const rows = await this.page.$$('tr.c-table-dynamic__row')
     for (const row of rows) {
       await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
       await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
+      await this.waitForLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
+      await this.clickOnLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
       await this.waitForButton(CommonLocators.deleteLocator);
       await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]');
       await this.waitForTime(3000);

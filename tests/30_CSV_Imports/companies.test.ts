@@ -3,6 +3,7 @@ import { CompaniesPage } from '../../pages/30-CSV-Imports/CompaniesPage';
 import { chromium, Browser, Page } from 'playwright';
 import config from '../../config';
 import { LoginPage } from '../../pages/LoginPage';
+import { truncate } from 'fs';
 
 let browser: Browser;
 let page: Page;
@@ -12,7 +13,7 @@ let companiespage: CompaniesPage;
 test.describe('30 CSV Imports - Companies File', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         companiespage = new CompaniesPage(page);

@@ -14,7 +14,7 @@ test.describe('Starting 32 Custom Fields - Company - 8 - Multi Select Field', ()
   const emails: string[] = ['customcompany1.com', 'customcompany2.com', 'customcompany3.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch();
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     multiselectfield = new MultiSelectField(page);

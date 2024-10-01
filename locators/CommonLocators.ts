@@ -32,7 +32,7 @@ export const CommonLocators = {
     clickingOnColumns: '//div[contains(@class,"c-container --space-between")]//span[1]',
     //Contact Custom Fields
     addFieldLocator: '//button[contains(@class,"c-btn --inverse")]',
-    fieldFormHeadingLocator: 'Create a Custom Field',
+    fieldFormHeadingLocator: 'Add Field',
     deleteLocator: 'Delete',
     plusButtonLocator: '(//button[contains(@class,"c-btn --inverse")])[1]',
     saveLocator: 'Save',
@@ -43,7 +43,7 @@ export const CommonLocators = {
     customFieldLocator: 'Custom Fields',
     testContactTextLinkLocator: '//b[text()="Test Contact Text"]',
     testContactTextColumnLocator: '(//div[@title="Test Contact Text : Click to Sort"]//div)[1]',
-    recordTypeLocator: 'Add Field',
+    recordTypeLocator: 'Object',
     pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
     dataTypeLocator: 'Data TypeTextText',
 

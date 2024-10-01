@@ -3,4 +3,6 @@ export const CoworkerLocator = {
     tagVerificationFieldLocator: 'CSV_TEST_TAG:Email-TAG',
     emailAddressLocator: 'Email Address',
     contactEmailAddressPlaceholderLocator: 'Contact Email Address',
+    companiesEmailAddressLocator:'Email Domain',
+    updateButtonLocator:'Update',
 };

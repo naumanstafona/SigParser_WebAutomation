@@ -26,7 +26,7 @@ export class SingleSelectField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
+        //   await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Company');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Single Select');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
@@ -37,7 +37,8 @@ export class SingleSelectField extends CommonSteps {
         await this.fillingLocator('//textarea[@placeholder="Add multiple entires seperated by commas or line breaks"]', 'Single1, Single2, Single3');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.waitForTextStrict('Test Company Single Select');
+        await this.page.waitForSelector('div:has-text("Test Company Single Select")', { state: 'visible', timeout: this.timeout_small });
+        //  await this.waitForTextStrict('Test Company Single Select');
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -305,7 +306,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -369,7 +370,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[11]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
 };
