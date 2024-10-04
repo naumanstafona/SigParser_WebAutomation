@@ -17,6 +17,7 @@ export const ContactStatusLocators = {
     emailPlaceholder: 'Seperate multiple email/',
     addBuleButonLocator: 'Add Rules and Delete Data',
     trashButtonLocator: '(//button[@class="c-btn --sm"]//i)[2]',
+    trashFirstElementLocator: '(//button[@class="c-btn --sm"]//i)[1]',
 
 
 };

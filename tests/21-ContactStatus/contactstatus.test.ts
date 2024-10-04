@@ -21,7 +21,7 @@ test.describe('21 - Contact Status Modifications', () => {
 
 
     const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
-    test('Sequential Test Execution with Await', async () => {
+    test('This test case conatins changes in the status for contacts', async () => {
         console.log('21 - Contact Status Modifications');
 
         await test.step('Deleting Email Addresses', async () => {
@@ -72,6 +72,10 @@ test.describe('21 - Contact Status Modifications', () => {
 
     test('This test case will cover Mail Box Scan Rules', async () => {
 
+        await test.step('Deleting Old RUless', async () => {
+            await contactstatus.deletOldRules();
+        });
+
         await test.step('Creation of two email addresses', async () => {
             await contactstatus.createTwoEmailAddresses();
         });
@@ -82,6 +86,10 @@ test.describe('21 - Contact Status Modifications', () => {
 
         await test.step('Verification of Rules', async () => {
             await contactstatus.rulesVerification();
+        });
+
+        await test.step('Deleting Old RUless', async () => {
+            await contactstatus.deletOldRules();
         });
 
         await test.step('Deleting Email Addresses', async () => {

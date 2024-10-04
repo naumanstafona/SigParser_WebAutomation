@@ -4,6 +4,7 @@ import { ContactStatusLocators } from '../../locators/21-Contacts/ContactStatusL
 import { ContactLocators } from '../../locators/30-CSV-Imports/ContactLocators';
 import { Page } from 'playwright';
 import { expect } from '@playwright/test';
+import config from '../../config';
 
 export class ContactStatus extends CommonSteps {
   constructor(page: Page) {
@@ -309,6 +310,23 @@ export class ContactStatus extends CommonSteps {
     await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.checkLocatorAbsence('//span[@title="mbsdomain.com"]');
+  }
+
+  async deletOldRules() {
+    await this.navigateTo(config.url + '/Account/App/#/AdvancedSettings');
+    await this.waitForTime(2000);
+    const rows = await this.page.$$('//table[@class="c-table-static"]//tr[@class="c-table-static__row"]');
+    if (rows.length === 1) {
+      console.log('No rows found in the table.');
+      return; // Exit the function early since there are no rows to process
+    }
+    else {
+      for (let i = 0; i < Math.min(rows.length, 2); i++) {
+        await this.waitForLocator(ContactStatusLocators.trashFirstElementLocator);
+        await this.handleAndAcceptDialog(ContactStatusLocators.trashFirstElementLocator);
+        await this.waitForTime(5000);
+      }
+    }
   }
 
 
