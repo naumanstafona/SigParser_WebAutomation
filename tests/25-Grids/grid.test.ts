@@ -11,7 +11,7 @@ let grid: Grids;
 test.describe('25 - Grids', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({ headless: false });
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         grid = new Grids(page);

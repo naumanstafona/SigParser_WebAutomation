@@ -48,7 +48,7 @@ export class InteractionPage extends CommonSteps {
     await this.clickOnLinkButtonstrict(InteractionLocators.advancedSetting);
     await this.waitForButton(InteractionLocators.recalculateMetricsButton);
     await this.clickOnButton(InteractionLocators.recalculateMetricsButton);
-    await this.waitForTime(50000);
+    await this.waitForTime(70000);
     await this.waitForLocator('//p[normalize-space(text())="The job has completed!"]');
   }
 
@@ -60,11 +60,11 @@ export class InteractionPage extends CommonSteps {
     await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[1]', '(//div[contains(@class,"c-text --heading-md")])[1]');
     await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[2]', '(//div[contains(@class,"c-text --heading-md")])[2]');
     await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[3]', '(//div[contains(@class,"c-text --heading-md")])[4]');
+    await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+    await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
   }
 
   async VerifyInteractionMtericsForCompanies() {
-    await this.waitForLinkButtonstrict(CommonLocators.coworkersLinkLocator);
-    await this.clickOnLinkButtonstrict(CommonLocators.coworkersLinkLocator);
     await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.waitForTextStrict('Honeywell');

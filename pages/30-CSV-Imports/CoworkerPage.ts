@@ -21,6 +21,10 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Full Name');
         await this.waitForLocator(CommonLocators.mappingthirddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingthirddropdownLocator, 'Source Date');
         await this.waitForLocator(CommonLocators.mappingfourthdropdownLocator);
@@ -28,6 +32,7 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
@@ -47,7 +52,7 @@ export class CoworkerPage extends CommonSteps {
         await this.waitingForCellHavingTextforVerification('Mary Balier');
         await this.waitingForCellHavingTextforVerification('Updated');
         await this.waitingForCellHavingTextforVerification('56');
-        
+
     }
 
     async coworkerWithScoreAtFieldLevelLowerVerification() {
@@ -63,6 +68,10 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Full Name');
         await this.waitForLocator(CommonLocators.mappingthirddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingthirddropdownLocator, 'Source Date');
         await this.waitForLocator(CommonLocators.mappingfourthdropdownLocator);
@@ -70,6 +79,7 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
@@ -102,6 +112,7 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Full Name');
@@ -114,6 +125,7 @@ export class CoworkerPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);

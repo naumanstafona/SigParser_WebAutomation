@@ -616,7 +616,7 @@ export class MergedRecords extends CommonSteps {
     await this.clickOnButton(CommonLocators.searchButtonLocator);
     await this.waitForLocator(MergedRecordsLocators.companyNameLoator);
     await this.fillingLocator(MergedRecordsLocators.companyNameLoator, 'te');
-    await this.waitForTime(2000);
+    await this.waitForTime(5000);
     await this.waitForLocator(MergedRecordsLocators.selectAllLocator);
     await this.clickOnLocator(MergedRecordsLocators.selectAllLocator);
     await this.waitForButton(CoworkerLocator.updateButtonLocator);
@@ -631,7 +631,6 @@ export class MergedRecords extends CommonSteps {
     await this.waitForLocator(MergedRecordsLocators.modalCloseLocator);
     await this.clickOnLocator(MergedRecordsLocators.modalCloseLocator);
     await this.waitForTime(3000);
-    // await this.waitForLocator(MergedRecordsLocators.activeSelectAllLocator);
     await this.waitForLocator(MergedRecordsLocators.selectAllLocator);
     await this.clickOnLocator(MergedRecordsLocators.selectAllLocator);
     await this.waitForLocator('(//input[@type="checkbox"])[2]')
@@ -644,7 +643,7 @@ export class MergedRecords extends CommonSteps {
     await this.clickOnLocator(MergedRecordsLocators.selectMergeRecordsButton);
     await this.waitForLocator('//td[normalize-space(text())="techinnovate.com"]');
     await this.waitForLocator('//td[normalize-space(text())="tesla.com"]');
-    
+
   }
 
 };

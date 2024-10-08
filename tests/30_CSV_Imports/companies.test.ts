@@ -22,7 +22,7 @@ test.describe('30 CSV Imports - Companies File', () => {
 
     console.log('Starting 30 CSV Imports - Companies File');
     test('User should be able to verify Company Domain and tag', async () => {
-        await companiespage.companyDomainTagVerification();//tag is not present 
+        await companiespage.companyDomainTagVerification();
     });
 
     test('User should be able to verify Company Domain and status', async () => {

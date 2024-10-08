@@ -27,8 +27,6 @@ export class SingleSelectField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-       // await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-       // await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Single Select');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Single Select');
@@ -38,8 +36,7 @@ export class SingleSelectField extends CommonSteps {
         await this.fillingLocator('//textarea[@placeholder="Add multiple entires seperated by commas or line breaks"]', 'Single1, Single2, Single3');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.page.waitForSelector('div:has-text("Test Contact Single Select")', { state: 'visible',timeout:this.timeout_small });
-      //  await this.waitForTextStrict('Test Contact Single Select');
+        await this.page.waitForSelector('div:has-text("Test Contact Single Select")', { state: 'visible', timeout: this.timeout_small });
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -142,11 +139,14 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Single Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -208,11 +208,14 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Single Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -251,7 +254,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -269,11 +272,14 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Single Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -312,7 +318,7 @@ export class SingleSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
     }
 
 };

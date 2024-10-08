@@ -131,8 +131,8 @@ export class BooleanField extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]');
-        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[6]');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
+        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[12]');
         await this.clickOnLocator('//input[@value="true"]')
         await this.waitForTime(5000);
         await this.waitForLocator('//img[@alt="Check"]');
@@ -162,11 +162,15 @@ export class BooleanField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Boolean');
+        await this.waitForTime(2000);
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -227,11 +231,15 @@ export class BooleanField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Boolean');
+        await this.waitForTime(2000);
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -292,11 +300,15 @@ export class BooleanField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Boolean');
+        await this.waitForTime(2000);
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);

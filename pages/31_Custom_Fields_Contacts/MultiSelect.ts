@@ -26,8 +26,6 @@ export class MultiSelectField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        //await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-       // await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Multi Select');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Multi Select');
@@ -38,7 +36,6 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
         await this.page.waitForSelector('div:has-text("Test Contact Multi Select")', { state: 'visible',timeout:this.timeout_small });
-       // await this.waitForTextStrict('Test Contact Multi Select');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -129,13 +126,13 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.waitForLocator('//div[normalize-space(text())="Multi1, Multi2, Multi3"]');
-        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[6]/div[1]/div[1]');
+        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[12]/div[1]/div[1]');
         await this.waitForTextStrict('Multi2');
         await this.clickOnTextStrict('Multi2');
         await this.waitForLocator('//span[normalize-space(text())="Contacts"]');
         await this.clickOnLocator('//span[normalize-space(text())="Contacts"]');
         await this.waitForLocator('//div[normalize-space(text())="Multi1, Multi3"]')
-        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[6]/div[1]/div[1]');
+        await this.clickOnLocator('//table[@id="table"]/tbody[1]/tr[1]/td[12]/div[1]/div[1]');
         await this.waitForTextStrict('Multi2');
         await this.clickOnTextStrict('Multi2');
         await this.waitForLocator('//span[normalize-space(text())="Contacts"]');
@@ -159,11 +156,14 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Multi Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -222,11 +222,14 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Multi Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -264,7 +267,7 @@ export class MultiSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div');
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
@@ -282,11 +285,14 @@ export class MultiSelectField extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'work_email');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Contact Multi Select');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+        await this.waitForTime(20000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -323,6 +329,6 @@ export class MultiSelectField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email3);
         await this.waitForTime(1000);
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[6]/div');
+        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]/div');
     }
 };
