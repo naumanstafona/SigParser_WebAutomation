@@ -104,6 +104,39 @@ test.describe('20 - Connectors - CSV Imports', () => {
         });
     });
 
+    test('This file conatins test cases regarding CSV Import Permissions Company & Contact - 8', async () => {
+        console.log('Starting 20 - Connectors - CSV Imports - CSV Import Permissions Company & Contact - 8.');
+
+        await test.step('check if the button is enabled ot not', async () => {
+            await connectorscsvimports.enableCanManageCoworkers();
+        });
+
+        await test.step('Coworkers List Upload', async () => {
+            await connectorscsvimports.csvImportPermissionCompanyAndContact();
+        });
+
+        await test.step('Enable the Button', async () => {
+            await connectorscsvimports.enableCanManageCoworkers();
+        });
+    });
+
+    test('This file conatins test cases regarding CSV Import Permissions Coworkers - 9', async () => {
+        console.log('Starting 20 - Connectors - CSV Imports - CSV Import Permissions Coworkers - 9');
+
+        await test.step('check if the button is enabled ot not', async () => {
+            await connectorscsvimports.enableCanManageCoworkers();
+        });
+
+        await test.step('Coworkers List Upload', async () => {
+            await connectorscsvimports.csvImportPermissionCoworkers();
+        });
+
+        await test.step('Enable the Button', async () => {
+            await connectorscsvimports.enableCanManageCoworkers();
+        });
+    });
+
+
 
     test('This file conatins test cases regarding uploading Connectors CSV Imports - Contact List Upload Semicolon Version - 10', async () => {
         console.log('Starting 20 - Connectors - CSV Imports');

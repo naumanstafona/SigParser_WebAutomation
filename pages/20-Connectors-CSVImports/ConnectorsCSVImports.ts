@@ -4,6 +4,7 @@ import { ConnetorsCSVImportsLocators } from '../../locators/20-Connectors-CSVImp
 import { ContactLocators } from '../../locators/30-CSV-Imports/ContactLocators';
 import { CompaniesLocators } from '../../locators/30-CSV-Imports/CompaniesLocators';
 import { CommonLocators } from '../../locators/CommonLocators';
+import config from '../../config';
 
 
 export class ConnectorsCSVImports extends CommonSteps {
@@ -340,9 +341,171 @@ export class ConnectorsCSVImports extends CommonSteps {
 
   }
 
+  async csvImportPermissionCompanyAndContact() {
+
+    await this.waitForButton(CommonLocators.settingButtonLocator);
+    await this.clickOnButton(CommonLocators.settingButtonLocator);
+    await this.waitForTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.clickOnTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.waitForButtonByRow('Enabled Can Manage Coworkers');
+    await this.clickOnButtonByRow('Enabled Can Manage Coworkers');
+    await this.waitForButton(CommonLocators.saveLocator);
+    await this.clickOnButton(CommonLocators.saveLocator);
+    await this.waitForTime(5000);
+    await this.navigateTo(config.url + '/Account/App/#/Contacts');
+    await this.waitForLocator('//button[normalize-space(text())="Import"]');
+    await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator('//button[normalize-space(text())="Import"]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.checkLocatorAbsence('//button[normalize-space(text())="Import"]');
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Coworker');
+    await this.waitForLocator(ConnetorsCSVImportsLocators.importContactDataDropdownLocator);
+    await this.checkLocatorAbsence(ConnetorsCSVImportsLocators.coworkerOptionLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList');
+    await this.waitForLocator(ConnetorsCSVImportsLocators.contactOptionLocator);
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Contact');
+    await this.waitForLocator(ConnetorsCSVImportsLocators.contactOptionLocator);
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Company');
+    await this.waitForLocator(ConnetorsCSVImportsLocators.companyOptionLocator);
+  }
+
+  async enableCanManageCoworkers() {
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.waitForButton(CommonLocators.settingButtonLocator);
+    await this.clickOnButton(CommonLocators.settingButtonLocator);
+    await this.waitForTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.clickOnTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.clickAllButtons();
+    await this.waitForButton(CommonLocators.saveLocator);
+    await this.clickOnButton(CommonLocators.saveLocator);
+    await this.waitForTime(5000);
+
+  }
+
+  async clickAllButtons() {
+    await this.waitForTime(5000);
+    const buttonLocator = '//button[normalize-space(text())="Disabled"]';
+
+    try {
+      // Find all buttons matching the locator
+      const buttons = await this.page.locator(buttonLocator);
+
+      // Get the count of matching buttons
+      const buttonCount = await buttons.count();
+
+      // Loop through each button and click it
+      for (let i = 0; i < buttonCount; i++) {
+        // Click each button by index
+        await buttons.nth(0).click();
+        console.log(`Button ${i + 1} clicked successfully.`);
+        // Optionally, wait for some action to occur after the click
+        await this.page.waitForTimeout(500); // Adjust the timeout as needed
+      }
+
+      console.log('All buttons clicked successfully.');
+    } catch (error) {
+      // Handle any errors that occur during the check or click
+      console.error('An error occurred:', error);
+      process.exit(1);
+    }
+  }
 
 
+  async csvImportPermissionCoworkers() {
+    await this.waitForButton(CommonLocators.settingButtonLocator);
+    await this.clickOnButton(CommonLocators.settingButtonLocator);
+    await this.waitForTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.clickOnTextStrict(ConnetorsCSVImportsLocators.userSLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.rolesLocator);
+    await this.waitForLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.clickOnLinkButtonstrict(ConnetorsCSVImportsLocators.mailBoxAdminButtonLocator);
+    await this.waitForButtonByRow('Enabled Can Manage Coworkers');
+    await this.clickOnButtonByRow('Enabled Can Manage Coworkers');
+    await this.waitForButtonByRow('Enabled Can Import Contact &');
+    await this.clickOnButtonByRow('Enabled Can Import Contact &');
+    await this.waitForButton(CommonLocators.saveLocator);
+    await this.clickOnButton(CommonLocators.saveLocator);
+    await this.waitForTime(5000);
+    await this.navigateTo(config.url + '/Account/App/#/Contacts');
+    await this.checkLocatorAbsence('//button[normalize-space(text())="Import"]');
+    await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+    await this.checkLocatorAbsence('//button[normalize-space(text())="Import"]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.checkLocatorAbsence('//button[normalize-space(text())="Import"]');
+    await this.navigateTo(config.url + '/Account/App#/ImportList');
+    await this.waitForLocator('//select[contains(.,"Please contact Administrator to grant account import permissions")]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Contact');
+    await this.waitForLocator('//select[contains(.,"Please contact Administrator to grant account import permissions")]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Coworker');
+    await this.waitForLocator('//select[contains(.,"Please contact Administrator to grant account import permissions")]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportList?origin=Company%C2%A0');
+    await this.waitForLocator('//select[contains(.,"Please contact Administrator to grant account import permissions")]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.navigateTo(config.url + '/Account/App#/ImportHistory');
+    await this.waitForLocator('//div[normalize-space(text())="Please contact an administrator to grant your user role permissions"]');
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.enableCanManageCoworkers();
+    await this.waitForLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButton(CommonLocators.coworkersLinkLocator);
+    await this.waitForLocator('//button[normalize-space(text())="Import"]');
+    await this.checkHistory();
 
+  }
+
+  async checkHistory() {
+    const contactLocator = '(//span[@title="Contact"])';
+    const companyLocator = '(//span[@title="Company"])';
+
+    try {
+      // Find all buttons matching the locators
+      const contacts = await this.page.locator(contactLocator);
+      const companies = await this.page.locator(companyLocator);
+
+      // Get the count of matching buttons
+      const contactCount = await contacts.count();
+      const companyCount = await companies.count();
+
+      if (contactCount > 0) {
+        throw new Error(`Test failed: ${contactCount} "Contact" buttons found.`);
+      }
+
+      if (companyCount > 0) {
+        throw new Error(`Test failed: ${companyCount} "Company" buttons found.`);
+      }
+
+      console.log('No "Contact", or "Company" buttons found. Test passed.');
+    } catch (error) {
+      // If any error occurs or test fails, log the error and fail the test
+      console.error('An error occurred:', error);
+      throw error; // Throwing the error will fail the test
+    }
+  }
 
 
 }
