@@ -137,7 +137,6 @@ test.describe('20 - Connectors - CSV Imports', () => {
     });
 
 
-
     test('This file conatins test cases regarding uploading Connectors CSV Imports - Contact List Upload Semicolon Version - 10', async () => {
         console.log('Starting 20 - Connectors - CSV Imports');
 
@@ -147,6 +146,19 @@ test.describe('20 - Connectors - CSV Imports', () => {
 
         await test.step('Contact List Upload Semi Colon Version', async () => {
             await connectorscsvimports.contactListUploadSemicolonVersion();
+        });
+
+    });
+
+    test('This file conatins test cases regarding uploading Connectors CSV Imports - CSV Import - CRM Account to Domain Override - 14', async () => {
+        console.log('Starting 20 - Connectors - CSV Imports');
+
+        await test.step('Deleting Email Addresses', async () => {
+            await connectorscsvimports.deleteEmailAddresses();
+        });
+
+        await test.step('CSV Import - CRM Account to Domain Overrides - 14', async () => {
+            await connectorscsvimports.company_CRM_Account_to_Domain_Override();
         });
 
     });

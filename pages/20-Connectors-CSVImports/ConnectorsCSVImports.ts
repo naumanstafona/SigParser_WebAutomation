@@ -206,7 +206,6 @@ export class ConnectorsCSVImports extends CommonSteps {
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.waitForLocator('//span[@title="marcus.ddario@guitars.com"]');
-
   }
 
   async coWorkersMergeUpload() {
@@ -505,6 +504,104 @@ export class ConnectorsCSVImports extends CommonSteps {
       console.error('An error occurred:', error);
       throw error; // Throwing the error will fail the test
     }
+  }
+
+  async company_CRM_Account_to_Domain_Override() {
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForButton(CommonLocators.importButtonLocator);
+    await this.clickOnButton(CommonLocators.importButtonLocator);
+    await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+    await this.clickOnSelectFileButton();
+    await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
+    await this.waitForLocator(CommonLocators.ChooseFileTextBoxLocator);
+    await this.uploadFile(CommonLocators.ChooseFileTextBoxLocator, 'Uploads/20-Connector-CSVImports/csv crm account to domain override - Copy of Template 3.csv');
+    await this.waitForButton(CommonLocators.nextButtonLocator);
+    await this.clickOnButton(CommonLocators.nextButtonLocator);
+    await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+    await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
+    await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+    await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'CRM Company ID');
+    await this.waitForButton(CommonLocators.importFileLocator);
+    await this.clickOnButton(CommonLocators.importFileLocator);
+    await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
+    await this.waitForTime(20000);
+    await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+    await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+    await this.waitForLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.clickOnLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator);
+    await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'Blocked');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//span[@title="phrazor.com"]');
+    await this.waitForLocator('//span[@title="hrtechoutlook.com"]');
+    await this.waitForLocator('//span[@title="gnemmigioielli.it"]');
+    await this.waitForLocator('//span[@title="katmex.co.uk"]');
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+    await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+    await this.waitForLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.clickOnLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator);
+    await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'approved');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//span[@title="sccombank.com"]');
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+    await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+    await this.waitForLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.clickOnLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
+    await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'dell.com');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//td[contains(.,"None")]');
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+    await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+    await this.waitForLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.clickOnLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
+    await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'movitex.com');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//td[contains(.,"None")]');
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+    await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+    await this.waitForLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.clickOnLocator('//span[normalize-space(text())="CRM Connector"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator);
+    await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'auto');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//span[@title="mode-sf.com"]');
   }
 
 
