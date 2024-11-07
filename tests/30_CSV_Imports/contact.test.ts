@@ -22,6 +22,7 @@ test.describe('Starting 30 CSV Imports - Contacts File', () => {
 
 
     console.log('Starting 30 CSV Imports - Contacts File');
+    
     test('User should be able to verify contact with Email Tag ', async () => {
         await contactpage.contactEmailTagVerification();
     });

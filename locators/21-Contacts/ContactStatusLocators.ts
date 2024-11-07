@@ -1,9 +1,9 @@
 export const ContactStatusLocators = {
     statusPencilLocator: '(//i[contains(@class,"fa fa-pencil")])[1]',
-    expandAddressLocator: '(//div[@style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; border: 1px solid rgb(216, 216, 216); border-radius: 4px;"])[6]',
-    expandPhoneLocator: '(//div[@style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; border: 1px solid rgb(216, 216, 216); border-radius: 4px;"])[4]',
+    expandAddressLocator: 'div:nth-child(8) > .p-profile__section-content > div > div > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value',
+    expandPhoneLocator: 'div:nth-child(2) > div:nth-child(2) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value',
     expandCOmpanyLocator: '(//div[@style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; border: 1px solid rgb(216, 216, 216); border-radius: 4px;"])[3]',
-    modalCloseButtonLocator: '//div[@id="modal-contact"]/main[1]/button[1]/i[1]',
+    modalCloseButtonLocator: '//i[contains(@class,"c-modal__exit-icon fa")]',
     editFormCloseLocator: '(//i[contains(@class,"c-modal__exit-icon fa")])[2]',
     selectAllLocator: '(//input[@type="checkbox"])[1]',
     updateButtonLocator: 'Update',
@@ -18,6 +18,10 @@ export const ContactStatusLocators = {
     addBuleButonLocator: 'Add Rules and Delete Data',
     trashButtonLocator: '(//button[@class="c-btn --sm"]//i)[2]',
     trashFirstElementLocator: '(//button[@class="c-btn --sm"]//i)[1]',
+    titleLocator: '//div[@class="c-input --horizontal u-m-0" and .//label[@title="Job Title"]]//div[contains(@class, "c-dropdown__value") and contains(@class, "u-bold") and contains(@class, "--medium") and contains(@class, "--md")]',
+    cityLocator: 'Address City',
+    stateLocator: 'Address State',
+    countrylocator: 'Address Country',
 
 
 };

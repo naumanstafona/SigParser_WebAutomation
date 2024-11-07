@@ -38,12 +38,12 @@ export class RelationshipPage extends CommonSteps {
     await this.waitForLocator('//a[normalize-space(text())="Leo Kowalski"]');
     await this.clickOnLocator('//a[normalize-space(text())="Leo Kowalski"]');
     await this.waitForTime(3000);
-    await this.waitForLocator('(//div[@class="u-d-flex u-justify-start"]//span)[2]');
-    await this.clickOnLocator('(//div[@class="u-d-flex u-justify-start"]//span)[2]');
+    await this.waitForLocator('//span[normalize-space(text())="Relationships"]');
+    await this.clickOnLocator('//span[normalize-space(text())="Relationships"]');
     await this.waitForTime(2000);
-    await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[1]', 'count((//tbody)[2]//tr[@class="c-table-static__row"])');
-    await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[2]', 'count((//tbody)[3]//tr[@class="c-table-static__row"])');
-    await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[3]', 'count((//tbody)[4]//tr[@class="c-table-static__row"])');
+    await this.compareLocatorsWithTotalCount('//span[@class="u-c-coworkers u-bold"]', 'count((//tbody)[2]//tr[@class="c-table-static__row"])');
+    await this.compareLocatorsWithTotalCount('//span[@class="u-c-companies u-bold"]', 'count((//tbody)[3]//tr[@class="c-table-static__row"])');
+    await this.compareLocatorsWithTotalCount('//span[@class="u-c-other u-bold"]', 'count((//tbody)[4]//tr[@class="c-table-static__row"])');
     await this.waitForLocator(RelationshipLocators.contactModalCloseButton);
     await this.clickOnLocator(RelationshipLocators.contactModalCloseButton);
   }
@@ -54,14 +54,13 @@ export class RelationshipPage extends CommonSteps {
     await this.waitForLocator('//a[normalize-space(text())="Hendrick Manufacturing"]');
     await this.clickOnLocator('//a[normalize-space(text())="Hendrick Manufacturing"]');
     await this.waitForTime(3000);
-    await this.waitForLocatorBySpan('Relationships');
-    await this.clickonLocatorBySpan('Relationships');
+    await this.page.getByText('Relationships', { exact: true }).nth(1).click();
     await this.waitForTime(2000);
-    await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[1]', 'count((//tbody)[2]//tr[@class="c-table-static__row"])');
-    // await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[2]', 'count((//tbody)[3]//tr[@class="c-table-static__row"])');
-    await this.compareLocatorsWithTotalCount('//div[div[@class="__text-md-bold" and text()="Relationships"]]//div[@style="cursor: pointer;"]/span[3]', 'count((//tbody)[3]//tr[@class="c-table-static__row"])');
-    await this.waitForLocator(RelationshipLocators.contactModalCloseButton);
-    await this.clickOnLocator(RelationshipLocators.contactModalCloseButton);
+    await this.compareLocatorsWithTotalCount('(//span[@class="u-c-coworkers u-bold"])[2]', 'count(//div[contains(@class, "c-table-container")][1][preceding-sibling::div[contains(text(), "Coworker Relationships")]]//table[@class="c-table-static"]/tbody/tr) - 1');
+    // await this.compareLocatorsWithTotalCount('(//span[@class="u-c-companies u-bold"])[2]', 'count((//tbody)[3]//tr[@class="c-table-static__row"])');
+    await this.compareLocatorsWithTotalCount('(//span[@class="u-c-other u-bold"])[2]', 'count(//div[contains(@class, "c-table-container")][preceding-sibling::div[contains(text(), "Other Relationships")]][1]//table[@class="c-table-static"]/tbody/tr) - 1');
+    await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+    await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
   }
 
   async verifyRelationshipMetricsinCoworkers() {
@@ -70,15 +69,15 @@ export class RelationshipPage extends CommonSteps {
     await this.waitForLocator('//a[normalize-space(text())="Steve Harris"]');
     await this.clickOnLocator('//a[normalize-space(text())="Steve Harris"]');
     await this.waitForTime(3000);
-    await this.waitForLocatorBySpan('Contact');
-    await this.clickonLocatorBySpan('Contact');
+    await this.waitForLocator('//span[@class="p-profile__tab --active"]/following-sibling::span[1]');
+    await this.clickOnLocator('//span[@class="p-profile__tab --active"]/following-sibling::span[1]');
     await this.waitForTime(2000);
     await this.compareLocatorsWithTotalCount('//div[contains(text(), "Relationships")]//following-sibling::div[1]//span[1]', 'count((//tbody)[2]//tr[@class="c-table-static__row"][position() >= 2])');
-    await this.waitForLocatorBySpan('Companies');
-    await this.clickonLocatorBySpan('Companies');
+    await this.waitForLocator('//span[@class="p-profile__tab --active"]/following-sibling::span[2]');
+    await this.clickOnLocator('//span[@class="p-profile__tab --active"]/following-sibling::span[2]');
     await this.compareLocatorsWithTotalCount('//div[contains(text(), "Relationships")]//following-sibling::div[1]//span[2]', 'count((//tbody)[2]//tr[@class="c-table-static__row"][position() >= 2])');
-    await this.waitForLocator('(//span[text()="Companies"]/following-sibling::span)[2]');
-    await this.clickOnLocator('(//span[text()="Companies"]/following-sibling::span)[2]');
+    await this.waitForLocator('(//span[@class="p-profile__tab "]/following-sibling::span)[3]');
+    await this.clickOnLocator('(//span[@class="p-profile__tab "]/following-sibling::span)[3]');
     await this.compareLocatorsWithTotalCount('//div[contains(text(), "Relationships")]//following-sibling::div[1]//span[3]', 'count((//tbody)[2]//tr[@class="c-table-static__row"][position() >= 2])');
   }
 

@@ -4,6 +4,7 @@ import { CommonLocators } from '../../locators/CommonLocators';
 import { CommonSteps } from '../CommonSteps';
 import { parse } from 'csv-parse/sync';
 import { ContactExportColumLocators } from '../../locators/33-CSVExports/ContactExportColumns';
+import config from '../../config';
 
 export class ContactExportsColumns extends CommonSteps {
   constructor(page: Page) {
@@ -233,8 +234,8 @@ export class ContactExportsColumns extends CommonSteps {
   }
 
   async allContactsSomeColumns() {
-    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
-    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.coworkersLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.coworkersLinkLocator);
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.waitForLocator(CommonLocators.allValidContactsLocator);

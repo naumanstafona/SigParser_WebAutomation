@@ -107,9 +107,9 @@ export class ContactPage extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
         await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
-        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.waitForElementByTextWithin('#modal-contact', 'Ignore');
+        await this.waitForLocator('//span[normalize-space(text())="History"]');
+        await this.clickOnLocator('//span[normalize-space(text())="History"]');
+        await this.waitForLocator('//tr[@class="c-table-static__row" and .//td[@title="Contact Status"] and .//td[@title="Ignore"]]');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
@@ -151,14 +151,11 @@ export class ContactPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.contactEmailAddressPlaceholderLocator, 'joe.doe@csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
-        await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
-        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.waitForElementByTextWithin('#modal-contact', 'Jonathan');
-        await this.waitForElementByTextWithin('#modal-contact', 'Doehopper');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.clickOnLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.waitForLocator('//div[@title="Jonathan Doehopper"]');
+        await this.waitForLocator('//button[@class="c-modal__exit"]//i[1]');
+        await this.clickOnLocator('//button[@class="c-modal__exit"]//i[1]');
 
     }
 
@@ -330,9 +327,9 @@ export class ContactPage extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Delete');
         await this.clickOnTextStrict('Delete');
-        await this.waitForElementByTextWithin('#modal-contact', '+1 888-444-5555');
-        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
-        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.waitForLocator('(//div[@title="+1 888-444-5555"])[2]');
+        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[1]');
+        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[1]');
     }
 
     async contactDeleteFieldValue2() {
@@ -366,11 +363,10 @@ export class ContactPage extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('//a[contains(text(),"csv-delete-test")]');
         await this.clickOnLocator('//a[contains(text(),"csv-delete-test")]');
-        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.waitForemptyphonenumber();
-        await this.waitForLocator('//button[@class="c-modal__exit"]//i[1]');
-        await this.clickOnLocator('//button[@class="c-modal__exit"]//i[1]');
+        await this.waitForTime(1000);
+        await this.checkLocatorAbsence('(//div[@title="+1 888-444-5555"])[2]');
+        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
 
     }
 };

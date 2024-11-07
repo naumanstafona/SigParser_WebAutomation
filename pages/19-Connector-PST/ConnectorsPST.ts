@@ -9,23 +9,6 @@ export class ConnectorsPST extends CommonSteps {
     super(page);
   }
 
-
-  // async removingOldPSTFile() {
-  //   await this.navigateTo(config.url + '/Account/App/#/PstFiles');
-  //   await this.waitForTime(5000);
-  //   const fileLink = this.page.getByRole('link', { name: ConnectorPSTLocators.fileNameLocator });
-  //   if (await fileLink.isVisible()) {
-  //     console.log(`${ConnectorPSTLocators.fileNameLocator} is visible on the page, attempting to delete via UI...`);
-  //     await fileLink.click();
-  //     await this.handleAndAcceptDialog('//button[contains(@class,"c-btn --delete")]')
-  //     await this.waitForTime(3000);
-
-  //     console.log(`${ConnectorPSTLocators.fileNameLocator} has been deleted via UI.`);
-  //   } else {
-  //     console.log(`${ConnectorPSTLocators.fileNameLocator} is not visible on the page.`);
-  //   }
-  // }
-
   async uploadPSTFile() {
     await this.navigateTo(config.url + '/Account/App/#/PstFiles');
     await this.waitForTime(5000);
@@ -38,7 +21,7 @@ export class ConnectorsPST extends CommonSteps {
     await this.waitForTime(3000);
     await this.waitForButton(ConnectorPSTLocators.uploadButtonLocator);
     await this.clickOnButton(ConnectorPSTLocators.uploadButtonLocator);
-    await this.waitForTime(80000);
+    await this.waitForTime(40000);
   }
 
   async purchasePSTFile() {
@@ -53,10 +36,8 @@ export class ConnectorsPST extends CommonSteps {
     await this.waitForPlaceholder(ConnectorPSTLocators.cardHolderName);
     await this.fillingPlaceholder(ConnectorPSTLocators.cardHolderName, 'Pink Dale');
     await this.page.getByTestId('hosted-payment-submit-button').click();
-    await this.waitForTime(70000);
+    await this.waitForTime(60000);
     await this.waitForTextStrict('PST file purchase and scan complete!');
-
-
   }
 
 

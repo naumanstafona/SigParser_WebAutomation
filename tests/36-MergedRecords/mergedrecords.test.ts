@@ -12,7 +12,7 @@ let mergedrecords: MergedRecords;
 test.describe('36-Merged Records', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({headless:false,slowMo:1000});
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         mergedrecords = new MergedRecords(page);

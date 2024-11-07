@@ -14,10 +14,10 @@ test.describe('Starting 37 & 38 Hyperlinks and Contact Address Clean Up', () => 
 
     test.beforeAll(async () => {
         browser = await chromium.launch();
-        context = await browser.newContext(); // Create a new context
-        page = await context.newPage(); // Create a new page in that context
+        context = await browser.newContext(); 
+        page = await context.newPage(); 
         loginpage = new LoginPage(page);
-        hyperlinks = new Hyperlinks(page, context); // Pass context to Hyperlinks class
+        hyperlinks = new Hyperlinks(page, context);
         await loginpage.login(config.email, config.password, config.url);
     });
 
@@ -36,6 +36,9 @@ test.describe('Starting 37 & 38 Hyperlinks and Contact Address Clean Up', () => 
             await hyperlinks.addLinksToContacts();
         });
 
+        await test.step('Add links on company links', async () => {
+            await hyperlinks.addLinksToCompanies();
+        });
 
         await test.step('Add Phone Number and Getting its location', async () => {
             await hyperlinks.locationFromPhoneNumber();

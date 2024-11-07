@@ -9,12 +9,7 @@ export const ContactLocators = {
     lastNameInputLocator: 'input[name="lastname"]',
     titleInputLocator: 'input[name="title"]',
     viewContactButtonLocator: 'View Contact',
-    exitButtonLocator: '//div[@id="modal-contact"]/main[1]/button[1]/i[1]',
-    
+    exitButtonLocator: '(//i[contains(@class,"c-modal__exit-icon fa")])[2]',
     addToColumnListLocator: '//b[contains(@class, "u-center-vertically") and text()="Test Contact Text"]',
-
-
-
-
 
 };

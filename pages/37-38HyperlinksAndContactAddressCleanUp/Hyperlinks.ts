@@ -43,36 +43,14 @@ export class Hyperlinks extends CommonSteps {
     await this.waitForTime(2000);
     await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
     await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
-    await this.waitForTime(3000);
-    await this.waitForLocator(HyperlinksLocators.pencilModalLocator);
-    await this.clickOnLocator(HyperlinksLocators.pencilModalLocator);
     await this.waitForTime(2000);
-    await this.waitForLocator('form > div:nth-child(5) > div > div > svg');
-    await this.clickOnLocator('form > div:nth-child(5) > div > div > svg');
-    await this.waitForLocator('(//label[normalize-space(text())="Personal LinkedIn"]/following::input)[1]');
-    await this.fillingLocator('(//label[normalize-space(text())="Personal LinkedIn"]/following::input)[1]', 'linkedin.com/test');
-    await this.waitForButton(CommonLocators.saveLocator);
-    await this.clickOnButton(CommonLocators.saveLocator);
+    await this.waitForLocatorFirstElement('div:nth-child(6) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.clickOnLocatorFirstElement('div:nth-child(6) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'linkedin.com/test');
     await this.waitForTime(2000);
-    await this.waitForLinkButton('linkedin.com/test');
-    await this.waitForLocator(HyperlinksLocators.modalExitLocator);
-    await this.clickOnLocator(HyperlinksLocators.modalExitLocator);
-    await this.waitForLocator('(//a[contains(text(), "test") and contains(@class, "c-link")])[1]');
-    await this.clickOnLocator('(//a[contains(text(), "test") and contains(@class, "c-link")])[1]');
-    await this.waitForLocator(HyperlinksLocators.pencilModalLocator);
-    await this.clickOnLocator(HyperlinksLocators.pencilModalLocator);
-    await this.waitForLocator(HyperlinksLocators.websiteLocator);
-    await this.fillingLocator(HyperlinksLocators.websiteLocator, 'linkedin.com/test');
-    await this.waitForTime(2000);
-    await this.waitForLocator('form > div:nth-child(3) > div > div > svg');
-    await this.clickOnLocator('form > div:nth-child(3) > div > div > svg');
-    await this.waitForLocator(HyperlinksLocators.companyLinkedInLocator);
-    await this.fillingLocator(HyperlinksLocators.companyLinkedInLocator, 'linkedin.com/test');
-    await this.waitForButton(CommonLocators.saveLocator);
-    await this.clickOnButton(CommonLocators.saveLocator);
-    await this.waitForTime(2000);
-    await this.waitForLocator(HyperlinksLocators.modalExitLocator);
-    await this.clickOnLocator(HyperlinksLocators.modalExitLocator);
+    await this.waitForLocator('//a[@title="linkedin.com/test"]');
+    await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+    await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -87,16 +65,62 @@ export class Hyperlinks extends CommonSteps {
     await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'customcontact1@test.com');
     await this.waitForTime(2000);
     await this.waitForLocator('(//a[@title="linkedin.com/test"])[1]');
-    await this.waitForLocator('(//a[@title="linkedin.com/test"])[2]');
-    await this.waitForLocator('(//a[@title="linkedin.com/test"])[3]');
     await this.clickOnLocator('(//a[@title="linkedin.com/test"])[1]');
     await this.closeCurrentTabAndSwitchToPrevious();
-    await this.waitForTime(1000);
+    await this.waitForTime(3000);
+  }
+
+  async addLinksToCompanies() {
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+    await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'customcontact1@test.com');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//a[normalize-space(text())="test"]');
+    await this.clickOnLocator('//a[normalize-space(text())="test"]');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//a[@title="linkedin.com/company/xyz_2"]');
+    await this.hoverOverElement('//a[@title="linkedin.com/company/xyz_2"]');
+    await this.clickOnLocator('.c-dropdown__value > div:nth-child(2) > .fa');
+    await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'linkedin.com/test');
+    await this.waitForTime(2000);
+    await this.waitForLocator('//a[@title="test.com"]');
+    await this.hoverOverElement('//a[@title="test.com"]');
+    await this.clickOnLocator('.c-dropdown__value > div:nth-child(2) > .fa');
+    await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'linkedin.com/test');
+    await this.waitForTime(2000);
+    await this.waitForLocator('(//a[@title="linkedin.com/test"])[1]');
+    await this.waitForLocator('(//a[@title="linkedin.com/test"])[2]');
+    await this.waitForLocator('//button[@class="c-modal__exit"]//i[1]');
+    await this.clickOnLocator('//button[@class="c-modal__exit"]//i[1]');
+    await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+    await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+    await this.waitForLocator(CommonLocators.allValidContactsLocator);
+    await this.clickOnLocator(CommonLocators.allValidContactsLocator);
+    await this.waitForLocator('//span[normalize-space(text())="Hyperlink"]');
+    await this.clickOnLocator('//span[normalize-space(text())="Hyperlink"]');
+    await this.waitForButton(CommonLocators.searchButtonLocator);
+    await this.clickOnButton(CommonLocators.searchButtonLocator);
+    await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
+    await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'customcontact1@test.com');
+    await this.waitForTime(2000);
+    await this.waitForLocator('(//a[@title="linkedin.com/test"])[1]');
+    await this.clickOnLocator('(//a[@title="linkedin.com/test"])[1]');
+    await this.closeCurrentTabAndSwitchToPrevious();
+    await this.waitForLocator('(//a[@title="linkedin.com/test"])[2]');
     await this.clickOnLocator('(//a[@title="linkedin.com/test"])[2]');
     await this.closeCurrentTabAndSwitchToPrevious();
-    await this.waitForTime(1000);
+    await this.waitForLocator('(//a[@title="linkedin.com/test"])[3]');
     await this.clickOnLocator('(//a[@title="linkedin.com/test"])[3]');
     await this.closeCurrentTabAndSwitchToPrevious();
+    await this.waitForTime(3000);
+
   }
 
   async locationFromPhoneNumber() {
@@ -112,14 +136,11 @@ export class Hyperlinks extends CommonSteps {
     await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
     await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
     await this.waitForTime(3000);
-    await this.waitForLocator(HyperlinksLocators.pencilModalLocator);
-    await this.clickOnLocator(HyperlinksLocators.pencilModalLocator);
-    await this.waitForLocator('form > div:nth-child(4) > div > div > svg');
-    await this.clickOnLocator('form > div:nth-child(4) > div > div > svg');
-    await this.waitForLocator(HyperlinksLocators.phoneMobileLocator);
-    await this.fillingLocator(HyperlinksLocators.phoneMobileLocator, '+1 425-555-1212');
-    await this.waitForButton(CommonLocators.saveLocator);
-    await this.clickOnButton(CommonLocators.saveLocator);
+    await this.waitForLocatorFirstElement('div:nth-child(2) > div:nth-child(2) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.hoverOverElement('div:nth-child(2) > div:nth-child(2) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.clickOnLocatorFirstElement('div:nth-child(2) > div:nth-child(2) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', '+1 425-555-1212');
+    await this.waitForTime(2000);
     await this.waitForTime(3000);
     await this.waitForLocator(HyperlinksLocators.modalExitLocator);
     await this.clickOnLocator(HyperlinksLocators.modalExitLocator);
@@ -133,9 +154,19 @@ export class Hyperlinks extends CommonSteps {
     await this.clickOnLocator('//span[normalize-space(text())="Contact Address Cleanup"]');
     await this.waitForLocator('//span[@title="Bellevue"]');
     await this.waitForLocator('//span[@title="Washington"]');
-    await this.waitForLocator('(//span[@title="United States"])[3]');
+    await this.waitForLocator('//span[@title="United States"]');
 
   }
 
 
 }
+
+// await page.locator('div:nth-child(6) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value').first().click();
+// await page.locator('#dropdown').getByRole('textbox').click({
+//   modifiers: ['ControlOrMeta']
+// });
+// await page.locator('#dropdown').getByRole('textbox').fill('linkedin.com/test');
+// await page.getByRole('button', { name: '' }).click();
+// await page.getByRole('button', { name: '' }).click();
+// await page.getByText('Custom Contact1').click();
+// await expect(page.locator('div').filter({ hasText: /^linkedin\.com\/test$/ }).nth(4)).toBeVisible();

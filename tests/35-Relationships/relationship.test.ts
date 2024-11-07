@@ -31,7 +31,6 @@ test.describe('Starting 35 - Relationships', () => {
         await relationship.verifyRelationshipMetricsinCoworkers();
     });
 
-
     test.afterAll(async () => {
         console.log('Ending 35 - Relationships');
         await browser.close();

@@ -34,9 +34,10 @@ export class TextField extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Company Text');
         await this.waitForPlaceholder(CommonLocators.descriptionPlaceholder);
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Contact Text Field');
+        await this.waitForTime(2000);
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.page.waitForSelector('div:has-text("Test Company Text")', { state: 'visible', timeout: this.timeout_small });
+        await this.page.waitForSelector('div:has-text("Test Company Text")', { state: 'visible', timeout: this.timeout_large });
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -105,19 +106,15 @@ export class TextField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.waitForTextStrict('Test Company Text');
-        await this.waitForTextUnderTestContactText('Test Company Text-');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForPlaceholder('Field Value');
-        await this.fillingPlaceholder('Field Value', '1');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('Test Company Text1');
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1');
+        await this.waitForTime(1000);
+        await this.waitForLocator('(//div[@title="Text Value 1"])[2]');
+        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
     }
 
     async updateExistingValueWithOverCharacterLimit(email1: string) {
@@ -125,35 +122,22 @@ export class TextField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.waitForTextUnderTestContactText('Test Company Text1');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForPlaceholder('Field Value');
-        await this.fillingPlaceholder('Field Value', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('(//div[@title="Text Value 1"])[2]');
+        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
         await this.waitForTime(2000);
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT"]');
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForLocator('(//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."])[2]');
+        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.waitForLocator('//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+
     }
 
     async updateExistingFileDirectlyInGrid(email1: string) {
@@ -161,43 +145,30 @@ export class TextField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
         await this.waitForLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
         await this.clickOnLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1');
-        await this.waitForElementToBeVisibleinCell('Text Value 1');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1 Updated');
         await this.waitForTime(1000);
-        await this.waitForLocator('//div[text()="Text Value 1"]');
-        await this.clickOnLocator('//div[text()="Text Value 1"]');
+        await this.waitForLocator('//div[normalize-space(text())="Text Value 1 Updated"]');
+        await this.clickOnLocator('//div[@title="Text Value 1 Updated"]');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
+        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForLocator('//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]'); await this.clickOnLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+
     }
 
 

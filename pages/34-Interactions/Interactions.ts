@@ -55,11 +55,15 @@ export class InteractionPage extends CommonSteps {
   async VerifyInteractionMtericsForContact() {
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-    await this.waitForLocator('//a[normalize-space(text())="Emily Rodgers"]');
-    await this.clickOnLocator('//a[normalize-space(text())="Emily Rodgers"]');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[1]', '(//div[contains(@class,"c-text --heading-md")])[1]');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[2]', '(//div[contains(@class,"c-text --heading-md")])[2]');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[3]', '(//div[contains(@class,"c-text --heading-md")])[4]');
+    await this.waitForLocator('//a[@title="Emily Rodgers"]');
+    await this.clickOnLocator('//a[@title="Emily Rodgers"]');
+    await this.waitForLocator('//span[normalize-space(text())="Interactions"]');
+    await this.clickOnLocator('//span[normalize-space(text())="Interactions"]');
+    await this.compareLocators('//div[span[@class="u-c-emails-to u-bold"]]/span[@class="u-c-emails-to u-bold"]', '(//div[contains(@class,"c-text --heading-md")])[1]');
+    await this.compareLocators('//div[span[@class="u-c-emails-from u-bold"]]/span[@class="u-c-emails-from u-bold"]', '(//div[contains(@class,"c-text --heading-md")])[2]');
+    await this.compareLocators('//div[span[@class="u-c-emails-included u-bold"]]/span[@class="u-c-emails-included u-bold"]', '(//div[contains(@class,"c-text --heading-md")])[3]');
+    await this.compareLocators('//div[span[@class="u-c-meetings-past u-bold"]]/span[@class="u-c-meetings-past u-bold"]', '(//div[contains(@class,"c-text --heading-md")])[4]');
+    await this.compareLocators('//div[span[@class="u-c-meetings-future u-bold"]]/span[@class="u-c-meetings-future u-bold"]', '(//div[contains(@class,"c-text --heading-md")])[5]');
     await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
   }
@@ -69,11 +73,15 @@ export class InteractionPage extends CommonSteps {
     await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
     await this.waitForTextStrict('Honeywell');
     await this.clickOnTextStrict('Honeywell');
-    await this.waitForLocatorBySpan('Interactions');
-    await this.clickonLocatorBySpan('Interactions');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[1]', '(//div[contains(@class,"c-text --heading-md")])[1]');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[2]', '(//div[contains(@class,"c-text --heading-md")])[2]');
-    await this.compareLocators('(//div[@class="u-d-flex u-justify-around"]//span)[3]', '(//div[contains(@class,"c-text --heading-md")])[4]');
+    await this.waitForLocator('(//span[text()="Interactions"])[2]');
+    await this.clickOnLocator('(//span[text()="Interactions"])[2]');
+    await this.compareLocators('(//div[span[@class="u-c-emails-to u-bold"]]/span[@class="u-c-emails-to u-bold"])[2]', '(//div[contains(@class,"c-text --heading-md")])[1]');
+    await this.compareLocators('(//div[span[@class="u-c-emails-from u-bold"]]/span[@class="u-c-emails-from u-bold"])[2]', '(//div[contains(@class,"c-text --heading-md")])[2]');
+    await this.compareLocators('(//div[span[@class="u-c-emails-included u-bold"]]/span[@class="u-c-emails-included u-bold"])[2]', '(//div[contains(@class,"c-text --heading-md")])[3]');
+    await this.compareLocators('(//div[span[@class="u-c-meetings-past u-bold"]]/span[@class="u-c-meetings-past u-bold"])[2]', '(//div[contains(@class,"c-text --heading-md")])[4]');
+    await this.compareLocators('(//div[span[@class="u-c-meetings-future u-bold"]]/span[@class="u-c-meetings-future u-bold"])[2]', '(//div[contains(@class,"c-text --heading-md")])[5]');
+    await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+    await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
   }
 
 }

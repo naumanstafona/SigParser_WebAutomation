@@ -11,7 +11,7 @@ let contactexportcolumns: ContactExportsColumns;
 test.describe('33-CSV Exports', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({headless:false, slowMo:1000});
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactexportcolumns = new ContactExportsColumns(page);
@@ -36,10 +36,12 @@ test.describe('33-CSV Exports', () => {
     });
 
     test('User should be able to export some columns and all contacts', async () => {
+
         await contactexportcolumns.allContactsSomeColumns();
     });
 
     test('User should be able to export some contacts', async () => {
+
         await contactexportcolumns.exportSomeContactsVerifications();
     });
 
@@ -62,7 +64,6 @@ test.describe('33-CSV Exports', () => {
         });
 
     });
-
     test.afterAll(async () => {
         console.log('Ending 33 CSV Exports');
         await browser.close();

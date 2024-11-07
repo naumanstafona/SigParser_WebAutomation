@@ -144,12 +144,33 @@ export class CommonSteps {
     }
   }
 
+  async waitForLocatorFirstElement(locatorName: string) {
+    try {
+      console.log(`Waiting for locator by first elemen:${locatorName}`);
+      await this.page.locator(locatorName,).first().waitFor({ state: 'visible', timeout: this.timeout_small });
+    } catch (error) {
+      console.error(`Error in Waiting for locator by first elemen`, error);
+      process.exit(1);
+    }
+  }
+
+
   async clickOnLocator(locatorName: string) {
     try {
       console.log(`Clicking on locator:${locatorName}`);
       await this.page.locator(locatorName).click();
     } catch (error) {
       console.error(`Waiting for Choose File Text Box`, error);
+      process.exit(1);
+    }
+  }
+
+  async clickOnLocatorFirstElement(locatorName: string) {
+    try {
+      console.log(`Clicking on locator by first element:${locatorName}`);
+      await this.page.locator(locatorName).first().click();
+    } catch (error) {
+      console.error(`Error in clicking locator by first elemen`, error);
       process.exit(1);
     }
   }
@@ -501,11 +522,11 @@ export class CommonSteps {
 
   async deleteCustomfield() {
     await this.navigateTo(config.url + '/Account/App/#/Fields/');
-    await this.waitForTime(5000);
+    await this.waitForTime(2000);
     const rows = await this.page.$$('tr.c-table-dynamic__row')
     for (const row of rows) {
-      await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
-      await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
+      await this.waitForLocator('(//tr[@class="c-table-dynamic__row"]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
+      await this.clickOnLocator('(//tr[@class="c-table-dynamic__row"]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
       await this.waitForLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
       await this.clickOnLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
       await this.waitForButton(CommonLocators.deleteLocator);

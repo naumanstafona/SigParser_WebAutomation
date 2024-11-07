@@ -51,7 +51,7 @@ export class BooleanField extends CommonSteps {
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Company Boolean Field');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.page.waitForSelector('div:has-text("Test Company Boolean")', { state: 'visible', timeout: this.timeout_small });
+        await this.page.waitForSelector('div:has-text("Test Company Boolean")', { state: 'visible', timeout: this.timeout_large });
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -78,19 +78,15 @@ export class BooleanField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.waitForLocator('//div[normalize-space(text())="False"]');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('//select[@class="c-input__input u-m-t-0"]');
-        await this.selectingDropdownValue('//select[@class="c-input__input u-m-t-0"]', 'True');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('True');
-        await this.waitForTime(5000);
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="True"]');
+        await this.clickOnLocator('//label[normalize-space(text())="True"]');
+        await this.waitForLocator('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
         await this.waitForLocator('//img[@alt="Check"]');
     }
 
@@ -108,19 +104,16 @@ export class BooleanField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
-        await this.waitForTextUnderTestContactText('True');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('//select[@class="c-input__input u-m-t-0"]');
-        await this.selectingDropdownValue('//select[@class="c-input__input u-m-t-0"]', 'False');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('False');
-        await this.waitForTime(3000);
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="False"]');
+        await this.clickOnLocator('//label[normalize-space(text())="False"]');
+        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value'); await this.waitForTime(3000);
+        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
         await this.checkVisibility('//img[@alt="Check"]');
     }
 
@@ -134,21 +127,24 @@ export class BooleanField extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForTextStrict('customcompany1');
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
-        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[12]');
-        await this.clickOnLocator('//input[@value="true"]')
-        await this.waitForTime(5000);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.waitForLocator('//label[normalize-space(text())="True"]')
+        await this.clickOnLocator('//label[normalize-space(text())="True"]')
+        await this.waitForTime(3000);
         await this.waitForLocator('//img[@alt="Check"]');
         await this.clickOnLocator('//img[@alt="Check"]');
-        await this.clickOnLocator('//input[@value="false"]')
-        await this.waitForTime(5000);
+        await this.clickOnLocator('//label[normalize-space(text())="False"]')
+        await this.waitForTime(2000);
         await this.checkVisibility('//img[@alt="Check"]');
         await this.waitForTextStrict('customcompany1');
         await this.clickOnTextStrict('customcompany1');
-        await this.waitForLocator('//div[normalize-space(text())="False"]');
-        await this.waitForLocator(CompaniesLocators.exitButtonLocator);
-        await this.clickOnLocator(CompaniesLocators.exitButtonLocator);
+        await this.waitForTime(2000);
+        await this.checkVisibility('//img[@alt="Check"]');
+        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
     }
 
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {

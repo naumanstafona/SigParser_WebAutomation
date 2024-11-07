@@ -21,12 +21,8 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTextStrict('customcompany1');
     await this.clickOnTextStrict('customcompany1');
     await this.waitForTime(2000);
-    await this.waitForLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.waitForLocator(CompanyLocationLocators.locationsPecilButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.locationsPecilButtonLocator);
-    await this.waitForButton(CompanyLocationLocators.addButonLocator)
-    await this.clickOnButton(CompanyLocationLocators.addButonLocator);
+    await this.waitForLocator(CompanyLocationLocators.addButonLocator)
+    await this.clickOnLocator(CompanyLocationLocators.addButonLocator);
     await this.waitForLocator('input[name="state"]');
     await this.fillingLocator('input[name="state"]', 'Washington');
     await this.waitForLocator('input[name="country"]');
@@ -36,19 +32,15 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForButton(CommonLocators.saveLocator);
     await this.clickOnButton(CommonLocators.saveLocator);
     await this.waitForTime(2000);
-    await this.waitForLocator(CompanyLocationLocators.closeAddLocationFormLocator);
-    await this.clickOnLocator(CompanyLocationLocators.closeAddLocationFormLocator);
+    await this.waitForLocator(CompanyLocationLocators.primaryLocationModalCloseLocator);
+    await this.clickOnLocator(CompanyLocationLocators.primaryLocationModalCloseLocator);
 
   }
 
-  async modifyPhoneNumberInModal() {
-    await this.waitForLocator(CompanyLocationLocators.socialPencilButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.socialPencilButtonLocator);
-    await this.page.locator('label').filter({ hasText: 'Company LinkedIn' }).click();
-    await this.waitForLocator('input[name="linkedin_profile"]');
-    await this.fillingLocator('input[name="linkedin_profile"]', 'linked.com/test');
-    await this.waitForButton(CommonLocators.saveLocator);
-    await this.clickOnButton(CommonLocators.saveLocator);
+  async modifySocialInModal() {
+    await this.waitForLocatorFirstElement('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(2) > .p-profile__section-content > div > div:nth-child(3) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.clickOnLocatorFirstElement('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(2) > .p-profile__section-content > div > div:nth-child(3) > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+    await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'linked.com/test');
     await this.waitForTime(2000);
     await this.waitForLocator(CompanyLocationLocators.modalExitLocator);
     await this.clickOnLocator(CompanyLocationLocators.modalExitLocator);
@@ -68,10 +60,8 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTextStrict('customcompany1');
     await this.clickOnTextStrict('customcompany1');
     await this.waitForTime(2000);
-    await this.waitForLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.waitForLocator('//tr[contains(.,"Test LocationWashington, District of Columbia, United States")]');
-    await this.waitForLocator('//div[@class="p-profile__field-group u-w-third" and div[text()="Company LinkedIn"]]//a[@href="https://linked.com/test" and @target="_blank"]');
+    await this.waitForLocator('(//td[@class="c-table-static__item" and text()="Washington, District of Columbia, United States"])[2]');
+    await this.waitForLocator('(//a[@title="linked.com/test"])[2]');
     await this.waitForLocator(CompanyLocationLocators.modalExitLocator);
     await this.clickOnLocator(CompanyLocationLocators.modalExitLocator);
 
@@ -91,9 +81,6 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTextStrict('customcompany1');
     await this.clickOnTextStrict('customcompany1');
     await this.waitForTime(2000);
-    await this.waitForLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.waitForLocator('//tr[contains(.,"Test LocationWashington, District of Columbia, United States")]');
     await this.waitForLocator(CompanyLocationLocators.locationPlusButtonLocator);
     await this.clickOnLocator(CompanyLocationLocators.locationPlusButtonLocator);
     await this.waitForLocator('input[name="state"]');
@@ -107,9 +94,9 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTime(2000);
     await this.waitForLocator(CompanyLocationLocators.selectPrimaryLocator);
     await this.clickOnLocator(CompanyLocationLocators.selectPrimaryLocator);
-    await this.waitForTime(3000);
-    await this.waitForLocator(CompanyLocationLocators.closeAddLocationFormLocator);
-    await this.clickOnLocator(CompanyLocationLocators.closeAddLocationFormLocator);
+    await this.waitForTime(2000);
+    await this.waitForLocator(CompanyLocationLocators.primaryLocationModalCloseLocator);
+    await this.clickOnLocator(CompanyLocationLocators.primaryLocationModalCloseLocator);
     await this.waitForLocator(CompanyLocationLocators.modalExitLocator);
     await this.clickOnLocator(CompanyLocationLocators.modalExitLocator);
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -127,9 +114,9 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTime(2000);
     await this.waitForLocator(CompanyLocationLocators.mapButtonLocator);
     await this.clickOnLocator(CompanyLocationLocators.mapButtonLocator);
-    await this.waitForButton('Marker');
-    await this.waitForLocator(CompanyLocationLocators.modalExitLocator);
-    await this.clickOnLocator(CompanyLocationLocators.modalExitLocator);
+    await this.waitForLocator('(//img[@alt="Marker"])[1]');
+    await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+    await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
   }
 
   async modifyLocationinGrid() {
@@ -149,8 +136,8 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForTime(2000);
     await this.waitForLocator('//a[normalize-space(text())="New York, New York, United States"]');
     await this.clickOnLocator('//a[normalize-space(text())="New York, New York, United States"]');
-    await this.waitForButton(CompanyLocationLocators.addButonLocator)
-    await this.clickOnButton(CompanyLocationLocators.addButonLocator);
+    await this.waitForLocator('//button[normalize-space(text())="Add"]');
+    await this.clickOnLocator('//button[normalize-space(text())="Add"]');
     await this.waitForLocator('input[name="state"]');
     await this.fillingLocator('input[name="state"]', 'Montana');
     await this.waitForLocator('input[name="country"]');
@@ -162,25 +149,22 @@ export class CompanyLocations extends CommonSteps {
     await this.waitForButton(CommonLocators.saveLocator);
     await this.clickOnButton(CommonLocators.saveLocator);
     await this.waitForTime(2000);
+    await this.waitForLocator("//i[contains(@class,'c-modal__exit-icon fa')]");
+    await this.clickOnLocator("//i[contains(@class,'c-modal__exit-icon fa')]");
     await this.waitForLocator('//a[normalize-space(text())="New York, New York, United States"]');
     await this.clickOnLocator('//a[normalize-space(text())="New York, New York, United States"]');
     await this.waitForLocator('(//td[@class="c-table-static__item --sm"]//img)[3]');
     await this.clickOnLocator('(//td[@class="c-table-static__item --sm"]//img)[3]');
-    await this.waitForLocator(CompanyLocationLocators.modalExitLocator);
-    await this.clickOnLocator(CompanyLocationLocators.modalExitLocator);
+    await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+    await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     await this.waitForTime(2000);
     await this.waitForTextStrict('customcompany1');
     await this.clickOnTextStrict('customcompany1');
     await this.waitForTime(2000);
-    await this.waitForLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.clickOnLocator(CompanyLocationLocators.detailsButtonLocator);
-    await this.waitForLocator('//tr[contains(.,"Test LocationWashington, District of Columbia, United States")]');
-    await this.waitForLocator('//tr[contains(.,"Test Location2New York, New York, United States")]');
-    await this.waitForLocator('//tr[@class="c-table-static__row" and td[contains(text(),"Test Location3")]]/td[contains(text(),"Helena, Montana, United States")]');
-    await this.waitForLocator('//div[normalize-space(text())="Helena, Montana, United States"]');
-
-
-
+    await this.waitForLocator('(//td[@class="c-table-static__item" and text()="Washington, District of Columbia, United States"])[2]');
+    await this.waitForLocator('(//td[@class="c-table-static__item" and text()="Helena, Montana, United States"])[2]');
+    await this.waitForLocator('(//tr[@class="c-table-static__row" and .//td[text()="Test Location2"] and .//td[text()="New York, New York, United States"]])[2]');
+    await this.waitForLocator('(//td[@class="c-table-static__item" and text()="New York, New York, United States"])[2]');
   }
 
 

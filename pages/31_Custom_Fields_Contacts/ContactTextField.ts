@@ -27,7 +27,6 @@ export class ContactTextField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        // await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Text');
         await this.waitForPlaceholder(CommonLocators.descriptionPlaceholder);
@@ -35,7 +34,6 @@ export class ContactTextField extends CommonSteps {
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
         await this.page.waitForSelector('div:has-text("Test Contact Text")', { state: 'visible', timeout: this.timeout_small });
-        //await this.waitForTextStrict('Test Contact Text');
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -52,10 +50,6 @@ export class ContactTextField extends CommonSteps {
 
     async setTheValueForCustomField(email1: string) {
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -63,28 +57,22 @@ export class ContactTextField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForTextStrict('Test Contact Text');
-        await this.waitForTextUnderTestContactText('Test Contact Text-');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForPlaceholder('Field Value');
-        await this.fillingPlaceholder('Field Value', '1');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('Test Contact Text1');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1');
+        await this.waitForTime(1000);
+        await this.waitForLocator('(//div[@title="Text Value 1"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.waitForLocator('//div[normalize-space(text())="Text Value 1"]');
+
     }
 
     async updateExistingValueWithOverCharacterLimit(email1: string) {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -92,68 +80,44 @@ export class ContactTextField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForTextUnderTestContactText('Test Contact Text1');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForPlaceholder('Field Value');
-        await this.fillingPlaceholder('Field Value', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
+        await this.waitForLocator('(//div[@title="Text Value 1"])[2]');
+        await this.clickOnLocator('(//div[@title="Text Value 1"])[2]');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
         await this.waitForTime(2000);
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
-        await this.waitForTextStrict('Custom Contact1');
-        await this.clickOnTextStrict('Custom Contact1');
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('(//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.waitForLocator('//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
     }
 
     async updateExistingFileDirectlyInGrid(email1: string) {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
         await this.waitForLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
         await this.clickOnLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1');
-        await this.waitForElementToBeVisibleinCell('Text Value 1');
+        await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Text Value 1 Updated');
         await this.waitForTime(1000);
-        await this.waitForLocator('//div[text()="Text Value 1"]');
-        await this.clickOnLocator('//div[text()="Text Value 1"]');
+        await this.waitForLocator('//div[normalize-space(text())="Text Value 1 Updated"]');
+        await this.clickOnLocator('//div[@title="Text Value 1 Updated"]');
         await this.fillingLocatorbyGettingRoleTextboxandPressingEnter('#dropdown', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.THIS TEXT IS OVER THE 250 LIMIT');
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
-        await this.waitForLocator('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForTextStrict('Custom Contact1');
-        await this.clickOnTextStrict('Custom Contact1');
-        await this.page.hover('//div[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque ..."]');
-        await this.waitForLocator('//p[text()="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('//div[@title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]'); await this.clickOnLocator('//div[normalize-space(text())="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."]');
     }
 
 
@@ -226,10 +190,14 @@ export class ContactTextField extends CommonSteps {
     }
 
     async importSecondCSVFileUpdatingAndDeletingValues(email1: string, email2: string, email3: string) {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);
@@ -291,10 +259,14 @@ export class ContactTextField extends CommonSteps {
     }
 
     async importThirdCSVFileNoChanges(email1: string, email2: string, email3: string) {
-        await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
-        await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.importButtonLocator);
         await this.clickOnButton(CommonLocators.importButtonLocator);
         await this.waitForHeading(CommonLocators.importFromFileHeadingLocator);

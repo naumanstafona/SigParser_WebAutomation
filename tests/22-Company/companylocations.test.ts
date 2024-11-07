@@ -37,7 +37,7 @@ test.describe('22 - Modify Company Locations', () => {
         });
 
         await test.step('Modify Phone number in the modal', async () => {
-            await companylocations.modifyPhoneNumberInModal();
+            await companylocations.modifySocialInModal();
         });
 
         await test.step('Verify the changes', async () => {

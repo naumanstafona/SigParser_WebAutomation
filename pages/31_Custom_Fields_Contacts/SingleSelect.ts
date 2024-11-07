@@ -60,17 +60,16 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForTextUnderTestContactText('Test Contact Single Select-');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('select[name="Test Contact Single Select"]');
-        await this.selectingDropdownValue('select[name="Test Contact Single Select"]', 'Single1');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.waitForLocator('//div[normalize-space(text())="Single1"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.clickOnLocator('//div[normalize-space(text())="Single1"]');
+        await this.waitForTime(1000);
+        await this.waitForLocator('(//div[@title="Single1"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//div[normalize-space(text())="Single1"]');
+
     }
 
     async updateExistingalue(email1: string) {
@@ -78,10 +77,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -89,16 +84,15 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForLocator('//div[normalize-space(text())="Single1"]');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('select[name="Test Contact Single Select"]');
-        await this.selectingDropdownValue('select[name="Test Contact Single Select"]', 'Single2');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
+        await this.waitForLocator('(//div[@title="Single1"])[2]');
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.waitForLocator('//div[normalize-space(text())="Single2"]');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.clickOnLocator('//div[normalize-space(text())="Single2"]');
+        await this.waitForTime(1000);
+        await this.waitForLocator('(//div[@title="Single2"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//div[normalize-space(text())="Single2"]');
     }
 
@@ -114,14 +108,22 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.waitForLocator('//div[normalize-space(text())="Single2"]');
-        await this.clickOnLocator('//div[normalize-space(text())="Single2"]');
-        await this.clickOnLocator('//div[normalize-space(text())="Single3"]');
-        await this.waitForTime(2000);
+        await this.waitForLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
         await this.waitForLocator('//div[normalize-space(text())="Single3"]');
         await this.clickOnLocator('//div[normalize-space(text())="Single3"]');
+        await this.waitForTime(1000);
+        await this.waitForLocator('//div[normalize-space(text())="Single3"]');
+        await this.waitForLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.waitForLocator('//div[normalize-space(text())="Single2"]');
         await this.clickOnLocator('//div[normalize-space(text())="Single2"]');
-        await this.waitForTime(2000);
-        await this.clickOnLocator('//div[normalize-space(text())="Single2"]');
+        await this.waitForTime(1000);
+        await this.waitForLocator('//div[normalize-space(text())="Single2"]');
+
+
     }
 
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {
@@ -152,10 +154,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -166,10 +164,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -180,10 +174,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -221,10 +211,6 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -235,10 +221,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -285,10 +267,6 @@ export class SingleSelectField extends CommonSteps {
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -299,10 +277,6 @@ export class SingleSelectField extends CommonSteps {
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);

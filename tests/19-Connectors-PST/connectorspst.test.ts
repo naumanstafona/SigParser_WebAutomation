@@ -38,7 +38,6 @@ test.describe('19 - Connectors - PST', () => {
             await connectorspst.verifyFileName();
         })
 
-
         await test.step('Delete Emails', async () => {
             await connectorspst.deleteEmailAddresses();
         })

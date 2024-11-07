@@ -42,17 +42,16 @@ export class BooleanField extends CommonSteps {
         await this.navigateTo(config.url + '/Account/App/#/CustomFields');
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
-        //  await this.waitForHeading(CommonLocators.fieldFormHeadingLocator);
-      //  await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Contacts');
         await this.selectingDropdownValuebyLabel(CommonLocators.dataTypeLocator, 'Boolean');
         await this.waitForPlaceholder(CommonLocators.fieldNamePlaceholder);
         await this.fillingPlaceholder(CommonLocators.fieldNamePlaceholder, 'Test Contact Boolean');
         await this.waitForPlaceholder(CommonLocators.descriptionPlaceholder);
         await this.fillingPlaceholder(CommonLocators.descriptionPlaceholder, 'Description for Custom Contact Boolean Field');
+        await this.waitForLocator(CommonLocators.defaultValuePlaceholderLocator);
+        await this.selectingDropdownValue(CommonLocators.defaultValuePlaceholderLocator, 'False');
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
-        await this.page.waitForSelector('div:has-text("Test Contact Boolean")', { state: 'visible',timeout:this.timeout_small });
-      //  await this.waitForTextStrict('Test Contact Boolean');
+        await this.page.waitForSelector('div:has-text("Test Contact Boolean")', { state: 'visible', timeout: this.timeout_small });
         await this.navigateTo(config.url + '/Account/App/#/Contacts');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -76,17 +75,13 @@ export class BooleanField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForLocator('//div[normalize-space(text())="False"]');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('//select[@class="c-input__input u-m-t-0"]');
-        await this.selectingDropdownValue('//select[@class="c-input__input u-m-t-0"]', 'True');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('True');
-        await this.waitForTime(5000);
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="True"]');
+        await this.clickOnLocator('//label[normalize-space(text())="True"]');
+        await this.waitForLocator('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//img[@alt="Check"]');
     }
 
@@ -95,10 +90,6 @@ export class BooleanField extends CommonSteps {
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
-        await this.waitForLocator(CommonLocators.clickingOnColumns);
-        await this.clickOnLocator(CommonLocators.clickingOnColumns);
-        await this.waitForLocator(CommonLocators.allRecordAndColumns);
-        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
@@ -106,17 +97,15 @@ export class BooleanField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForTextUnderTestContactText('True');
-        await this.waitForLocator(CommonLocators.pencilLocator);
-        await this.clickOnLocator(CommonLocators.pencilLocator);
-        await this.waitForLocator('//select[@class="c-input__input u-m-t-0"]');
-        await this.selectingDropdownValue('//select[@class="c-input__input u-m-t-0"]', 'False');
-        await this.waitForButton(CommonLocators.saveLocator);
-        await this.clickOnButton(CommonLocators.saveLocator);
-        await this.waitForTextUnderTestContactText('False');
+        await this.waitForLocator('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="False"]');
+        await this.clickOnLocator('//label[normalize-space(text())="False"]');
+        await this.waitForLocator('div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.waitForTime(3000);
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.checkVisibility('//img[@alt="Check"]');
     }
 
@@ -131,20 +120,23 @@ export class BooleanField extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, email1);
         await this.waitForTime(1000);
         await this.waitForTextStrict('Custom Contact1');
-        await this.waitForLocator('//*[@id="table"]/tbody/tr/td[12]');
-        await this.clickOnLocator('//*[@id="table"]/tbody/tr/td[12]');
-        await this.clickOnLocator('//input[@value="true"]')
-        await this.waitForTime(5000);
+        await this.waitForLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
+        await this.waitForLocator('//label[normalize-space(text())="True"]')
+        await this.clickOnLocator('//label[normalize-space(text())="True"]')
+        await this.waitForTime(3000);
         await this.waitForLocator('//img[@alt="Check"]');
         await this.clickOnLocator('//img[@alt="Check"]');
-        await this.clickOnLocator('//input[@value="false"]')
-        await this.waitForTime(5000);
+        await this.clickOnLocator('//label[normalize-space(text())="False"]')
+        await this.waitForTime(2000);
         await this.checkVisibility('//img[@alt="Check"]');
         await this.waitForTextStrict('Custom Contact1');
         await this.clickOnTextStrict('Custom Contact1');
-        await this.waitForElementByTextWithin('#modal-contact', 'False');
-        await this.waitForLocator(ContactLocators.exitButtonLocator);
-        await this.clickOnLocator(ContactLocators.exitButtonLocator);
+        await this.waitForTime(2000);
+        await this.checkVisibility('//img[@alt="Check"]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {

@@ -38,6 +38,7 @@ export const CommonLocators = {
     saveLocator: 'Save',
     fieldNamePlaceholder: 'Field Name',
     descriptionPlaceholder: 'Description',
+    defaultValuePlaceholderLocator: '#defaultValue',
     createFieldLocator: 'Create Field',
     columnTitleLocator: 'Columns',
     customFieldLocator: 'Custom Fields',
@@ -46,9 +47,5 @@ export const CommonLocators = {
     recordTypeLocator: 'Object',
     pencilLocator: '(//i[contains(@class,"fa fa-pencil")])[3]',
     dataTypeLocator: 'Data TypeTextText',
-
-
-
-
-
+    
 };

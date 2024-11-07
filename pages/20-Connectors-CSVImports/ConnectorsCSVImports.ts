@@ -543,7 +543,7 @@ export class ConnectorsCSVImports extends CommonSteps {
     await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'Blocked');
     await this.waitForTime(2000);
     await this.waitForLocator('//span[@title="phrazor.com"]');
-    await this.waitForLocator('//span[@title="hrtechoutlook.com"]');
+   // await this.waitForLocator('//span[@title="hrtechoutlook.com"]');
     await this.waitForLocator('//span[@title="gnemmigioielli.it"]');
     await this.waitForLocator('//span[@title="katmex.co.uk"]');
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);

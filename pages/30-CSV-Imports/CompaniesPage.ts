@@ -33,16 +33,16 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.waitForLocator(CommonLocators.allValidCompaniesLocator);
+        await this.clickOnLocator(CommonLocators.allValidCompaniesLocator);
+        await this.waitForLocator('//div[normalize-space(text())="All Records & Columns"]');
+        await this.clickOnLocator('//div[normalize-space(text())="All Records & Columns"]');
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
-        await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
         await this.waitForTextStrict(CompaniesLocators.tagVerificationLocator);
-        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
-        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async companyDomainStatusVerification() {
@@ -74,14 +74,13 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForLocator('(//a[@class="c-link --sm"])[1]');
-        await this.clickOnLocator('(//a[@class="c-link --sm"])[1]');
-        await this.waitForTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.clickOnTextStrict(CommonLocators.modalFileDetailsButtonLocator);
-        await this.waitForElementByTextWithin('#modal', 'Ignore');
-        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
-        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
-
+        await this.waitForLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.clickOnLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.waitForLocator('(//span[@class="p-profile__tab " and text()="History"])[2]');
+        await this.clickOnLocator('(//span[@class="p-profile__tab " and text()="History"])[2]');
+        await this.waitForLocator('//tr[@class="c-table-static__row" and .//td[@title="Company Status"] and .//td[@title="Ignore"]]')
+        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
     }
 
     async companyNameVerification() {
@@ -113,10 +112,11 @@ export class CompaniesPage extends CommonSteps {
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.emailDomainPLaceholderLocatore, 'csvtest.com');
         await this.waitForTime(1000);
-        await this.waitForTextStrict('CSVtest_Name');
-        await this.clickOnTextStrict('CSVtest_Name');
-        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
-        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.waitForLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.clickOnLocator('(//a[contains(@class,"c-link --sm")])[1]');
+        await this.waitForLocator('(//div[@class="p-profile__field-group" and .//div[normalize-space(text())="Company Name"]]//div[normalize-space(text())="CSVtest_Name"])[2]')
+        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
     }
 
     async companyWithScoreAtRowLevelVerification() {
