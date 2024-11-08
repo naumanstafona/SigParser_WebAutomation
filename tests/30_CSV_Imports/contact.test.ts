@@ -13,16 +13,19 @@ test.describe('Starting 30 CSV Imports - Contacts File', () => {
     let contactpage: ContactPage;
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({headless:false,slowMo:1000});
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactpage = new ContactPage(page);
         await loginpage.login(config.email, config.password, config.url)
+        await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+            await contactpage.deleteEmailAddresses();
+        });
     });
 
 
     console.log('Starting 30 CSV Imports - Contacts File');
-    
+
     test('User should be able to verify contact with Email Tag ', async () => {
         await contactpage.contactEmailTagVerification();
     });
@@ -58,6 +61,9 @@ test.describe('Starting 30 CSV Imports - Contacts File', () => {
 
     test.afterAll(async () => {
         console.log(' Ending 30 CSV Imports - Contacts File');
+        await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+            await contactpage.deleteEmailAddresses();
+        });
         await browser.close();
     });
 

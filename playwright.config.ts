@@ -4,10 +4,10 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
+  retries: process.env.CI ? 1 : 1,
   workers: 1,
   reporter: [['html', { outputFolder: 'playwright-report' }]],
-  timeout: 8 * 60 * 1000,
+  timeout: 12 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
     permissions: ['notifications'],

@@ -56,10 +56,10 @@ export class CommonSteps {
 
   async clickOnButtonByRow(buttonName: string) {
     try {
-      console.log(`Waiting for button: ${buttonName}`);
+      console.log(`Clicking on button: ${buttonName} by row`);
       await this.page.getByRole('row', { name: buttonName }).getByRole('button').click();
     } catch (error) {
-      console.error(`Error waiting for button ${buttonName}:`, error);
+      console.error(`Error clicking on button ${buttonName}:by row`, error);
       process.exit(1);
     }
   }
@@ -99,7 +99,7 @@ export class CommonSteps {
       console.log(`Waiting for link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName, exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
-      console.error(`Error waiting for button ${buttonName}:`, error);
+      console.error(`Error waiting for link button ${buttonName}:`, error);
       process.exit(1);
     }
   }
@@ -109,7 +109,7 @@ export class CommonSteps {
       console.log(`Waiting for link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
-      console.error(`Error waiting for button ${buttonName}:`, error);
+      console.error(`Error waiting for link button ${buttonName}:`, error);
       process.exit(1);
     }
   }
@@ -119,7 +119,7 @@ export class CommonSteps {
       console.log(`Clicking on link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName }).click();
     } catch (error) {
-      console.error(`Error waiting for button ${buttonName}:`, error);
+      console.error(`Error clicking on link button ${buttonName}:`, error);
       process.exit(1);
     }
   }
@@ -129,7 +129,7 @@ export class CommonSteps {
       console.log(`Clicking on link button: ${buttonName}`);
       await this.page.getByRole('link', { name: buttonName, exact: true }).click();
     } catch (error) {
-      console.error(`Error waiting for button ${buttonName}:`, error);
+      console.error(`Error Clicking on link button ${buttonName}:`, error);
       process.exit(1);
     }
   }
@@ -139,17 +139,17 @@ export class CommonSteps {
       console.log(`Waiting for locator:${locatorName}`);
       await this.page.locator(locatorName,).waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
-      console.error(`Waiting for Choose File Text Box`, error);
+      console.error(`Error waiting for locator`, error);
       process.exit(1);
     }
   }
 
   async waitForLocatorFirstElement(locatorName: string) {
     try {
-      console.log(`Waiting for locator by first elemen:${locatorName}`);
+      console.log(`Waiting for locator by first element:${locatorName}`);
       await this.page.locator(locatorName,).first().waitFor({ state: 'visible', timeout: this.timeout_small });
     } catch (error) {
-      console.error(`Error in Waiting for locator by first elemen`, error);
+      console.error(`Error in Waiting for locator by first element`, error);
       process.exit(1);
     }
   }
@@ -160,7 +160,7 @@ export class CommonSteps {
       console.log(`Clicking on locator:${locatorName}`);
       await this.page.locator(locatorName).click();
     } catch (error) {
-      console.error(`Waiting for Choose File Text Box`, error);
+      console.error(`Error in clicking on locator`, error);
       process.exit(1);
     }
   }
@@ -170,7 +170,7 @@ export class CommonSteps {
       console.log(`Clicking on locator by first element:${locatorName}`);
       await this.page.locator(locatorName).first().click();
     } catch (error) {
-      console.error(`Error in clicking locator by first elemen`, error);
+      console.error(`Error in clicking locator by first element`, error);
       process.exit(1);
     }
   }
@@ -210,7 +210,7 @@ export class CommonSteps {
       console.log(`Waiting for Heading: ${headingName}`);
       await this.page.getByRole('heading', { name: headingName }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
-      console.error(`Error waiting for button ${headingName}:`, error);
+      console.error(`ErrorWaiting for Heading ${headingName}:`, error);
       process.exit(1);
     }
   }
@@ -230,7 +230,7 @@ export class CommonSteps {
       console.log(`Waiting for Text strict: ${textName}`);
       await this.page.getByText(textName, { exact: true }).waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
-      console.error(`Error waiting for button ${textName}:`, error);
+      console.error(`Error Waiting for Text strict ${textName}:`, error);
       process.exit(1);
     }
   }
@@ -240,7 +240,7 @@ export class CommonSteps {
       console.log(`Clicking on Text strict: ${textName}`);
       await this.page.getByText(textName, { exact: true }).click();
     } catch (error) {
-      console.error(`Error waiting for Text ${textName}:`, error);
+      console.error(`Error Clicking on Text strict ${textName}:`, error);
       process.exit(1);
     }
   }
@@ -260,7 +260,7 @@ export class CommonSteps {
       console.log(`Filling Email Domain Placeholder: ${emailDomain} with ${expectedName}`);
       await this.page.getByRole('cell', { name: emailDomain, exact: true }).getByPlaceholder('Search...').fill(expectedName);
     } catch (error) {
-      console.error(`Error waiting for  Email Domain Placeholder ${emailDomain}:`, error);
+      console.error(`Error Filling Email Domain Placeholder ${emailDomain}:`, error);
       process.exit(1);
     }
   }
@@ -270,7 +270,7 @@ export class CommonSteps {
       console.log(`Waiting for text in row: ${text}`);
       await this.page.getByRole('cell', { name: text }).first().waitFor({ state: 'visible', timeout: this.timeout_large });
     } catch (error) {
-      console.error(`Error waiting for  Email Domain Placeholder ${text}:`, error);
+      console.error(`Error Waiting for text in row ${text}:`, error);
       process.exit(1);
     }
   }
@@ -522,11 +522,11 @@ export class CommonSteps {
 
   async deleteCustomfield() {
     await this.navigateTo(config.url + '/Account/App/#/Fields/');
-    await this.waitForTime(2000);
-    const rows = await this.page.$$('tr.c-table-dynamic__row')
+    await this.waitForTime(10000);
+    const rows = await this.page.$$('tr.c-table-dynamic__row  ')
     for (const row of rows) {
-      await this.waitForLocator('(//tr[@class="c-table-dynamic__row"]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
-      await this.clickOnLocator('(//tr[@class="c-table-dynamic__row"]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
+      await this.waitForLocator('(//tr[@class="c-table-dynamic__row  "]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
+      await this.clickOnLocator('(//tr[@class="c-table-dynamic__row  "]//td[contains(@class, "c-table-dynamic__item") and contains(@class, "--sticky") and contains(@style, "left: 44px")]//a)[1]');
       await this.waitForLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
       await this.clickOnLocator('(//i[contains(@class,"fa fa-pencil")])[1]');
       await this.waitForButton(CommonLocators.deleteLocator);

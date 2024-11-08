@@ -18,6 +18,9 @@ test.describe('30 CSV Imports - Companies File', () => {
         loginpage = new LoginPage(page);
         companiespage = new CompaniesPage(page);
         await loginpage.login(config.email, config.password, config.url);
+        await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+            await companiespage.deleteEmailAddresses();
+        });
     });
 
     console.log('Starting 30 CSV Imports - Companies File');
@@ -47,6 +50,9 @@ test.describe('30 CSV Imports - Companies File', () => {
 
     test.afterAll(async () => {
         console.log('Ending 30 CSV Imports - Companies File');
+        await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+            await companiespage.deleteEmailAddresses();
+        });
         await browser.close();
     });
 

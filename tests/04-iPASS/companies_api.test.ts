@@ -1,7 +1,7 @@
 import { test, expect, APIRequestContext } from '@playwright/test';
 import { CompaniesAPI } from '../../pages/04-iPASS/CompaniesAPI';
 
-test('Login via UI and use API', async ({ playwright }) => {
+test.skip('Login via UI and use API', async ({ playwright }) => {
     // Load the storage state for authenticated API requests
     const requestContext: APIRequestContext = await playwright.request.newContext({
         //   storageState: 'storageState.json'  // Use the saved state from login

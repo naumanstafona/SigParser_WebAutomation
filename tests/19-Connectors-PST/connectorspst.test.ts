@@ -12,7 +12,7 @@ let connectorspst: ConnectorsPST;
 test.describe('19 - Connectors - PST', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({headless:false});
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         connectorspst = new ConnectorsPST(page);

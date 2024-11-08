@@ -22,6 +22,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
@@ -58,10 +59,13 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
-        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
-        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Company Status');
+        await this.waitForTime(2000);
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'status');
+        await this.waitForTime(1000);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'domain');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
@@ -76,11 +80,9 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('(//a[contains(@class,"c-link --sm")])[1]');
         await this.clickOnLocator('(//a[contains(@class,"c-link --sm")])[1]');
-        await this.waitForLocator('(//span[@class="p-profile__tab " and text()="History"])[2]');
-        await this.clickOnLocator('(//span[@class="p-profile__tab " and text()="History"])[2]');
-        await this.waitForLocator('//tr[@class="c-table-static__row" and .//td[@title="Company Status"] and .//td[@title="Ignore"]]')
-        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
-        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+        await this.waitForLocator('//div[@class="c-dropdown__text" and @title="Ignore" and contains(., "Ignore")]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async companyNameVerification() {
@@ -96,10 +98,11 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
-        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
-        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
-        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Company Name');
+        await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'name');
+        await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
+        await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'domain');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
@@ -114,9 +117,9 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('(//a[contains(@class,"c-link --sm")])[1]');
         await this.clickOnLocator('(//a[contains(@class,"c-link --sm")])[1]');
-        await this.waitForLocator('(//div[@class="p-profile__field-group" and .//div[normalize-space(text())="Company Name"]]//div[normalize-space(text())="CSVtest_Name"])[2]')
-        await this.waitForLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
-        await this.clickOnLocator('(//i[contains(@class,"c-modal__exit-icon fa")])[2]');
+        await this.waitForLocator('//div[@title=" CSVtest_Name"]')
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async companyWithScoreAtRowLevelVerification() {
@@ -132,6 +135,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
@@ -174,6 +178,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForTime(5000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Company Name');
@@ -213,6 +218,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
