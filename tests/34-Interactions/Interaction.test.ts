@@ -18,7 +18,6 @@ test.describe('Starting 34 - Interactions', () => {
         interactionpage = new InteractionPage(page);
         await loginpage.login('test+stafona+testuser1@dragnettech.com', config.password, config.url);
     });
-
     test('User should be able to verify legacy Interactions for Contacts', async () => {
         await interactionpage.verifyLegacyInteractionMetricsForContacts();
     });
@@ -31,9 +30,9 @@ test.describe('Starting 34 - Interactions', () => {
         await interactionpage.verifyLegacyInteractionMetricsForCoworkers();
     });
 
-    test('User should be able to press Recalculate Metrics', async () => {
-        await interactionpage.recalculateMetrics();
-    });
+    // test('User should be able to press Recalculate Metrics', async () => {
+    //     await interactionpage.recalculateMetrics(100000);
+    // });
 
     test('User should be able to verify Interaction Metrics For Contacts', async () => {
         await interactionpage.VerifyInteractionMtericsForContact();

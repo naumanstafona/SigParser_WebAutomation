@@ -39,8 +39,9 @@ export class BooleanField extends CommonSteps {
         }
     }
 
-    async createNewBooleanCustomColumnAndAddIttoGridColumns() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+    async createCustomField() {
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Company');
@@ -52,6 +53,11 @@ export class BooleanField extends CommonSteps {
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
         await this.page.waitForSelector('div:has-text("Test Company Boolean")', { state: 'visible', timeout: this.timeout_large });
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
+        await this.waitForTime(5000);
+        await this.waitForLocator('//a[normalize-space(text())="Test Company Boolean"]');
+    }
+    async adddCutomFieldToGrid() {
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -80,17 +86,61 @@ export class BooleanField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
         await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
-        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
-        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.hoverOverElement('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.waitForLocator('//label[normalize-space(text())="True"]');
         await this.clickOnLocator('//label[normalize-space(text())="True"]');
+        await this.waitForTime(3000);
         await this.waitForLocator('(//img[@alt="Check"])[2]');
-        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//img[@alt="Check"]');
     }
 
     async updateExistingalue(email1: string) {
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
+        await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
+        await this.waitForTime(1000);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.hoverOverElement('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="False"]');
+        await this.clickOnLocator('//label[normalize-space(text())="False"]');
+        await this.waitForTime(5000);
+        await this.checkLocatorAbsence('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
+        await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.waitForButton(CommonLocators.searchButtonLocator);
+        await this.clickOnButton(CommonLocators.searchButtonLocator);
+        await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
+        await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
+        await this.waitForTime(1000);
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.waitForLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.hoverOverElement('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('//label[normalize-space(text())="True"]');
+        await this.clickOnLocator('//label[normalize-space(text())="True"]');
+        await this.checkLocatorAbsence('(//img[@alt="Check"])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+    }
+
+    async updateExistingFileDirectlyInGrid(email1: string) {
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -105,46 +155,40 @@ export class BooleanField extends CommonSteps {
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
         await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
-        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
-        await this.waitForLocator('(//img[@alt="Check"])[2]');
-        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
-        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
-        await this.waitForLocator('//label[normalize-space(text())="False"]');
-        await this.clickOnLocator('//label[normalize-space(text())="False"]');
-        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value'); await this.waitForTime(3000);
-        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.checkVisibility('//img[@alt="Check"]');
-    }
-
-    async updateExistingFileDirectlyInGrid(email1: string) {
+        await this.waitForLocator('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.waitForLocator('//label[normalize-space(text())="True"]')
+        await this.clickOnLocator('//label[normalize-space(text())="True"]')
+        await this.waitForTime(3000);
+        await this.waitForLocator('//img[@alt="Check"]');
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
+        await this.waitForLocator(CommonLocators.clickingOnColumns);
+        await this.clickOnLocator(CommonLocators.clickingOnColumns);
+        await this.waitForLocator(CommonLocators.allRecordAndColumns);
+        await this.clickOnLocator(CommonLocators.allRecordAndColumns);
         await this.waitForButton(CommonLocators.searchButtonLocator);
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator);
         await this.fillingEmailDomainPlaceholder(CompaniesLocators.companyEmailPlaceholderLocator, email1);
         await this.waitForTime(1000);
         await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
-        await this.waitForLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
-        await this.hoverOverElement('//tbody/tr[1]/td[12]/div[1]/div[1]');
-        await this.clickOnLocator('//tbody/tr[1]/td[12]/div[1]/div[1]');
-        await this.waitForLocator('//label[normalize-space(text())="True"]')
-        await this.clickOnLocator('//label[normalize-space(text())="True"]')
-        await this.waitForTime(3000);
-        await this.waitForLocator('//img[@alt="Check"]');
-        await this.clickOnLocator('//img[@alt="Check"]');
+        await this.waitForLocator('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.hoverOverElement('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.clickOnLocator('//tbody/tr[1]/td[83]/div[1]/div[1]');
+        await this.waitForLocator('//label[normalize-space(text())="False"]')
         await this.clickOnLocator('//label[normalize-space(text())="False"]')
         await this.waitForTime(2000);
         await this.checkVisibility('//img[@alt="Check"]');
-        await this.waitForTextStrict('customcompany1');
-        await this.clickOnTextStrict('customcompany1');
+        await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
+        await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
         await this.waitForTime(2000);
         await this.checkVisibility('//img[@alt="Check"]');
-        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
     }
 
     async importCSVtoSettheValuesForTheCustomField(email1: string, email2: string, email3: string) {
@@ -164,12 +208,13 @@ export class BooleanField extends CommonSteps {
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.waitForTime(3000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Company Boolean');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -233,12 +278,13 @@ export class BooleanField extends CommonSteps {
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.waitForTime(3000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Company Boolean');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -301,12 +347,13 @@ export class BooleanField extends CommonSteps {
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.waitForTime(3000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Company Boolean');
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);

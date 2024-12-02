@@ -11,7 +11,7 @@ let contactexportcolumns: ContactExportsColumns;
 test.describe('33-CSV Exports', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({headless:false, slowMo:1000});
+        browser = await chromium.launch({);
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         contactexportcolumns = new ContactExportsColumns(page);

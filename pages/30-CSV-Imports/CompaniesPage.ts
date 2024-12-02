@@ -30,7 +30,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -69,7 +69,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButton(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButton(CommonLocators.companiesLinkLocator);
@@ -106,7 +106,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -147,7 +147,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
@@ -189,7 +189,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
@@ -232,7 +232,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.importFileLocator);
         await this.clickOnButton(CommonLocators.importFileLocator);
         await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-        await this.waitForTime(20000);
+        await this.waitForTime(30000);
         await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);

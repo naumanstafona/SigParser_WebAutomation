@@ -14,8 +14,8 @@ test.describe('Starting 37 & 38 Hyperlinks and Contact Address Clean Up', () => 
 
     test.beforeAll(async () => {
         browser = await chromium.launch();
-        context = await browser.newContext(); 
-        page = await context.newPage(); 
+        context = await browser.newContext();
+        page = await context.newPage();
         loginpage = new LoginPage(page);
         hyperlinks = new Hyperlinks(page, context);
         await loginpage.login(config.email, config.password, config.url);

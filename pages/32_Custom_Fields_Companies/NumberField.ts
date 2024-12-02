@@ -12,16 +12,6 @@ export class NumberField extends CommonSteps {
         super(page);
     }
 
-    // async waitForTextUnderTestContactText(text: string) {
-    //     console.log(`Waiting for text: ${text}`);
-    //     try {
-    //         await this.page.locator('div').filter({ hasText: text }).nth(2).waitFor({ state: 'visible', timeout: this.timeout_small });
-    //         console.log(`Text "${text}" under test contact number is visible.`);
-    //     } catch (error) {
-    //         console.error("An error occurred while waiting for text:", error);
-    //     }
-    // }
-
     async createCompaniesManuallyInCompanyGrid(email1: string, email2: string, email3: string) {
         await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);
         await this.clickOnLinkButtonstrict(CommonLocators.companiesLinkLocator);
@@ -63,8 +53,9 @@ export class NumberField extends CommonSteps {
         await this.clickOnLocator(CompaniesLocators.modalExitButtonLocator);
     }
 
-    async createNewTextAreaCustomColumnAndAddIttoGridColumns() {
-        await this.navigateTo(config.url + '/Account/App/#/CustomFields');
+    async createCustomField() {
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
+        await this.waitForTime(5000);
         await this.waitForLocator(CommonLocators.addFieldLocator);
         await this.clickOnLocator(CommonLocators.addFieldLocator);
         await this.selectingDropdownValuebyLabel(CommonLocators.recordTypeLocator, 'Companies');
@@ -78,6 +69,12 @@ export class NumberField extends CommonSteps {
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
         await this.page.waitForSelector('div:has-text("Test Company Number")', { state: 'visible', timeout: this.timeout_large });
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
+        await this.waitForTime(5000);
+        await this.waitForLocator('//a[normalize-space(text())="Test Company Number"]');
+    }
+
+    async adddCutomFieldToGrid() {
         await this.navigateTo(config.url + '/Account/App/#/Companies');
         await this.waitForTitle(CommonLocators.columnTitleLocator);
         await this.clickOnTitle(CommonLocators.columnTitleLocator);
@@ -101,15 +98,16 @@ export class NumberField extends CommonSteps {
         await this.waitForTime(1000);
         await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
         await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
-        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
-        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.hoverOverElement('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.fillingLocatorByRole('1');
         await this.waitForLocator('//i[@class="fa fa-check"]');
         await this.clickOnLocator('//i[@class="fa fa-check"]');
         await this.waitForTime(1000);
         await this.waitForLocator('(//div[@title="1"])[2]');
-        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//div[normalize-space(text())="1"]');
     }
 
@@ -126,15 +124,16 @@ export class NumberField extends CommonSteps {
         await this.waitForLocator('//a[normalize-space(text())="customcompany1"]');
         await this.clickOnLocator('//a[normalize-space(text())="customcompany1"]');
         await this.waitForLocator('(//div[@title="1"])[2]');
-        await this.waitForLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
-        await this.clickOnLocator('div:nth-child(10) > #modal > .c-modal__display > .c-modal__contents > .p-profile > .p-profile__block-right > .u-mouse-default > div:nth-child(4) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.waitForLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.hoverOverElement('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
+        await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.fillingLocatorByRole('11');
         await this.waitForLocator('//i[@class="fa fa-check"]');
         await this.clickOnLocator('//i[@class="fa fa-check"]');
         await this.waitForTime(2000);
         await this.waitForLocator('(//div[@title="11"])[2]');
-        await this.waitForLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
-        await this.clickOnLocator('(//button[@class="c-modal__exit"]//i[1])[2]');
+        await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
+        await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.waitForLocator('//div[normalize-space(text())="11"]');
 
     }
@@ -190,6 +189,7 @@ export class NumberField extends CommonSteps {
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.waitForTime(3000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Company Number');
         await this.waitForButton(CommonLocators.importFileLocator);
@@ -295,6 +295,7 @@ export class NumberField extends CommonSteps {
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
+        await this.waitForTime(3000);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'Test Company Number');
         await this.waitForButton(CommonLocators.importFileLocator);

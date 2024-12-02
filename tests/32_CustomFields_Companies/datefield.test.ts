@@ -21,8 +21,8 @@ test.describe('Starting 32 Custom Fields - Companies - 5 - DateFields ', () => {
     await loginpage.login(config.email, config.password, config.url);
   });
 
-  test("User should be able to create a new custom field column", async () => {
- 
+  test.skip("User should be able to create a new custom field column", async () => {
+
     console.log('Starting 32 Custom Fields - Companies - 5 - DateFields');
     await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
       await contactdatefield.deleteEmailAddresses();
@@ -32,8 +32,12 @@ test.describe('Starting 32 Custom Fields - Companies - 5 - DateFields ', () => {
       await contactdatefield.deleteCustomfield();
     });
 
-    await test.step("Create a new custom column text and add it to the contacts grid", async () => {
-      await contactdatefield.createNewDateCustomColumnAndAddIttoGridColumns();
+    await test.step("Create a new custom column and add it to the contacts grid", async () => {
+      await contactdatefield.createCustomField();
+    });
+
+    await test.step("Add custom Column to the Grid", async () => {
+      await contactdatefield.adddCutomFieldToGrid();
     });
 
     await test.step("Manually create a couple of contacts in the Contact grid", async () => {

@@ -18,6 +18,6 @@ export const GridLocators = {
     addPropertyLocator: '(//button[contains(@class,"c-btn --sm")]//i)[2]',
     addFilterButtonLocator: '//p[normalize-space(text())="Add"]',
     manageButtonLocator: 'Manage',
-    deleteTestLocator: '//tr[contains(.,"testPersonal")]//i[contains(@class, "fa-trash")]'
+    deleteTestLocator: '(//tr[contains(.,"testPersonal")]//i[contains(@class, "fa-trash")])[1]'
 
 };

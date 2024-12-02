@@ -517,7 +517,7 @@ export class CommonSteps {
     await this.fillingPlaceholder('john@doe.com', 'test+stafona+haseeb@dragnettech.com')
     await this.waitForButton('Delete All Contacts and Emails ');
     await this.clickOnButton('Delete All Contacts and Emails ');
-    await this.waitForTime(3000);
+    await this.waitForTime(5000);
   }
 
   async deleteCustomfield() {

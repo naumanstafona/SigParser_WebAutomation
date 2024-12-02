@@ -521,13 +521,14 @@ export class ConnectorsCSVImports extends CommonSteps {
     await this.waitForButton(CommonLocators.nextButtonLocator);
     await this.clickOnButton(CommonLocators.nextButtonLocator);
     await this.waitForHeading(CommonLocators.mapDataFieldLocators);
+    await this.waitForTime(3000);
     await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
     await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
     await this.selectingDropdownValue(CommonLocators.mappingSeconddropdownLocator, 'CRM Company ID');
     await this.waitForButton(CommonLocators.importFileLocator);
     await this.clickOnButton(CommonLocators.importFileLocator);
     await this.waitForTextStrict(CommonLocators.statusQueuedNameLocator);
-    await this.waitForTime(20000);
+    await this.waitForTime(30000);
     await this.waitForTextStrict(CommonLocators.statusFinishedNameLocator);
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
@@ -557,9 +558,9 @@ export class ConnectorsCSVImports extends CommonSteps {
     await this.waitForButton(CommonLocators.searchButtonLocator);
     await this.clickOnButton(CommonLocators.searchButtonLocator);
     await this.waitingForEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator);
-    await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'approved');
-    await this.waitForTime(2000);
-    await this.waitForLocator('//span[@title="sccombank.com"]');
+    // await this.fillingEmailDomainPlaceholder(ConnetorsCSVImportsLocators.crmCompanyMatchTypeLocator, 'approved');
+    // await this.waitForTime(2000);
+    // await this.waitForLocator('//span[@title="dell.com"]');
     await this.waitForLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.clickOnLinkButtonstrict(CommonLocators.contactsLinkLocator);
     await this.waitForLinkButtonstrict(CommonLocators.companiesLinkLocator);

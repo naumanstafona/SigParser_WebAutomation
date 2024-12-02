@@ -12,12 +12,13 @@ let connectorspst: ConnectorsPST;
 test.describe('19 - Connectors - PST', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({headless:false});
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         connectorspst = new ConnectorsPST(page);
         await loginpage.login(config.email, config.password, config.url);
     });
+
 
     test('This file conatins test cases regarding uploading PST Files', async () => {
         console.log('Starting 19 - Connectors - PST');

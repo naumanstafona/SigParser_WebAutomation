@@ -33,8 +33,12 @@ test.describe('Starting 31 Custom Fields - Contacts - 4 - NumberField', () => {
       await numberfield.deleteCustomfield();
     });
 
-    await test.step("Create a new custom column and add it to the contacts grid", async () => {
-      await numberfield.createNewTextAreaCustomColumnAndAddIttoGridColumns();
+    await test.step("Create a new custom column", async () => {
+      await numberfield.createCustomField();
+    });
+
+    await test.step("Add it to Grid", async () => {
+      await numberfield.adddCutomFieldToGrid();
     });
 
     await test.step("Manually create a couple of contacts in the Contact grid", async () => {

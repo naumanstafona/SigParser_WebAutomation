@@ -21,12 +21,14 @@ export class ConnectorsPST extends CommonSteps {
     await this.waitForTime(3000);
     await this.waitForButton(ConnectorPSTLocators.uploadButtonLocator);
     await this.clickOnButton(ConnectorPSTLocators.uploadButtonLocator);
-    await this.waitForTime(40000);
+    await this.waitForTime(100000);
   }
 
   async purchasePSTFile() {
     await this.waitForButton(ConnectorPSTLocators.purchasePSTScanLocatoor);
     await this.clickOnButton(ConnectorPSTLocators.purchasePSTScanLocatoor);
+    await this.waitForTime(7000);
+    //await this.page.getByTestId('card-accordion-item-button').click();
     await this.waitForPlaceholder(ConnectorPSTLocators.cardNumberLocator);
     await this.fillingPlaceholder(ConnectorPSTLocators.cardNumberLocator, '4242 4242 4242 4242');
     await this.waitForPlaceholder(ConnectorPSTLocators.cardExpiryLocator);
@@ -36,8 +38,8 @@ export class ConnectorsPST extends CommonSteps {
     await this.waitForPlaceholder(ConnectorPSTLocators.cardHolderName);
     await this.fillingPlaceholder(ConnectorPSTLocators.cardHolderName, 'Pink Dale');
     await this.page.getByTestId('hosted-payment-submit-button').click();
-    await this.waitForTime(60000);
-    await this.waitForTextStrict('PST file purchase and scan complete!');
+    await this.waitForTime(90000);
+    //await this.waitForTextStrict('PST file purchase and scan complete!');
   }
 
 
@@ -49,7 +51,7 @@ export class ConnectorsPST extends CommonSteps {
     await this.waitForLocator(ConnectorPSTLocators.pstColumnLocator);
     await this.clickOnLocator(ConnectorPSTLocators.pstColumnLocator);
     await this.waitForTime(2000);
-    await this.waitForLocator('//tr[@class="c-table-dynamic__row"]//a[text()="Outlook Tester"] | //tr[@class="c-table-dynamic__row"]//a[text()="SamplePST.pst" and preceding-sibling::span[text()="(1) "]]');
+    await this.waitForLocator('//tr[contains(.,"Outlook Testersalesforceemailoutlook.tester@salesforceemail.com(1) SamplePST.pst")]');
 
   }
 

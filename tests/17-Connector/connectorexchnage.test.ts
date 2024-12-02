@@ -12,7 +12,7 @@ let connectorsexchange: ConnecterExchange;
 test.describe('17 - Connectors Exchange', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch({headless:false});
+        browser = await chromium.launch();
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         connectorsexchange = new ConnecterExchange(page);

@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 1,
+  retries: process.env.CI ? 0 : 0,
   workers: 1,
   reporter: [['html', { outputFolder: 'playwright-report' }]],
   timeout: 12 * 60 * 1000,
@@ -13,7 +13,7 @@ export default defineConfig({
     permissions: ['notifications'],
     screenshot: 'on',
     launchOptions: {
-      headless: false,
+      headless: true,
     },
     trace: {
       mode: 'retain-on-failure',

@@ -14,7 +14,7 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
   const emails: string[] = ['customcontact1@test.com', 'customcontact2@test.com', 'customcontact3@test.com'];
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({headless:false});
+    browser = await chromium.launch();
     page = await browser.newPage();
     loginpage = new LoginPage(page);
     booleanfield = new BooleanField(page);
@@ -33,8 +33,12 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
       await booleanfield.deleteCustomfield();
     });
 
-    await test.step("Create a new custom column and add it to the contacts grid", async () => {
-      await booleanfield.createNewBooleanCustomColumnAndAddIttoGridColumns();
+    await test.step("Create a new custom column", async () => {
+      await booleanfield.createCustomField();
+    });
+
+    await test.step("Add it to Grid", async () => {
+      await booleanfield.adddCutomFieldToGrid();
     });
 
     await test.step("Manually create a couple of contacts in the Contact grid", async () => {
