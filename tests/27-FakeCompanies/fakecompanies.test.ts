@@ -17,7 +17,7 @@ let interactionpage: InteractionPage
 test.describe('27 - Fake Companies', () => {
 
     test.beforeAll(async () => {
-        browser = await chromium.launch();
+        browser = await chromium.launch({ headless: false });
         page = await browser.newPage();
         loginpage = new LoginPage(page);
         fakecompanies = new FakeCompanies(page);
@@ -29,6 +29,7 @@ test.describe('27 - Fake Companies', () => {
         await loginpage.login('michael.scott@fakecompany.com', 'AppleSauce1', config.url);
         await fakecompanies.contactSearchLocations();
         await fakecompanies.logOut();
+
     });
 
     test('User should be able to log in with a different account and search contact through Mailbox - 02 - Contact search - Locations', async () => {

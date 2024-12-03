@@ -78,7 +78,8 @@ export class FakeCompanies extends CommonSteps {
         await this.waitForButton(CommonLocators.settingButtonLocator);
         await this.clickOnButton(CommonLocators.settingButtonLocator);
         await this.waitForLocator(FakeCompaniesLocators.logoutLocator);
-        await this.clickOnLocator(FakeCompaniesLocators.logoutLocator);
+        await this.clickOnLocator(FakeCompaniesLocators.logoutLocator)
+        await this.waitForTime(15000);
     }
 
     async contactSearchThroughMailbox() {
