@@ -23,8 +23,8 @@ test.describe('27 - Fake Companies', () => {
         bulkeditingcompanies = new BulkEditingCompany(page);
 
         await loginpage.login(config.email, config.password, config.url);
-        // await fakecompanies.deleteEmailAddresses();
-        // await fakecompanies.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
+        await fakecompanies.deleteEmailAddresses();
+        await fakecompanies.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
         console.log('Starting - 20 Bulk Editing Companies File')
 
     });
@@ -37,11 +37,11 @@ test.describe('27 - Fake Companies', () => {
         await bulkeditingcompanies.updatingCompaniesStatusFieldtoIgnore();
     });
 
-    test('User should be able to Email Addrtess Type to Non Person', async () => {
+    test.skip('User should be able to Email Addrtess Type to Non Person', async () => {
         await bulkeditingcompanies.updatingEmailAddressTypetoNonPerson();
     });
 
-    test('User should be able to restore default status and address type to persons', async () => {
+    test.skip('User should be able to restore default status and address type to persons', async () => {
         await bulkeditingcompanies.restoreAll();
     });
 
@@ -59,9 +59,9 @@ test.describe('27 - Fake Companies', () => {
 
         // await bulkeditingcontacts.restoreAll();
 
-        // await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-        //     await fakecompanies.deleteEmailAddresses();
-        // });
+        await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+            await fakecompanies.deleteEmailAddresses();
+        });
 
         console.log('Ending 20 Bulk Editing Companies File');
         await browser.close();

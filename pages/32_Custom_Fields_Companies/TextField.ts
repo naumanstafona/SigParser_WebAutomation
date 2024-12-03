@@ -37,8 +37,8 @@ export class TextField extends CommonSteps {
         await this.waitForButton(CommonLocators.createFieldLocator);
         await this.clickOnButton(CommonLocators.createFieldLocator);
         await this.page.waitForSelector('div:has-text("Test Company Text")', { state: 'visible', timeout: this.timeout_large });
-        await this.navigateTo(config.url + '/Account/App/#/Fields');
         await this.waitForTime(5000);
+        await this.navigateTo(config.url + '/Account/App/#/Fields');
         await this.waitForLocator('//a[normalize-space(text())="Test Company Text"]');
     }
     async adddCutomFieldToGrid() {
