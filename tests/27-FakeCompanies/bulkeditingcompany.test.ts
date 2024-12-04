@@ -26,7 +26,6 @@ test.describe('27 - Fake Companies', () => {
         await fakecompanies.deleteEmailAddresses();
         await fakecompanies.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
         console.log('Starting - 20 Bulk Editing Companies File')
-
     });
 
     test.skip('User should be able to Verify Contact Status to Empty Values', async () => {
