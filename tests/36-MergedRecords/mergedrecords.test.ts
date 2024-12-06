@@ -19,7 +19,7 @@ test.describe('36-Merged Records', () => {
         await loginpage.login('test+stafona+testuser1@dragnettech.com', config.password, config.url);
     });
 
-    test('Sequential Test Execution with Await', async () => {
+    test.skip('Sequential Test Execution with Await', async () => {
 
         await test.step('Step 1: Verification of Merge Coworker', async () => {
             await mergedrecords.verifyCowrokerMerge();

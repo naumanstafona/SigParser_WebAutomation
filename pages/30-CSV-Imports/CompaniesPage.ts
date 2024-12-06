@@ -218,7 +218,7 @@ export class CompaniesPage extends CommonSteps {
         await this.waitForButton(CommonLocators.nextButtonLocator);
         await this.clickOnButton(CommonLocators.nextButtonLocator);
         await this.waitForHeading(CommonLocators.mapDataFieldLocators);
-        await this.waitForTime(5000);
+        await this.waitForTime(4000);
         await this.waitForLocator(CommonLocators.mappingFirstdropdownLocator);
         await this.selectingDropdownValue(CommonLocators.mappingFirstdropdownLocator, 'Email Domain');
         await this.waitForLocator(CommonLocators.mappingSeconddropdownLocator);
