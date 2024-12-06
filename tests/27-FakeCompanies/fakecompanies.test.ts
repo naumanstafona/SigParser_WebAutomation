@@ -67,7 +67,7 @@ test.describe('27 - Fake Companies', () => {
 
         await loginpage.login('qa@fakecompany.com', 'AppleSauce1', config.url);
         await fakecompanies.coworkerMerge();
-        await interactionpage.recalculateMetrics(360000);
+        await interactionpage.recalculateMetrics(200000);
         await fakecompanies.verifyRelationships();
         await fakecompanies.logOut();
 
@@ -86,7 +86,7 @@ test.describe('27 - Fake Companies', () => {
         await loginpage.login('dwight.schrute@fakecompany.com', 'AppleSauce1', config.url);
         await fakecompanies.verifyCoworkerModalStatistics();
         await fakecompanies.logOut();
-
+        await fakecompanies.waitForTime(20000);
         await loginpage.login('qa@fakecompany.com', 'AppleSauce1', config.url);
         await fakecompanies.verifyCoworkerModalStatisticsforQAAccount();
         await fakecompanies.logOut();

@@ -49,7 +49,6 @@ export class InteractionPage extends CommonSteps {
     await this.waitForButton(InteractionLocators.recalculateMetricsButton);
     await this.clickOnButton(InteractionLocators.recalculateMetricsButton);
     await this.waitForTime(waitTime);
-   // await this.waitForLocator('//p[normalize-space(text())="The job has completed!"]');
   }
 
   async VerifyInteractionMtericsForContact() {

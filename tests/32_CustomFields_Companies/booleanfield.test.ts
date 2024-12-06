@@ -25,25 +25,25 @@ test.describe('Starting 31 Custom Fields - Contacts - 5 - BooleanField', () => {
 
     console.log('Starting 32 Custom Fields - Companies - 5 - BooleanField');
 
-    // await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
-    //   await booleanfield.deleteEmailAddresses();
-    // });
+    await test.step("Deleting all Contacts and Email Addresses For test+stafona+haseeb@dragnettech.com", async () => {
+      await booleanfield.deleteEmailAddresses();
+    });
 
-    // await test.step("Delete the custom fields", async () => {
-    //   await booleanfield.deleteCustomfield();
-    // });
+    await test.step("Delete the custom fields", async () => {
+      await booleanfield.deleteCustomfield();
+    });
 
-    // await test.step("Create a new custom column and add it to the contacts grid", async () => {
-    //   await booleanfield.createCustomField();
-    // });
+    await test.step("Create a new custom column and add it to the contacts grid", async () => {
+      await booleanfield.createCustomField();
+    });
 
-    // await test.step("Add custom Column to the Grid", async () => {
-    //   await booleanfield.adddCutomFieldToGrid();
-    // });
+    await test.step("Add custom Column to the Grid", async () => {
+      await booleanfield.adddCutomFieldToGrid();
+    });
 
-    // await test.step("Manually create a couple of contacts in the Contact grid", async () => {
-    //   await booleanfield.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
-    // });
+    await test.step("Manually create a couple of contacts in the Contact grid", async () => {
+      await booleanfield.createCompaniesManuallyInCompanyGrid(emails[0], emails[1], emails[2]);
+    });
 
 
     await test.step("Manually set the value for the custom field", async () => {

@@ -333,9 +333,9 @@ export class FakeCompanies extends CommonSteps {
         await this.clickOnButton(CommonLocators.searchButtonLocator);
         await this.waitingForEmailDomainPlaceholder(ContactLocators.emailAddressLocator);
         await this.fillingEmailDomainPlaceholder(ContactLocators.emailAddressLocator, 'creed.bratton@fakecompany.com');
-        await this.waitForTime(2000);
+        await this.waitForTime(4000);
         await this.waitForLocator('//a[normalize-space(text())="Creed Bratton"]');
-        await this.handleAndAcceptDialog('//a[normalize-space(text())="Creed Bratton"]');
+        await this.clickOnLocator('//a[normalize-space(text())="Creed Bratton"]');
         await this.waitForLocator(FakeCompaniesLocators.contactTabinModalLocator);
         await this.clickOnLocator(FakeCompaniesLocators.contactTabinModalLocator);
         await this.waitForLocator(FakeCompaniesLocators.errorMessageLocator);

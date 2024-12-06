@@ -87,6 +87,7 @@ export class BooleanField extends CommonSteps {
         await this.clickOnLocator('div:nth-child(10) > .p-profile__section-content > div > .c-input > .u-pos-rel > div > .c-dropdown__editable-value > .c-dropdown__value');
         await this.waitForLocator('//label[normalize-space(text())="True"]');
         await this.clickOnLocator('//label[normalize-space(text())="True"]');
+        await this.waitForTime(3000);
         await this.waitForLocator('//img[@alt="Check"]');
         await this.waitForLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
         await this.clickOnLocator('//i[contains(@class,"c-modal__exit-icon fa")]');
